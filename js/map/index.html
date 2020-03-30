@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学校</title>
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=2.0&ak=aqMHsoyn0Q6r6BiucnkkGMlyaIlQGXfx"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            /* vw新单位viewport width ,根据视窗出相对单位 */
+            width: 80vw;
+            height: 100vh;
+            /* background-color: red; */
+        }
+
+        .suggestion {
+
+            position: absolute;
+
+            top: 0;
+
+            right: 10vw;
+
+            width: 10vw;
+
+            height: 10vh;
+
+            background-color: green;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1.展示一个地图 来自百度 -->
+    <div id="map"></div>
+        <div class="suggestion">
+            <div id="r-result">请输入
+                <input type="text" class="suggestId" size="20" value="百度">
+            </div>
+        </div>
+    <script>
+        //html, css, js都加载完成的时候
+        window.onload = function () {
+            //405错误 4开头的，来自于客户端的错误
+            // console.log('ready')
+            var map = new BMap.Map('map');//实例化地图
+            map.centerAndZoom("江西财经大学麦庐园校区", 15);
+        }
+    </script>
+</body>
+
+</html>
