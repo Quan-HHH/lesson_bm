@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+<body>
+    <!-- type 可以选color date number 等 -->
+    <input type="file" name="" id="file" hidden>  
+    <!-- input框都有一个onchange事件 内容改变时触发 -->
+    <button class="btn">文件上传</button>
+
+    <img src="" alt="" id="preview" hidden>
+    <img src="./icon.png" alt="" id="flag" hidden>
+    <canvas id="combine" width="290px" height="290px" style="border: black 1px solid;"></canvas>
+    <script>
+        const fileNode = document.querySelector('#file');
+        const combine = document.getElementById('combine');
+        const ctx = combine.getContext('2d');
+        // 1. 画头像 2. 画国旗
+        fileNode.addEventListener('change',function(event) {
+            // console.log(event.target == fileNode) true
+            // 谁触发了事件 event.target就指向谁
+            // 1. 拿到内容
+            // 2. 放到img的src下
+            let file = event.target.files[0]
+            // file : Blog (2进制) -> base64(编码)
+            // unicode: utf-8  utf-16
+            // GBK   base64:把内容编码成64个字符组成的东西
+            let fileReader = new FileReader();
+            fileReader.onload = function(e) {
+                // console.log(e.target == fileReader) true
+                console.log(e.target.result);
+                document.querySelector('#preview').src = e.target.result;
+                // const avatar = new Image();
+                // const flag = new Image();
+                // avatar.src = e.target.result;
+                // flag.src = './icon.png';
+                document.querySelector('#preview').onload = function() {
+                    ctx.drawImage(document.querySelector('#preview'), 0, 0, 290, 290)
+                    ctx.drawImage(document.querySelector('#flag'), 0, 0, 290, 290)
+                    
+                }
+                
+            }
+            fileReader.readAsDataURL(file)
+        })
+        document.querySelector('.btn').addEventListener('click', function() {
+            fileNode.click();
+        })
+    </script>
+</body>
+</html>
