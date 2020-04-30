@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			body {
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+			}
+			#canvas{
+				background: url(img/xue.jpg);
+				background-size: 100% 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas"></canvas>
+	</body>
+
+	<script>
+		window.onload=function(){
+			var wid=window.innerWidth;
+			var hei=window.innerHeight;
+			
+			var can=document.getElementById("canvas");
+			var myCanvas=can.getContext('2d');
+			can.width=wid;
+			can.height=hei;
+			
+			var snow=80;
+			var arr=[];
+			
+			DrawSnow();
+			function DrawSnow(){
+				myCanvas.clearRect(0,0,wid,hei);
+				for(var i=0;i<snow;i++){
+					arr.push({
+						x:Math.random()*wid,
+						y:Math.random()*hei, 
+						r:Math.random()*8
+					})
+				}
+				
+
+
+				myCanvas.fillStyle="white";
+				
+				myCanvas.beginPath();
+				
+				for(var i=0;i<snow;i++){
+					var p=arr[i];
+					myCanvas.moveTo(p.x,p.y);
+					myCanvas.arc(p.x,p.y,p.r,0,2*Math.PI);
+				}
+				
+				myCanvas.fill();
+				Snowfall();
+				myCanvas.closePath();
+			}
+//			
+			function Snowfall(){
+				for(var i=0;i<snow;i++){
+					var p=arr[i];
+					p.y+=Math.random()*10;
+					if(p.y>hei){
+						p.y=0;
+					}
+					
+					p.x+=Math.random()*3;
+					if(p.x>wid){
+						p.x=0;
+					}
+				}
+			}
+			
+			setInterval(DrawSnow,10);
+		}
+	</script>
+</html>
