@@ -1,0 +1,48 @@
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    const lis = document.querySelectorAll('li');
+    Array.prototype.map.call(lis,function(liNode) {
+        console.log(liNode)
+    })
+    function sum() {
+        //参数的个数 不确定有几个
+        let sum = 0;
+        // arguments.forEach(function(num) {
+        //     sum += num;
+        // })
+        // arguments上没有forEach方法
+        // 1. 借用一下, 考虑this
+        // console.log(this)6
+        // 让this指向argumens
+        Array.prototype.forEach.call(arguments, function(num){
+            console.log(num)
+        })
+        console.log(arguments)
+        // 2. array.from()转换一下, 这是一个静态方法
+        const arr = Array.from(arguments);
+        arr.forEach(function(num) {
+            console.log(num)
+        })
+
+    }
+    sum(0, 1, 5, 7);
+    function Person() {}
+    //.from直接定义在类上面, 是静态方法
+    // 静态方法：不需要实例化就可以调用
+    Person.from = function() {
+        console.log('女娲')
+    }
+    // 需要实例化才能调用
+    // prototype上的都是非静态方法
+    Person.prototype.forEach = function() {
+        console.log('循环')
+    }
+    //实例 对象
+    let bro = new Person();
+    bro.forEach();
+    Person.from()
+</script>

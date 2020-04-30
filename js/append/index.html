@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append child DOM API</title>
+</head>
+
+<body>
+    <ul id="root"></ul>
+    <script>
+        const students = [{
+            id: 1,
+            name: '佳欣',
+            github: 'https://github.com/Quan-HHH'
+        }, {
+            id: 2,
+            name: '晨宇',
+            github: 'https://github.com/Quan-HHH'
+        }, {
+            id: 3,
+            name: '牛奶',
+            github: 'https://github.com/Quan-HHH'
+        }]
+        const oUl = document.getElementById('root');
+        oUl.addEventListener('click', function () {
+            alert('kkkkkkk')
+        })
+
+        // 节点树
+        const fragment = document.createDocumentFragment(); //文档碎片
+        for (let student of students) {
+
+            oUl.style.fontSize = 20 + 'px'
+            const oLi = document.createElement('li');
+            oLi.className = 'item'
+            // oUl.appendChild(oLi);
+            fragment.appendChild(oLi)
+            const oText = document.createTextNode(student.name);
+            // console.log(oText.nodeType, oLi.nodeType) // 3,1 3代表文本节点 1代表元素节点
+
+            const oA = document.createElement('a');
+            oA.setAttribute('href', student.github);
+            oA.setAttribute('target', '_blank');
+            // oA.addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     alert(this.innerText);
+            // },false)
+            oLi.appendChild(oA)
+            oA.appendChild(oText)
+            // 存在性能问题 页面3次重新绘制和刷新
+            // js DOM 性能消耗比较大
+        }
+        oUl.appendChild(fragment)
+        const studentLis = document.querySelectorAll('.item');
+        console.log(studentLis)
+        // querySelectorAll获得的studentLis是伪数组 for forEach length 下标访问 仅此而已
+        studentLis.forEach((li, index) => {
+            // console.log(li)
+            let oA = li.querySelector('a')
+            console.log(oA)
+            const oSpan = document.createElement('span')
+            oSpan.appendChild(document.createTextNode(students[index].id));
+            li.insertBefore(oSpan, oA);//在oA节点前加入oSpan
+        })
+        // studentLis.filter(li => li.childNodes[0].innerText == '佳欣')
+    </script>
+</body>
+
+</html>

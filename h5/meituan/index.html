@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 100px;">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" mcontent="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport"
+        content="initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5, width=device-width, user-scalable=no">
+    <!-- sdk -->
+    <script type="text/javascript"
+        src="https://api.map.baidu.com/api?v=2.0&ak=47FQtS6XkphGqmZ5nSEj6WTSTwE8SGaT"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0；
+        }
+
+        body {
+            line-height: 1.5;
+            font-size: 0.28rem;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .poi-item-wrapper {
+            background-color: #fff;
+            /* 上右下左 */
+            padding: 0.24rem 0 0 0.3rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .poi-item-wrapper .poi-info-wrapper {
+            display: flex;
+        }
+
+        .poi-item-wrapper .image-wrapper {
+            position: relative;
+            margin-top: 0.05rem;
+            width: 1.6rem;
+            height: 1.61rem;
+        }
+
+        .poi-item-wrapper .poi-info {
+            margin-left: 0.18rem;
+            flex: 1;
+        }
+
+        .poi-item-wrapper .poi-info .location {
+            position: absolute;
+            top: 0;
+
+        }
+
+        /* .poi-item-wrapper .poi-info .price-wrapper {
+            position: relative;
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+            margin-top: 0.06rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            height: 2rem;
+        } */
+
+        .poi-item-wrapper .poi-info .location {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 0.33rem;
+            line-height: 0.33rem;
+            font-size: 0.24rem;
+            font-family: PingFangSC-Regular;
+            color: #666666;
+            letter-spacing: 0.2px;
+        }
+
+        .stars {
+            display: inline-block;
+            color: #fa952f;
+        }
+
+        .stars i {
+            margin-top: -0.05rem;
+            margin-right: 0.04rem;
+        }
+
+        .icon-star-orange-lg {
+            background-image: url(https://s1.meituan.net/bs/file/?f=meis/meishi.mobile:assets/cb45534a7d3737c0.png@057a516);
+        }
+
+        .icon {
+            display: inline-block;
+            vertical-align: middle;
+            height: .34rem;
+            width: .34rem;
+            background-size: 100% 100%;
+        }
+
+        .poi-item-wrapper .poi-info .price-wrapper {
+            position: relative;
+            font-size: 0.24rem;
+            line-height: 0.33rem;
+            margin-top: 0.06rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .poi-item-wrapper .poi-info .price {
+            display: inline-block;
+            font-family: PingFangSC-Regular;
+            font-size: 0.24rem;
+            color: #666666;
+            letter-spacing: 0.2px;
+        }
+
+        .poi-item-wrapper .poi-info .cate-wrapper {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-align: center;
+            align-items: center;
+            margin-top: 0.08rem;
+            height: 0.33rem;
+            line-height: 0.33rem;
+            overflow: hidden;
+            /* 无法容纳的长文本变成... */
+            text-overflow: ellipsis;
+            /* 不换行 */
+            white-space: nowrap;
+        }
+
+        .poi-item-wrapper .poi-info .catename {
+            display: inline-block;
+            height: 0.28rem;
+            line-height: 0.28rem;
+            font-family: PingFangSC-Regular;
+            font-size: 0.24rem;
+            color: #666666;
+            letter-spacing: 0.2px;
+            margin-right: 0.09rem;
+            vertical-align: middle;
+        }
+
+        .poi-item-wrapper .poi-info .service {
+            /* display: inline-block; */
+            line-height: 0.33rem;
+            color: #6cbab2;
+            letter-spacing: 0.2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="map"></div> -->
+    <div class="shop-list">
+        <!-- <div class="poi-item-wrapper">
+            <div class="poi-info-wrapper">
+                <div class="image-wrapper">
+                    <div class="imgbox">
+                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585668031583&di=4d7a49742630a7812ed8cf9771c6a84a&imgtype=0&src=http%3A%2F%2Fcp1.douguo.com%2Fupload%2Fcaiku%2Fc%2F1%2Fc%2F200_c1bf691f3ca01683eade0a1de0ab066c.jpg"
+                            alt="">
+                    </div>
+
+                </div>
+                <div class="poi-info">
+                    <div class="poi-name"></div>
+                    <div class="price-wrapper">
+                        <span class="stars">
+                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                        </span>
+                        <span class="price"></span>
+                        <div class="location"></div>
+                    </div>
+                    <div class="cate-wrapper">
+                        <span class="catename"></span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="poi-item-wrapper">
+
+        </div> -->
+    </div>
+    <script>
+        // 1. 距离
+        // 2. 经纬度
+        // 115.442989,27.325251
+        const myLatitude = '27.325251',
+            myLongitude = '115.442989';
+        // yfzxLatitude = '27.336455',
+        // yfzxLongitude = '115.43132';
+        //坐标 店名 评分 ...{ } JSON 对象字面量
+        const shops = [
+            {
+                name: '千古一香烧烤店',
+                pos: [115.442848, 27.328331],
+                price: '￥30/人',
+                catename: '烤串',
+                takeaway: '支持外卖',
+                logo: 'http://p0.meituan.net/200.0/deal/65aa6a021791ca90b1d8f058359cd26b52442.jpg@126_0_388_388a%7C267h_267w_2e_100Q'
+            },
+            {
+                name: '花香麻辣烫',
+                price: '￥17/人',
+                catename: '小吃',
+                takeaway: '支持外卖',
+                pos: [115.441759, 27.326882],
+                logo: 'http://www.yssp88.com/d/file/20180804/bb8afbf26facafee3fca14eec74e0d94.jpg'
+            },
+            {
+                name: '华莱士(永丰欧阳修店)',
+                price: '￥22/人',
+                catename: '西式快餐',
+                takeaway: '支持外卖',
+                pos: [115.441653, 27.328471],
+                logo: 'https://p0.meituan.net/200.0/deal/9e28c812252c9bfe0857dc0d9011027d55079.jpg@133_0_533_533a%7C267h_267w_2e_90Q'
+            },
+            {
+                name: '正新鸡排',
+                price: '￥18/人',
+                catename: '炸鸡炸串',
+                takeaway: '支持外卖',
+                pos: [115.45512, 27.311674],
+                logo: 'https://p1.meituan.net/200.0/deal/794d5b46e4f828a0061ae895093e6508248834.jpg@180_0_1080_1080a%7C267h_267w_2e_90Q'
+            },
+            {
+                name: '新时沏',
+                price: '￥10/人',
+                catename: '奶茶果汁',
+                takeaway: '支持外卖',
+                pos: [115.442293, 27.328199],
+                logo: 'http://www.8887.tv/upload/201601/12/201601121506358979.jpg'
+            },
+            {
+                name: '奇记烤肉拌饭',
+                price: '￥19/人',
+                catename: '韩式简餐',
+                takeaway: '支持外卖',
+                pos: [115.429752, 27.329514],
+                logo: 'https://p0.meituan.net/200.0/deal/0c14ce20ed7b8671752648b79d23640d46754.jpg@160_0_493_493a%7C267h_267w_2e_90Q'
+            },
+            {
+                name: '趴踢滩',
+                price: '￥18/人',
+                catename: '果汁奶茶',
+                takeaway: '支持外卖',
+                pos: [115.433801, 27.329402],
+                logo: 'https://p0.meituan.net/200.0/deal/46fab41ef2eb057cf4b7fbeb61126ba340528.jpg@179_0_1080_1080a%7C267h_267w_2e_90Q'
+            },
+            {
+                name: '让花甲飞',
+                price: '￥17/人',
+                catename: '米粉米线',
+
+                pos: [115.441129, 27.327919],
+                logo: 'https://p0.meituan.net/200.0/deal/dd3938bc1da2dfa31f3ece16c8ba7fa062726.jpg@267h_267w_2e_90Q'
+            }
+
+        ];
+        //js 事件机制
+        window.onload = function () {
+
+            const shopContainer = document.querySelector('.shop-list');
+            const map = new BMap.Map();//实例化地图
+
+            let myPoint = new BMap.Point(myLongitude, myLatitude);
+            for (let i = 0; i < shops.length; i++) {
+
+                let shopPoint = new BMap.Point(shops[i].pos[0], shops[i].pos[1]);
+                let distance = parseDistance(map.getDistance(myPoint, shopPoint));
+                shopContainer.innerHTML += `
+                    <div class="poi-item-wrapper">
+                        <div class="poi-info-wrapper">
+                            <div class="image-wrapper">
+                                <div class="imgbox">
+                                    <img src="${shops[i].logo}" alt="">
+                                </div>
+                            </div>
+                            <div class="poi-info">
+                                <div class="poi-name">${shops[i].name}</div>
+                                <div class="price-wrapper">
+                                    <span class="stars"> 
+                                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>    
+                                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+                                            <i class="icon icon-star-orange-lg" style="height: 0.24rem; width: 0.24rem;"></i>
+  
+                                    </span>
+                                    <span class="price">${shops[i].price}</span>
+                                <div class="location">${distance}</div>
+                            </div>
+                        <div class="cate-wrapper">
+                        <span class="catename">${shops[i].catename}</span>
+                        
+                    </div>
+                    <div class="service-wrapper">
+                        <span class="service">${shops[i].takeaway}</span>
+                        
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                `
+            }
+            function parseDistance(distance) {
+                // 如果大于1000米 返回 4.1km
+                // 否则 整数 888米
+                if (distance < 1000) {
+                    return parseInt(distance) + 'm';  //parseInt 取整
+                } else {
+                    return (distance / 1000).toFixed(1) + 'km';
+                }
+            }
+
+
+            // const myPoint = 
+            // map.centerAndZoom("永丰县中国银行", 20);
+
+            // 两点之间距离
+
+            // const myPoint = new BMap.Point(myLongitude, myLatitude);
+            // const yfzxPoint = new BMap.Point(yfzxLongitude, yfzxLatitude);
+            // const distance = parseDistance(map.getDistance(myPoint, yfzxPoint));
+
+            // console.log(distance);
+            // document.querySelector('.poi-name').innerHTML = '肯德基';
+            // document.querySelector('.location').innerHTML = distance;
+            // document.querySelector('.imgbox img').src = "http://p0.meituan.net/200.0/deal/65aa6a021791ca90b1d8f058359cd26b52442.jpg@126_0_388_388a%7C267h_267w_2e_100Q";
+            // document.querySelector('.price').innerHTML = '￥58/人';
+            // document.querySelector('.catename').innerHTML = '炸鸡汉堡'
+
+        }
+
+
+    </script>
+</body>
+
+</html>

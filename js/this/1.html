@@ -1,0 +1,55 @@
+<button id="btn">btn</button>
+<script>
+    const btn = document.getElementById('btn');
+    function onClick() {
+        console.log(this);  //这里的this指向button
+        console.log(this.a);  //undefined, 怎么让他指向obj
+    }
+    // addEventListener 会回调里面的this绑定为我们点击的元素
+    // btn.addEventListener('click', onClick);
+    btn.addEventListener('click', function() {
+        onClick.call(obj)
+    });
+    // 下面这么写语法有误， 第二个参数要是一个函数
+    // btn.addEventListener('click',onClick.call(obj));
+    var obj = {
+        name: 'name',
+        a: 'obj a'
+    }
+    // 全局变量 a, 定义在方法里面也不行
+    var a = 'global variable'
+    function foo(b) {
+        console.log(this);    //this => window
+        // 前端里面的一个全局变量，只要打开一个浏览器，就有一个window的全局变量
+        // 我们平时用到的var定义的全局变量 和一些顶级方法(document.setTimeout) 都在window下面
+        console.log(this.a + b);
+
+    }
+    // 1. 不加任何修饰,用()调用,默认this指向window
+    // foo();
+
+    // 2. call也是调用这个函数的，不同点在
+    // 第一个参数指定函数调用时需要的this
+    // 后面的参数就是foo调用时需要的形参
+    foo.call(window, 'b')
+    foo.call(obj, 'var b')
+
+    // 3.apply 第一个参数指定函数调用时需要的this
+    // 与call的不同在 后面的参数要用数组包起来
+    foo.apply(obj, ['var b'])
+</script>
+<script>
+    var obj1 = {
+        a: 1,
+        say: function() {
+            console.log(this.a);
+        }
+    }
+    var obj2 = {
+        a: 2
+    }
+    obj1.say.call(obj2);  //会输出2
+    obj1.say(); //1
+    let test = obj1.say;
+    test();      //输出全局a
+</script>

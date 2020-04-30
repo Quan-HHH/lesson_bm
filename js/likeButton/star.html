@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 挂载点 -->
+    <div class="wrapper">
+        <!-- <button class="like-btn">
+            <span class="like-text">点赞</span>
+            <span></span>
+        </button> -->
+    </div>
+    <script>
+        // const button = document.querySelector('.like-btn')
+        // const buttonText = document.querySelector('.like-text')
+        // let isLiked = false;
+        // button.addEventListener('click', () => {
+        //     isLiked = !isLiked;
+        //     isLiked ? buttonText.innerHTML = '取消' : buttonText.innerHTML = '点赞';
+        // })
+
+        // 封装一下
+        // addEventListener 需要在DOM节点上添加
+        // 1. html str`` 添加到页面
+        // 2. 还要在它上面添加事件
+        const createDOMFromString = (domString) => {
+            const oDiv = document.createElement('div');
+            oDiv.innerHTML = domString;
+            return oDiv;
+        }
+        class LikeButton {
+            constructor() {
+                this.state = {
+                    // isLiked: false
+                    isLiked: 0
+                    }
+                // console.log(this)
+            }
+            render() {
+                this.el = createDOMFromString(`
+                    <button id = 'like-btn'>
+                        <span class = 'like-text'>👍</span>
+                    </button>
+                `)
+                this.el.addEventListener('click',this.changeLikeText.bind(this))
+                
+                return this.el;
+            }
+            // 
+            changeLikeText() {
+                console.log(this)
+                // this.state.isLiked = !this.state.isLiked;
+                this.state.isLiked++
+                console.log(this.state.isLiked)
+                const likeText = document.querySelector('.like-text');
+                // likeText.innerText = this.state.isLiked?'取消':'点赞';
+                likeText.innerText = '👍'+this.state.isLiked
+            }
+        }
+        const wrapper = document.querySelector('.wrapper');
+        const likeButton = new LikeButton();
+        wrapper.appendChild(likeButton.render());
+        // const likeButton2 = new LikeButton();
+        // wrapper.innerHTML += likeButton2.render();
+    </script>
+</body>
+</html>
