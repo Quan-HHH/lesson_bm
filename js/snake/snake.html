@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake game</title>
+</head>
+<body>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <script>
+        const CANVAS_BORDER_COLOR = 'black';
+        const CANVAS_BACKGROUND_COLOR = 'white';
+        const SNAKE_COLOR = 'lightgreen';
+        const SNAKE_BORDER_COLOR = 'darkgreen';
+
+        var myCanvas = document.getElementById('gameCanvas');
+        var ctx = myCanvas.getContext('2d');
+
+        ctx.fillStyle = CANVAS_BACKGROUND_COLOR;
+        ctx.strokeStyle = CANVAS_BORDER_COLOR;
+        ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
+        ctx.strokeRect(0, 0, myCanvas.width, myCanvas.height);
+        // 坐标表示贪吃蛇
+        // 初始位置
+        let snake = [
+            {x: 150, y: 150}, //蛇头
+            {x: 140, y: 150},
+            {x: 130, y: 150},
+            {x: 120, y: 150},
+            {x: 110, y: 150}
+        ];
+
+
+        // 画蛇
+        drawSnake();
+        function drawSnake(){
+            console.log(123)
+            snake.forEach(drawSnakePart);
+        }
+
+        function drawSnakePart(snakePart) {
+            ctx.fillStyle = SNAKE_COLOR;
+            ctx.strokeStyle = SNAKE_BORDER_COLOR;
+            ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
+            ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
+            
+        }
+    </script>
+</body>
+</html>
+
