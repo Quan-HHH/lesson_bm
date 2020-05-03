@@ -77,6 +77,7 @@
                 main();
             },100)  
         }
+        document.addEventListener('keydown', changeDirection);
         function changeDirection(event) {
             const LEFT_KEY = 37;
             const RIGHT_KEY = 39;
@@ -84,7 +85,29 @@
             const DOWN_KEY = 40;
 
             const keyPress = event.keyCode;
+            const goingUp = dy === -10;  //===的优先级比=高, 赋值给goingUp的是一个bool值
+            const goingDown = dy === 10;
+            const goingLeft = dx === -10;
+            const goingRight = dx === 10;
 
+            if(keyPress == 37 && !goingRight){ //!goingRight是为了防止蛇直接掉头
+                dx = -10;
+                dy = 0;
+                console.log(!goingRight)
+            }
+            if(keyPress == 39 && !goingLeft){ //!goingRight是为了防止蛇直接掉头
+                dx = 10;
+                dy = 0;
+                console.log(!goingLeft)
+            }
+            if(keyPress == 40 && !goingUp){ //!goingRight是为了防止蛇直接掉头
+                dx = 0;
+                dy = 10;
+            }
+            if(keyPress == 38 && !goingDown){ //!goingRight是为了防止蛇直接掉头
+                dx = 0;
+                dy = -10;
+            }
         }
     </script>
 </body>
