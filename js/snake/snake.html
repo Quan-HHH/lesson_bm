@@ -5,10 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; */
+        }
+        #score {
+            font-size: 150px;
+            font-weight: 300;
+            font-family: cursive;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <div class="container">
+        <div id="score">0</div>
+        <canvas id="gameCanvas" width="300" height="300"></canvas>
+    </div>
     <script>
         const CANVAS_BORDER_COLOR = 'black';
         const CANVAS_BACKGROUND_COLOR = 'white';
@@ -32,6 +52,8 @@
             { x: 110, y: 150 }
         ];
         let dx = 10, dy = 0;
+        let foodX, foodY;
+        let score = 0;
 
         // 画蛇
         // drawSnake();
@@ -58,7 +80,13 @@
         function advanceSnake() {
             const head = { x: snake[0].x + dx, y: snake[0].y + dy };
             snake.unshift(head);
-            snake.pop();
+            if(head.x == foodX && head.y == foodY){
+                score += 10;
+                document.getElementById('score').innerHTML = score;
+                createFood();
+            }else{
+                snake.pop();
+            }
         }
         // 清除画布，就是把画布全涂白了
         function clearCanvas() {
@@ -67,11 +95,16 @@
             ctx.fillRect(0, 0, myCanvas.width, myCanvas.height);
             ctx.strokeRect(0, 0, myCanvas.width, myCanvas.height);
         }
-
+        createFood();
         main();
         function main() {
             setTimeout(function() {
+                if(didGameEnd()){
+                    // console.log(snake[0].x,snake[0].y)
+                    return;
+                }
                 clearCanvas();
+                drawFood();
                 advanceSnake();
                 drawSnake()
                 main();
@@ -107,6 +140,39 @@
             if(keyPress == 38 && !goingDown){ //!goingRight是为了防止蛇直接掉头
                 dx = 0;
                 dy = -10;
+            }
+        }
+        function randomTen(min, max) {
+            return Math.round((Math.random() * max - min) / 10) * 10;
+        }
+        function createFood() {
+            foodX = randomTen(0, myCanvas.width - 10);
+            foodY = randomTen(0, myCanvas.height - 10);
+            snake.forEach(function isFoodOnSnake(part) {
+                const foodOnSnake = part.x == foodX && part.y == foodY;
+                if(foodOnSnake){
+                    createFood();
+                }
+            })
+        }
+        function drawFood() {
+            ctx.fillStyle = 'red';
+            ctx.strokeStyle = 'darkred';
+            ctx.fillRect(foodX, foodY, 10, 10)
+            ctx.strokeRect(foodX, foodY, 10, 10)
+        }
+
+        //判断游戏是否结束
+        function didGameEnd() {
+            //是否自己
+            for(let i = 4; i < snake.length; i++) {
+                if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
+                    return true;
+                }
+            }
+            //是否撞墙
+            if(snake[0].x >= myCanvas.width || snake[0].x < 0 || snake[0].y >= myCanvas.height || snake[0].y < 0){
+                return true;
             }
         }
     </script>
