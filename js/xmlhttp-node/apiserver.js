@@ -8,7 +8,7 @@ const server = http.createServer(function(req, res) {
     // GET 参数 url
     // POST 参数 放在实体里
     if(req.url == '/') {
-        const html = fs.readFileSync('./index.html', 'utf-8') //同步方式读文件，readFile是异步
+        const html = fs.readFileSync('./手动封装ajax.html', 'utf-8') //同步方式读文件，readFile是异步
         res.end(html)
 
         // 后端返回的内容的类型

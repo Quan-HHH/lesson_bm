@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    abc
+    <script>
+        function axios(method, url, params = {}, headers = {}) {
+            const xhr = new XMLHttpRequest();
+            xhr.open(method, url, true);
+            for(let k in headers) {
+                xhr.setRequestHeader(k, headers[k])
+            }
+            
+            xhr.addEventListener('readstatechange', function() {
+
+            })
+            let data = headers['Content-Type'] && headers['Content-Type'] == 'application/json' ? JSON.stringify(params) : params;
+            xhr.send(data);
+        }
+
+        axios('POST', '/getPost',
+        {type: 'all', query: 'js'},
+        {'X-Real-IP': '211.161.244.70',
+        'Content-Type': 'application/json'})
+    </script>
+</body>
+</html>
