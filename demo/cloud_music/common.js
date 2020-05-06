@@ -1,9 +1,9 @@
-window.onload = function() {
+window.onload = function () {
     const tabLinks = document.querySelectorAll('.tabbar a');
     // console.log(tabLinks)
-    tabLinks.forEach(function(link) {
+    tabLinks.forEach(function (link) {
         // console.log(link)
-        link.addEventListener('click', function(event) {
+        link.addEventListener('click', function (event) {
             event.preventDefault();
             // 点哪个哪个加selected
             // 之前的移除selected
@@ -12,10 +12,12 @@ window.onload = function() {
         }, false)
     })
     // 先拿到swiper的数据
-    this.fetch('http://localhost:3000/banner')
-        .then(function(data) {
+    const swiperData = this.fetch('http://localhost:3000/banner')
+        .then(function (data) {
             return data.json()
-        }).then(function(data) {
-            return console.log(data)
-        })
+        }).then(function (data) {
+            console.log(data)
+            })
+    //渲染上页面
+
 }
