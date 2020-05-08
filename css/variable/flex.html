@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            line-height: 50px;
+            background-color: red;
+            color: #fff;
+            text-align: center;
+        }
+        footer {
+            line-height: 50px;
+            background-color: #eee;
+            color: #333;
+            text-align: center;
+        }
+        .main {
+            /* flex 是一个复合属性 */
+            /* flex: flex-grow flex-shrink flex-basis|auto|initial|inherit; */
+            /* flex-grow  有剩余空间要不要放大*/
+            /* flex-shrink 没有剩余空间要不要缩小 */
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 移动端经典布局 flex -->
+    <div class="wrapper">
+        <header>头部</header>
+        <main class="main">主题内容</main>
+        <footer>底栏</footer>
+    </div>
+
+</body>
+
+</html>

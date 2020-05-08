@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header, footer {
+            /* flex-grow  flex-shrink flex-basis */
+            flex: 0 0 50px;
+        }
+        .content {
+            display: flex;
+            flex-grow: 1;
+        }
+        .main {
+            flex-grow: 1;
+        }
+        .nav, .ads {
+            flex: 0 0 100px;
+            background-color: aquamarine;
+        }
+        .nav {
+            /* 如何去到左侧 */
+            order: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 三栏布局 -->
+    <header>头部</header>
+    <div class="content">
+        <!-- main写在第一个位置 首先加载主要内容 -->
+        <main class="main">内容区</main>
+        <nav class="nav">侧边导航</nav>
+        <aside class="ads">侧边栏</aside>
+    </div>
+    <footer>底栏</footer>
+</body>
+</html>
