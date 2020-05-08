@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        width: 100px;
+        height: 100px;
+        background-color: #666;
+        border-radius: 50%;
+        margin-top: 100px;
+    }
+
+    ul.stop li:nth-child(1) {
+        background-color: red;
+    }
+
+    ul.warn li:nth-child(2) {
+        background-color: yellow;
+    }
+
+    ul.pass li:nth-child(3) {
+        background-color: green;
+    }
+</style>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const ul = document.querySelector('ul');
+        // setTimeout(function () {
+        //     ul.className = 'stop';
+        //     setTimeout(function () {
+        //         ul.className = 'warn';
+        //         setTimeout(function () {
+        //             ul.className = 'pass';
+        //         }, 1000)
+        //     }, 1000)
+        // }, 1000)
+        // 回调地狱 callback hell
+
+        // promise 承诺
+        // 异步：不能立马实现，有可能实现 有可能不实现
+
+        // promise启动一个一秒的计时任务
+        // let p = new Promise(function(resolve, reject) {
+        //     setTimeout(() => {
+        //         resolve();
+        //         // 三个状态 成功fulfilled 失败rejected 处理中pending
+        //         // 默认是pending 如果调用resolve => fulfilled
+        //         // 默认是pending 如果调用resolve => rejected
+        //     }, 1000);
+        // })
+
+        let p = function () {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
+            })
+        }
+        main();
+        setInterval(function() {
+            main()
+        },3000)
+        function main() {
+
+
+            // then()  fulfilled之后干啥
+            p().then(function () {
+                ul.className = 'stop'
+                // 涉及到promise then的用法
+                // 如果返回了一个promise 那么 还可以再后面链式调用 then  
+                // 后面的then也会等待这个promise 看他结果成功还是失败
+                return p();
+            })
+                .then(function () {
+                    ul.className = 'warn'
+                    return p()
+                })
+                .then(function () {
+                    ul.className = 'pass'
+                })
+        }
+        // catch()  rejected之后干啥
+        p().catch();
+    </script>
+</body>
+
+</html>
