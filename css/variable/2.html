@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./box.css">
     <style>
-        * {margin: 0;padding: 0;}
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 手机 480   iPad 1024*768  pc 1100+ */
+        
+
         :root {
             --bg-color: #123123;
             --base-size: 10;
+        }
+        @media (max-width: 480px) {
+            :root {
+                --base-size: 8;
+            }
+        }
+        @media only screen and (min-width: 1200px) {
+            :root {
+                --base-size: 20;
+            }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+            :root {
+                --base-size: 15;
+            }
         }
         .box {
             /* width: calc(90% - 10px); */
@@ -21,7 +44,9 @@
         }
     </style>
 </head>
+
 <body>
     <div class="box"></div>
 </body>
+
 </html>
