@@ -23,3 +23,15 @@ http 协议诞生于1991 用于传输学术论文
 采用基于请求 (ctx.request)响应(ctx.response)的模式， 在网络间传输html超文本的内容
 
 - http(web server 应用层协议)协议基于TCP(transport Control Protocol)协议
+▪ 应用层 http
+    构建一个tcp连接 三次握手
+▪ 表示层
+▪ 会话层
+▪ 传输层 tcp
+▪ 网络层
+▪ 数据链路层
+▪ 物理层
+
+- 建立连接后， 会发送一个GET请求行的信息
+- 服务器接收到请求信息后 读取对应的HTML文件， 并将数据以ASCII码的形式返回给用户浏览器
+- 断开连接
