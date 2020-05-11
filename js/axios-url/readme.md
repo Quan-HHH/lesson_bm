@@ -1,0 +1,2 @@
+- axios是一个基于promise的HTTP库
+- fetch 浏览器原生的 另外一个发请求的api

@@ -1,0 +1,34 @@
+<script>
+    // key value 编码一下  安全性
+    // 1. 有一些特殊字符 对后端sql语句造成威胁
+    // 2. 每个传输设备 编码规则
+    // 浏览器会自动帮你编码
+    function encode(str) {
+        return encodeURIComponent(str);
+    }
+    function buildUrl(url, params) {
+        let parts = []
+        // Object.keys获取对象的所有key
+        Object.keys(params).forEach(function(key) {
+            let value = params[key];
+            if(value === null || typeof value === 'undefined') {
+                return
+            }
+            if(Array.isArray(value)) {
+                key += '[]'
+            }
+            let part = `${encode(key)}=${encode(value)}`
+            parts.push(part);
+        })
+        url += '?' + parts.join('&')
+        return url;
+    }
+    let url = buildUrl('http://neteasecloudmusicapi.zhaoboy.com/search',{
+        keywords: '海阔天空',
+        query: 'js',
+        type: 'all',
+        a: null,
+        c: [1, 2, 3]
+    })
+    console.log(url)
+</script>

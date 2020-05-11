@@ -1,0 +1,24 @@
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+    // 原生的 需要自己手动拼接 http://neteasecloudmusicapi.zhaoboy.com/search?keywords=${val}`
+    // axios变成了一个对象
+    // 对象的操作更灵活
+    // let params = {
+    //     query: 'js',
+    //     type: 'all'
+    // }
+    // params.user = 'xxx';
+    // delete params.query;
+    axios({
+        method: 'get',
+        url: 'http://neteasecloudmusicapi.zhaoboy.com/search',
+        params: {
+            keywords: '海阔天空'
+        }
+    })
+    .then(function(res) {
+        console.log(res)
+    })
+    // 有了一个url 有了一个对象
+    // 对象的每一项key value 按照url的 规则拼接到url后面
+</script>
