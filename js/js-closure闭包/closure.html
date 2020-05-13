@@ -1,0 +1,11 @@
+<script>
+    var name = 'lina'
+    function test() {
+        name = 'lihua';
+        return function test1() {
+            // debugger
+            console.log(name);
+        }
+    }
+    test()()
+</script>
