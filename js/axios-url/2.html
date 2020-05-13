@@ -3,32 +3,49 @@
     // 1. 有一些特殊字符 对后端sql语句造成威胁
     // 2. 每个传输设备 编码规则
     // 浏览器会自动帮你编码
+    // url的规则 #后面的东西不会传输给后端
     function encode(str) {
-        return encodeURIComponent(str);
+        return encodeURIComponent(str)
+        .replace('%5B','[').replace('%5D',']')
     }
     function buildUrl(url, params) {
         let parts = []
         // Object.keys获取对象的所有key
-        Object.keys(params).forEach(function(key) {
+        Object.keys(params).forEach(function (key) {
             let value = params[key];
-            if(value === null || typeof value === 'undefined') {
+            if (value === null || typeof value === 'undefined') {
                 return
             }
-            if(Array.isArray(value)) {
+            if (Array.isArray(value)) {
                 key += '[]'
+                // c = [1,2, 3] => c[]=1&c[]=2&c[]=3
+            } else {
+                value = [value]
             }
-            let part = `${encode(key)}=${encode(value)}`
-            parts.push(part);
+            // 全部变成一个格式 value都是数组的格式
+            value.forEach(val => {
+
+                let part = `${encode(key)}=${encode(val)}`
+                parts.push(part);
+            })
+
         })
+        console.log(parts.join('&'))
+
+        const hashIndex = url.indexOf('#')
+        if(hashIndex !== -1){// 存在#
+            // 截取从0~#的位置
+            url = url.slice(0, hashIndex)
+        }
         url += '?' + parts.join('&')
         return url;
     }
-    let url = buildUrl('http://neteasecloudmusicapi.zhaoboy.com/search',{
+    let url = buildUrl('http://neteasecloudmusicapi.zhaoboy.com/search#header', {
         keywords: '海阔天空',
         query: 'js',
         type: 'all',
         a: null,
-        c: [1, 2, 3]
+        c: [1,2,3]
     })
     console.log(url)
 </script>

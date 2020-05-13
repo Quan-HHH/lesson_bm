@@ -4,15 +4,15 @@ const app = new Koa()
 
 const main = ctx => {
     console.log(ctx.request.url)
-    if(ctx.request.url === '/img.jpg') {
-        console.log('hhh')
-        ctx.response.type = 'image';
-        ctx.response.body = fs.createReadStream('./img.jpg');
-    }else{ 
+    // if(ctx.request.url === '/img.jpg') {
+    //     console.log('hhh')
+    //     ctx.response.type = 'image';
+    //     ctx.response.body = fs.createReadStream('./img.jpg');
+    // }else{ 
         ctx.response.type = 'html';  // 响应头 png js css
         // 在服务器端打开可读流, 读这个文件
         ctx.response.body = fs.createReadStream('./template.html');
-    }
+    // }
    
 }
 // const main = ctx => {
