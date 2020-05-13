@@ -31,7 +31,7 @@ class CommentInput extends Component {
                        ></textarea>
                     </div>
                </div>
-               <div className="comment-button">
+               <div className="comment-field-button">
                    <button onClick={this.handleSubmit.bind(this)}>发布</button>
                 </div>
             </div>
