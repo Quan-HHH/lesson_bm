@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <button type="button" onclick="clickCounter()">点我</button>
+        <div id="result"></div>
+    </p>
+    <script>
+
+        // cookie 浏览器存储的文本  http每次都会带上 账号密码
+        // localStorage把一些关键的js css本地化 下次打开页面 会很快
+        // sessionStorage 会话
+        // localStorage.clear()
+        let obj = {count: 0};
+        // localStorage.setItem('result', count) 
+        function clickCounter() {
+            const result = document.getElementById('result');
+            if(typeof Storage !== 'undefined') {
+                //浏览器支持本地Storage 浏览器嗅探
+                if(localStorage.clickCounter) {
+                    localStorage.clickCounter = Number(localStorage.clickCounter) + 1;
+                } else{
+                    localStorage.clickCounter = 1;
+                }
+                result.innerHTML = `你在浏览器上点击了${localStorage.clickCounter}次`
+            }else{
+                result.innerHTML = "sorry, 浏览器不支持"
+            }
+
+            // JSON.parse(localStorage.getItem('result')).count++;
+            // // console.log(obj.count);
+            // localStorage.setItem('result', JSON.stringify(obj)) 
+            // document.getElementById('result').innerHTML = JSON.parse(localStorage.getItem('result')).count
+            
+        }
+    </script>
+</body>
+</html>
