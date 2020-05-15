@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Content-Type 前端 这次提交的内容是什么编码
+    与下面enctype作用是一致的 -->
+    <!-- 1. text/plain 纯文本 -->
+    <form action="/files" method="POST" enctype="multipart/form-data">
+        name: <input type="text" placeholder="name" name="name">
+        file: <input type="file" name="file">
+        <input type="submit">
+    </form>
+    
+</body>
+</html>
