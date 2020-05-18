@@ -1,0 +1,17 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "- 博客网站\r     React 做UI 组件化思维 \r     - 列表\r     - 详情页\r     - 评论\r     node做后端 后台数据库 MySQL? mongodb\r     后台数据库怎样向应用提供数据呢？\r     - 爬取 cherrio \r     - MVC  Model(Mysql)-View(React)-Controller(Node)\r     可以实现增删改查 但不想启用SQL",
+  "main": "index.js",
+  "scripts": {
+    "json-server": "./node_modules/.bin/json-server --watch db.json --port 3300",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "json-server": "^0.16.1"
+  }
+}
