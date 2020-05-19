@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <input type="text" id="search">
+    <input type="text" id="search1">
+    <input type="text" id="search2">
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    <script>
+        const search = document.getElementById('search');
+        let timeout;
+        function handleSearch(event) {
+            if(timeout) {
+                clearTimeout(timeout)
+            }
+            timeout = setTimeout(() => {
+                console.log(event.target.value)
+            }, 100)
+            // jay 这个词
+            // j ja jay 三次请求
+            // 输完之后 input 没触发了 等100ms之后 用户不触发 input 之后请求
+            // 等用户输入jay完毕了 再去请求 这就叫防抖
+            // 等 100ms 再去请求
+        }
+
+        search.addEventListener('input', handleSearch)
+
+
+        let timeout1;
+        let handleMouseMove = function() {
+            // if(timeout1) {
+            //     clearTimeout(timeout1);
+            // }
+            // timeout1 = setTimeout(() => {
+                console.log('handlemousemove')
+            // },100)
+        }
+
+        // _ 就是lodash暴露出来的对象
+        let hasDebouncedMove = _.debounce(handleMouseMove, 600);
+        window.addEventListener('mousemove', hasDebouncedMove);
+
+        // 封装一下
+
+        // 防抖
+        // 1. let timeout
+        // 2. if(timeout) clearTimeout
+        // 3. timeout = setTimeout
+        const search1 = document.getElementById('search1');
+        search1.addEventListener('input', _.debounce((e) => {
+            console.log(e.target.value);
+        }, 600))
+
+        // func 没有防抖功能 return 出去的函数 具有防抖功能
+        function debounce(func, wait) {
+            let timeout2;
+            return function(e) {
+                if(timeout2){
+                    clearTimeout(timeout2);
+                }
+                timeout2 = setTimeout(() => {
+                    // 在这里调用 this默认指向window 如果不用箭头函数 this 就是指向window
+                    console.log(this)
+                    func.call(this, e);
+                }, wait)
+            }
+        }
+
+        //箭头函数的this 是写的时候就确定了的
+        const search2 = document.getElementById('search2');
+        search2.addEventListener('input', debounce(function(e) {
+            console.log(e.target.value);
+        }, 600))
+    </script>
+</body>
+</html>
