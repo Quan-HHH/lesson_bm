@@ -1,0 +1,16 @@
+{
+  "id": "1830587",
+  "name": "pdd",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5113361",
+      "name": "music",
+      "font_class": "icon-test",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    }
+  ]
+}
