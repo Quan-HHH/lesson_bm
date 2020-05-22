@@ -1,4 +1,4 @@
-// async await
+// async awaits
 const fs = require('fs');
 const promise1 = new Promise((resolve, reject) => {
     // 回调
