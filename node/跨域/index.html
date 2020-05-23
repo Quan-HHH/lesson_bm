@@ -1,15 +1,23 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <script>
     // 接口 api
-    // document.cookie = 'abc=123'; //js写入cookie
+    document.cookie = 'abc=123'; //js写入cookie
+    // 真实请求 POST api
+    // 预检请求 OPTIONS 先试探一下我们的跨域能不能通过
+
+    // 原生xmlhttprequest的语法
+    // const xhr = new xmlhttprequest();
+    // xhr.withCredentials = true;
+
     axios({
         // withCredentials: true,
         url: 'http://localhost:9090/api',
+        headers: {'X-Requested-With': 'XMLHttpRequest'},
         method: 'POST',
-        // data: {
-        //     username: '123',
-        //     pwd: 789
-        // }
+        data: {
+            username: '123',
+            pwd: 789
+        }
     })
     .then(res => {
         console.log(res);
