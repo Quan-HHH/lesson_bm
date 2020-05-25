@@ -1,0 +1,14 @@
+<script>
+    // 全局作用域
+    function foo() {
+        // 函数作用域
+        var a = 1;
+        var b = a;
+        a = 2;
+        console.log(a);// 2
+        console.log(b);// 1
+        // a b 是两个独立的内存空间
+    }
+    foo();
+    // 有两个上下文执行环境
+</script>
