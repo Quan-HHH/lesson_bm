@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script>
+        // 1. 定义一个回调函数
+        // 2. 后端 callbackName(数据)
+        function onResponse(posts) {
+            console.log(posts)
+        }
+    </script>
+    <!-- 请求完毕 得到 -> 字符串 onResponse(["js","php"])
+     -> 因为script标签的原因 浏览器会把这一段字符串(所有代码都是字符串)当作js执行
+     -> 这时 前端预先定义好的回调 就会执行 这样就拿到数据了 -->
+    <!-- 怎么拿到后端返回的结果 -->
+    <script src="http://localhost:9090/api?callback=onResponse"></script>
+
+    <script>
+        $.ajax('http://localhost:9090/api', {
+            dataType: 'jsonp',
+            success: (data) => {
+                console.log(data, '------------')
+            }
+        })
+    </script>
+
+
+    <script>
+        function jsonp(url, options) {
+            const {timeout} = options;
+            return new Promise((resolve, reject) => {
+                // 为了防止方法名冲突 用当前时间作为 方法名
+                let funcName = `jsonp${Date.now()}`;
+                let t = null, scriptNode;
+                // callback
+                window[funcName] = function (data) {
+                    if(t){
+                        clearTimeout(t)
+                    }
+                    resolve(data)
+                    delete window[funcName];
+                    document.body.removeChild(scriptNode)
+                }
+                scriptNode = document.createElement('script');
+                scriptNode.src = `${url}?callback=${funcName}`;
+                // 发出请求
+                document.body.appendChild(scriptNode);
+                t = setTimeout(() => {
+                    reject('network err, timeout')
+                }, timeout)
+                // 失败了
+                scriptNode.onerror = function (err) {
+                    reject(err)
+                }
+            })
+        }
+        jsonp('http://localhost:9090/api', {
+            callBack: 'res1',
+            timeout: 3000
+        })
+            .then(res => {
+                console.log('jsonp=>', res)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    </script>
+</body>
+
+</html>

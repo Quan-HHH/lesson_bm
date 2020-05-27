@@ -27,3 +27,7 @@ CORS: cross origin resource share
 ## 非简单请求
  - OPTIONS prelight   /api
  - POST  /api
+
+ ## JSONP
+ img link script 这些标签 不同于xhr fetch 它们可以引入外部的资源 不受跨域的限制
+ jsonp借助script的特性来实现的
