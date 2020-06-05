@@ -7,10 +7,8 @@ import * as serviceWorker from './serviceWorker';
 import counter from './reducers';
 //
 import Counter from './components/Counter';
+
 const store = createStore(counter); //reducer 
-
-
-
 
 const render = () => ReactDOM.render(
   <Counter 
