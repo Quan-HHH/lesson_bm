@@ -52,3 +52,14 @@ xhr.send({a:1, b:2})
 - 生成中间代码
 - 生成目标代码(机器认识的代码)
 
+## layout
+用 对未知产生影响的元素 计算元素的位置信息 算出坐标系里的(x, y)
+
+## 正常的文档流
+脱离文档流: float  position
+
+## normal flow正常流
+行内元素(inline-level-box): 从左往右一个接着一个布局，垂直方向默认以 baseLine 对齐
+块级元素(block-level-box): 垂直方向从上往下一个接着一个布局
+relative定位的元素也不会脱离文档流 
+
