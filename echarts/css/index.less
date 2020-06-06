@@ -125,6 +125,7 @@ header {
     padding: .1875rem;
     .no-hd {
         position: relative;
+        height: 1rem;
         border: 1px solid rgba(25, 186, 139, 0.17);
         &::before {
             position: absolute;
@@ -146,84 +147,61 @@ header {
             border-bottom: 2px solid #6186ff;
             border-right: 2px solid #6186ff;
         }
-        ul {
-            display: flex;
-            li {
-                position: relative;
-                flex: 1;
-                line-height: 1rem;
-                font-size: .875rem;
-                color: #ffeb7b;
-                text-align: center;
-                font-family: "electronicFont";
-                
-            }
-            li:nth-child(1)::after {
-                content: "";
-                position: absolute;
-                top: 25%;
-                height: 50%;
-                right: 0;
-                width: 1px;
-                background-color: rgba(255, 255, 255, 0.2);
-
-            }
+        #search {
+            height: 0.5rem;
+            margin-top: 0.25rem;
+            margin-left: 3rem;
+        }   
+        #search-button {
+            border: none;
+            height: 0.5rem;
+            padding: 0 .2rem;
+            background-color: #6186ff;
+            color: white;
+            border-radius: 5%;
         }
-    }
-    .no-bd {
-        ul {
-            display: flex;
-            li {
-                flex: 1;
-                text-align: center;
-                color: rgba(255, 255, 255, 0.7);
-                font-size: .225rem;
-                height: .5rem;
-                line-height: .5rem;
-                padding-top: .125rem;
-            }
-        }
+    
     }
 }
 
 .map {
     position: relative;
     height: 10.125rem;
-    .map1 {
-        width: 6.475rem;
-        height: 6.475rem;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: url(../images/map.png) no-repeat;
-        background-size: 100% 100%;
-        opacity: 0.3;
-    }
-    .map2 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 8.0375rem;
-        height: 8.0375rem;
-        background: url(../images/lbx.png);
-        background-size: 100% 100%;
-        animation: rotate1 15s linear infinite;
-        opacity: 0.6;
-    }
-    .map3 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 7.075rem;
-        height: 7.075rem;
-        background: url(../images/jt.png);
-        background-size: 100% 100%;
-        animation: rotate2 15s linear infinite;
-        opacity: 0.6;
-    }
+    // .map1 {
+    //     width: 6.475rem;
+    //     height: 6.475rem;
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     background: url(../images/map.png) no-repeat;
+    //     background-size: 100% 100%;
+    //     opacity: 0.3;
+    // }
+    // .map2 {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     width: 8.0375rem;
+    //     height: 8.0375rem;
+    //     background: url(../images/lbx.png);
+    //     background-size: 100% 100%;
+    //     animation: rotate1 15s linear infinite;
+    //     opacity: 0.6;
+    // }
+    // .map3 {
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+    //     width: 7.075rem;
+    //     height: 7.075rem;
+    //     background: url(../images/jt.png);
+    //     background-size: 100% 100%;
+    //     animation: rotate2 15s linear infinite;
+    //     opacity: 0.6;
+    // }
     .chart {
         position: absolute;
         top: 0;
