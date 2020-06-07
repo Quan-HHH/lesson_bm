@@ -1,4 +1,4 @@
-## normal flow
+## normal flow   正常的文档流
 行内元素（inline-level-box）: 水平从左往右一个接着一个布局, 垂直方向默认会以 baseLine 对齐
 块级元素（block-level-box）: 垂直方向从上往下一个接着一个布局
 relative 定位：占据着 normal flow 自己的空间
