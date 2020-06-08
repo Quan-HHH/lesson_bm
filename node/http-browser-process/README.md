@@ -63,3 +63,12 @@ xhr.send({a:1, b:2})
 块级元素(block-level-box): 垂直方向从上往下一个接着一个布局
 relative定位的元素也不会脱离文档流 
 
+## layout
+normal flow：
+postion：
+float: 文字环绕， 布局：几行几列
+flex：
+
+## flex 
+
+

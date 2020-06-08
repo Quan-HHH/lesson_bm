@@ -1,0 +1,98 @@
+{
+    "type": "document",
+    "children": [
+      {
+        "type": "element",
+        "children": [
+          {
+            "type": "element",
+            "children": [
+              {
+                "type": "element",
+                "children": [],
+                "tagName": "style",
+                "computerStyle": {}
+              }
+            ],
+            "tagName": "head",
+            "computerStyle": {}
+          },
+          {
+            "type": "element",
+            "children": [
+              {
+                "type": "element",
+                "children": [],
+                "attributes": [
+                  {
+                    "name": "a",
+                    "value": "a"
+                  },
+                  {
+                    "name": "b",
+                    "value": "b"
+                  }
+                ],
+                "tagName": "img"
+              },
+              {
+                "type": "element",
+                "children": [
+                  {
+                    "type": "element",
+                    "children": [
+                      {
+                        "type": "element",
+                        "children": [
+                          {
+                            "type": "element",
+                            "children": [],
+                            "tagName": "p",
+                            "computerStyle": {}
+                          }
+                        ],
+                        "tagName": "div",
+                        "computerStyle": {}
+                      }
+                    ],
+                    "tagName": "div",
+                    "computerStyle": {}
+                  },
+                  {
+                    "type": "element",
+                    "children": [],
+                    "tagName": "div",
+                    "computerStyle": {}
+                  }
+                ],
+                "tagName": "span",
+                "computerStyle": {}
+              },
+              {
+                "type": "element",
+                "children": [],
+                "attributes": [
+                  {
+                    "name": "class",
+                    "value": "cls"
+                  },
+                  {
+                    "name": "id",
+                    "value": "myid"
+                  }
+                ],
+                "tagName": "div",
+                "computerStyle": {
+                  "background-color": "red"
+                }
+              }
+            ],
+            "tagName": "body",
+            "computerStyle": {}
+          }
+        ],
+        "tagName": "html",
+        "computerStyle": {}
+      }
+    ]
+  }
