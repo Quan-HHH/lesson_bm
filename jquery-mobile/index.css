@@ -2,17 +2,59 @@
   margin: 0;
   padding: 0;
 }
-.search {
+li {
+  list-style-type: none;
+}
+#pageOne .search {
+  position: sticky;
+  top: 0;
+}
+#pageOne .search .ui-input-search {
+  border-radius: 100px;
+}
+#pageOne .search .ui-focus {
+  box-shadow: none;
+}
+#pageOne .find-wrapper ul {
   width: 100%;
-  height: 40px;
-  font-size: 0;
 }
-.search .search-input {
-  border: none;
-  background-color: rgba(184, 184, 184, 0.3);
+#pageOne .find-wrapper ul li {
+  height: 300px;
+  background-color: pink;
 }
-.search .search-button {
-  border-radius: 0 50% 50% 0;
-  border: none;
-  background-color: rgba(184, 184, 184, 0.3);
+#pageTwo .search .ui-input-search {
+  border-radius: 100px;
+}
+#pageTwo .search .ui-focus {
+  box-shadow: none;
+}
+#pageTwo .search ul {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#pageTwo .search ul li {
+  flex: 1;
+  width: 33.3%;
+  min-width: 33.3%;
+  max-width: 33.3%;
+  text-align: center;
+}
+#pageTwo .search ul li div {
+  display: flex;
+  align-items: center;
+}
+#pageTwo .search ul li div img {
+  width: 90%;
+  margin: 0 auto;
+}
+#pageTwo .search ul li a {
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+  font-weight: 200;
+}
+#pageTwo .search ul li a:visited {
+  color: black;
 }
