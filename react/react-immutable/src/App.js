@@ -38,27 +38,41 @@ class App extends React.Component {
         age: ''
       }
       // userInfo2.skill && (userInfo2.skill.excellent = 'react');
-      let excellentSkills = this.state.userInfo.setIn(['skill', 'excellent']);
+      let excellentSkills = this.state.userInfo.getIn(['skills', 'excellent']);
+      // console.log(excellentSkills)
       // push 不会对原来的数据修改 会返回一个新的数据
       let newExcellentSkills = excellentSkills.push('js')
-      const userInfo1 = this.state.userInfo.setIn(['skill', 'excellent'], newExcellentSkills);   //更新skill上的excellent
+      const userInfo1 = this.state.userInfo.setIn(['skills', 'excellent'], newExcellentSkills);   //更新skill上的excellent
+      console.log(this.state.userInfo.getIn(['skills', 'practice']) === userInfo1.getIn(['skills', 'practice']))  
+      //输出true 说明 将浅拷贝和深拷贝的优点结合  也就是 变了的数据 开辟新地址 没变的数据 指向原地址
       posts.push({content: 2});
       this.setState({
         posts,
         loginInfo,
-        userInfo: newUserInfo
+        userInfo: newUserInfo,
+        userInfo: userInfo1
       })
     }, 3000)
     
   }
   render() {
     const { posts, userInfo, loginInfo } = this.state;
+    // getIn的好处 即使skills不存在 也不会报错
+    const skill = userInfo.getIn(['skills', 'excellent'])
     return (
       <div>
         { posts.length }
         {/* name: { userInfo.name } */}
         name: { userInfo.get('name')}
         userName: { loginInfo.userName }
+        {
+          // 循环
+          skill.map((s, i) => {
+            return (
+              <li key={i}>{ s }</li>
+            )
+          })
+        }
       </div>
     )
   }
