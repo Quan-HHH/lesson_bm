@@ -8,32 +8,75 @@
     <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <link rel="stylesheet" href="index.css">
+    <!-- <script src="js/search-focus.js"></script> -->
     <title>Document</title>
 </head>
 
 <body>
     <div data-role="page" id="pageOne">
-        <div data-role="main" class="ui-content">
-            <div class="search">
-                <form class="ui-filterable">
-                    <input id="myFilter" data-type="search" placeholder="搜点什么吧...">
-                </form>
-            </div>
+        <div data-role="header" class="search" data-position="fixed">
+            <form class="ui-filterable">
+                <input id="myFilter" data-type="search" placeholder="搜点什么吧...">
+            </form>
+        </div>
+        <div data-role="main" class="ui-content" id="main">
             <div class="find-wrapper">
                 <ul>
                     <li></li>
                     <li></li>
                     <li>
-                        
+
                     </li>
                 </ul>
             </div>
+            <div class="search-find">
+               <div class="recommend">
+                   <a href="">白色巨塔</a>
+                   <a href="">黄金时代</a>
+                   <a href="">绑架游戏</a>
+                   <a href="">岛田庄司精选集</a>
+                   <a href="">被讨厌的勇气</a>
+                   <a href="">怪你过分美丽</a>
+               </div>
+               <div class="guess-you-like">
+                   <div class="head">
+                       <div class="left">猜你喜欢</div>
+                       <div class="right">换一批</div>
+                   </div>
+                   <div class="like-list">
+                    <ul data-role="listview" data-inset="true">
+                        <li>
+                          <a href="#">
+                          <img src="/try/demo_source/chrome.png">
+                          <h2>程序员的自我修养</h2>
+                          <p>Google Chrome 是免费的开源 web 浏览器。发布于 2008 年。</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                          <img src="/try/demo_source/firefox.png">
+                          <h2>Mozilla Firefox</h2>
+                          <p>Firefox 是来自 Mozilla 的 web 浏览器。发布于 2004 年。</p>
+                          </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                            <img src="/try/demo_source/firefox.png">
+                            <h2>Mozilla Firefox</h2>
+                            <p>Firefox 是来自 Mozilla 的 web 浏览器。发布于 2004 年。</p>
+                            </a>
+                          </li>
+                      </ul>
+                   </div>
+               </div>
+            </div>
         </div>
+        
     </div>
     <div data-role="page" id="pageTwo">
         <div data-role="main" class="ui-content">
             <div class="search">
-                <ul data-filter="true">
+                <ul data-filter="true" data-filter-placeholder="搜索书架">
                     <li>
                         <div>
                             <img src="images/me-01.png" alt="">
@@ -84,13 +127,12 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="reading"></div>
-            <div class="artical">
-
-            </div>
         </div>
     </div>
+    <div data-role="page" id="pageThree">
+        124
+    </div>
+   
 </body>
 
 </html>
