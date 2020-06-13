@@ -2,9 +2,10 @@ import React from 'react';
 import './recommend.styl'; // webpack
 import Swiper from 'swiper';
 import "swiper/css/swiper.min.css";
+import Album from '@/components/album/Album'
 import Loading from '../../common/loading/Loading';
 import Scroll from '@/common/scroll/Scroll';
-
+import * as AlbumModel from '@/model/album'
 
 // 应用中很多图片
 // import Lazyload from 'react-lazyload'; // 图片延迟加载
@@ -16,8 +17,9 @@ import Scroll from '@/common/scroll/Scroll';
 
 
 // 所有的数据请求都放到api目录下
-import { getNewAlbum }  from '../../api/recommend';
+import { getNewAlbum } from '../../api/recommend';
 import LazyLoad, { forceCheck } from 'react-lazyload';
+import { Route } from 'react-router-dom';
 
 
 // 1. 幻灯片， swiper
@@ -66,9 +68,11 @@ class Recommend extends React.Component {
     getNewAlbum() /**promise */
       .then(res => {
         // console.log(res)
+        let albumList = res.albumlib.data.list;
+
         this.setState({
           loading: false,
-          newAlbums: res.albumlib.data.list
+          newAlbums: albumList
         }, () => {
           this.setState({
             refreshScroll: true
@@ -84,45 +88,54 @@ class Recommend extends React.Component {
   render() {
     // 切页面
     // console.log(this.state.newAlbums);
-    let albums = this.state.newAlbums.map(item => (
-      <div className="album-wrapper" key={item.album_id}>
-        <div className="left">
-          <img src="https://qpic.y.qq.com/music_cover/Iia3lpoTl2hPXtBpjHk9QiaqUplwwdfZdf48EHsTO7PgO18LnQ74BPdQ/300?n=1" alt={item.album_name} width="100%" height="100%"/>
+    let { match } = this.props;
+    let albums = this.state.newAlbums.map(item => {
+      let album = AlbumModel.createAlbumByList(item);
+      // console.log(album)
+      return (
+        <div className="album-wrapper" key={album.mId}
+          onClick={this.toAlbumDetail.bind(this, `${match.url + '/' + album.mId}`)}
+        >
+          <div className="left">
+            <LazyLoad height={60}>
+              <img src={album.img} alt={item.album_name} width="100%" height="100%" />
+            </LazyLoad>
+          </div>
+          <div className="right">
+            <div className="album-name">
+              {album.name}
+            </div>
+            <div className="singer-name">
+              {album.singer}
+            </div>
+            <div className="public-time">
+              {album.publicTime}
+            </div>
+          </div>
         </div>
-        <div className="right">
-          <div className="album-name">
-            {item.album_name}
-          </div>
-          <div className="singer-name">
-            {item.singers[0].singer_name}
-          </div>
-          <div className="public-time">
-            {item.public_time}
-          </div>
-        </div>
-      </div>
-    ))
+      )
+    })
     return (
       <div className="music-recommend">
-        
-          <div className="slider-container">
-            <div className="swiper-wrapper">
-              {
-                this.state.sliderList.map(slider => {
-                  return (
-                    <div className="swiper-slide" key={slider.id}>
-                      <a href={slider.linkUrl} className="slider-nav">
-                        <img src={slider.picUrl} alt="" width="100%" height="100%"/>
-                      </a>
-                    </div>
-                  );
-                })
-              }
-            </div>
-            <div className="swiper-pagination"></div>
-          </div>
 
-          <Scroll
+        <div className="slider-container">
+          <div className="swiper-wrapper">
+            {
+              this.state.sliderList.map(slider => {
+                return (
+                  <div className="swiper-slide" key={slider.id}>
+                    <a href={slider.linkUrl} className="slider-nav">
+                      <img src={slider.picUrl} alt="" width="100%" height="100%" />
+                    </a>
+                  </div>
+                );
+              })
+            }
+          </div>
+          <div className="swiper-pagination"></div>
+        </div>
+
+        <Scroll
           refresh={this.state.refreshScroll}
           onScroll={(e) => {
             console.log(e);
@@ -135,9 +148,16 @@ class Recommend extends React.Component {
             </div>
           </div>
         </Scroll>
-        <Loading show={this.state.loading} title="正在加载..."/>
+        <Loading show={this.state.loading} title="正在加载..." />
+        <Route path={`${match.url + ':id'}`} component={Album} />
       </div>
     )
+  }
+  toAlbumDetail(url) {
+    // console.log(url)
+    this.props.history.push({
+      pathname: url
+    })
   }
 }
 

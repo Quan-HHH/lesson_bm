@@ -41,7 +41,7 @@ Scroll.defaultProps = {
     onScroll: null,
     refresh: false
 }
-Scroll.PropTypes = {
+Scroll.propTypes = {
     click: PropTypes.bool,
     onScroll: PropTypes.func,
     refresh: PropTypes.bool

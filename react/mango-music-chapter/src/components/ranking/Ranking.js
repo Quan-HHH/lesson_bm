@@ -4,7 +4,8 @@ import './ranking.styl';
 // 短链接 @src目录 路径别名 @
 import Loading from '@/common/loading/Loading'
 import { getRankingList } from '@/api/ranking';
-import LazyLoad from 'react-lazyload';
+import LazyLoad,{ forceCheck } from 'react-lazyload';
+import Scroll from '@/common/scroll/Scroll';
 
 class Ranking extends React.Component {
     constructor() {
@@ -21,18 +22,27 @@ class Ranking extends React.Component {
                 this.setState({
                     loading: false,
                     rankingList: res.data.topList
-                })
+                    // refreshScroll:true
+                    // setState callback 状态更新并已经在页面同步后 再执行callback
+                }),() => {
+                    this.setState({
+                        refreshScroll:true
+                    })
+                }
             })
     }
     render() {
         return (
             <div className="music-ranking">
+                <Scroll
+          refresh={this.state.refreshScroll}
+          onScroll={(e) => {forceCheck();}}>
                 <div className="ranking-list">
                     {
                         this.state.rankingList.map(ranking => {
                             return (
                                 <div className="ranking-wrapper" key={ranking.id}
-                                // onClick={}
+                                
                                 >
                                     <div className="left">
                                         <LazyLoad>
@@ -61,6 +71,7 @@ class Ranking extends React.Component {
                         })
                     }
                 </div>
+                </Scroll>
                 <Loading show={this.state.loading} title="正在加载排行榜..."></Loading>
             </div>
 
