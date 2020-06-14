@@ -22,3 +22,8 @@
     每个路由模块页面独立一个js文件 便于维护和代码阅读
 
  - 长的列表页 在移动端 支持scroll
+
+ 数据业务 封装在model里
+ 数据的操作 都有model层负责    分层的好处
+ MVVM  Model-View-ViewModel  界面由数据驱动， 当下前端的设计模式
+ MVC  Model View Contorller  后端的web开发模式

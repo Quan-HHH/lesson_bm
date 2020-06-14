@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" charset="UTF-8">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- font-awesome 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/search-focus.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>悦读books to joy</title>
+</head>
+
+<body>
+    <div data-role="page" id="findpage">
+        <div data-role="header" class="search" data-position="fixed" data-tap-toggle="false">
+            <form class="ui-filterable">
+                <input id="myFilter" onfocus="myFunction(this)" data-type="search" placeholder="搜点什么吧...">
+                <div class="cancel" style="display: none;">取消</div>
+            </form>
+        </div>
+        <div data-role="main" class="ui-content" id="main">
+            <div class="find-wrapper">
+                <ul>
+                    <li class="recommend-for-u">
+                        <h2>为你推荐</h2>
+                        <p>基于你的阅读历史计算，每日更新</p>
+                        <div>
+                            <img src="images/recommend9.jpg" alt="">
+                            <img src="images/recommend7.jpg" alt="">
+                            <img src="images/recommend8.jpg" alt="">
+                            <img src="images/recommend1.jpg" alt="">
+                            <img src="images/recommend5.jpg" alt="">
+                            <img src="images/recommend6.jpg" alt="">
+                        </div>
+                        <div class="change">
+                            换一批
+                        </div>
+                    </li>
+                    <li class="free-lib">
+                        <h2>免费图书馆</h2>
+                        <div>
+                            <img src="images/recommend3.jpg" alt="">
+                            <img src="images/recommend2.jpg" alt="">
+                            <img src="images/recommend4.jpg" alt="">
+                            <img src="images/recommend11.jpg" alt="">
+                            <img src="images/recommend12.jpg" alt="">
+                            <img src="images/recommend10.jpg" alt="">
+                        </div>
+                        <div class="change">
+                            本期可免费获得以上图书
+                        </div>
+                    </li>
+                    <li class="friend-read" onClick="toDetail()">
+                        <img src="images/fri.jpg" alt="">
+                        <h2>万有引力之虹</h2>
+                        <p>托马斯·品钦</p>
+                        <div class="fri">
+                            1位朋友在读
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-find" style="display: none;">
+                <div class="recommend">
+                    <a href="">白色巨塔</a>
+                    <a href="">黄金时代</a>
+                    <a href="">绑架游戏</a>
+                    <a href="">岛田庄司精选集</a>
+                    <a href="">被讨厌的勇气</a>
+                    <a href="">怪你过分美丽</a>
+                </div>
+                <div class="guess-you-like">
+                    <div class="head">
+                        <div class="left">猜你喜欢</div>
+                        <div class="right">换一批</div>
+                    </div>
+                    <div class="like-list">
+                        <ul data-role="listview" data-inset="true">
+                            <li>
+                                <a href="#">
+                                    <img src="images/guess1.jpg">
+                                    <h2>程序员的自我修养</h2>
+                                    <p>看《你不知道的JavaScript》的人也在看</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="images/guess2.jpg">
+                                    <h2>湖畔</h2>
+                                    <p>根据《放学后》推荐</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="images/guess3.jpg">
+                                    <h2>知更鸟女孩</h2>
+                                    <p>根据《房思琪的初恋乐园》推荐</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div data-role="navbar">
+                <ul>
+                    <li class="navbtn"><a href="#findpage" class="ui-btn-active ui-state-persist"><i
+                                class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>
+                            发现</a>
+                    </li>
+                    <li class="navbtn"><a href="#bookshelfpage"><i class="fa fa-book fa-2x"
+                                aria-hidden="true"></i>书架</a>
+                    </li>
+                    <li class="navbtn"><a href="#seepage"><i class="fa fa-snowflake-o fa-2x"
+                                aria-hidden="true"></i>看一看</a>
+                    </li>
+                    <li class="navbtn"><a href="#minepage"><i class="fa fa-user-circle-o fa-2x"
+                                aria-hidden="true"></i>我</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="bookshelfpage">
+        <div data-role="main" class="ui-content">
+            <div class="search">
+                <ul data-filter="true" data-filter-placeholder="搜索书架">
+                    <li>
+                        <div>
+                            <img src="images/bookshelf1.jpg" alt="">
+                        </div>
+                        <a href="#">放学后</a>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/bookshelf2.jpg" alt="">
+                        </div>
+                        <a href="#">房思琪的初恋乐园</a>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/bookshelf3.jpg" alt="">
+                        </div>
+                        <a href="#">图解HTTP</a>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/bookshelf4.jpg" alt="">
+                        </div>
+                        <a href="#">我可以咬一口吗</a>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/bookshelf5.jpg" alt="">
+                        </div>
+                        <a href="#">皮囊</a>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/bookshelf6.jpg" alt="">
+                        </div>
+                        <a href="#">云边有个小卖部</a>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="images/bookshelf7.jpg" alt="">
+                        </div>
+                        <a href="#">遗忘通论</a>
+                    </li>
+                    <li class="add-more">
+                        <div>
+                            <img src="images/add.png" alt="">
+                        </div>
+                    </li>
+                </ul>
+                <p>书架共7本图书</p>
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
+            <div data-role="navbar">
+                <ul>
+                    <li class="navbtn"><a href="#findpage" data-direction="reverse"> <i class="fa fa-bandcamp fa-2x"
+                                aria-hidden="true"></i>发现</a>
+                    </li>
+                    <li class="navbtn"><a href="#bookshelfpage" class="ui-btn-active ui-state-persist"><i
+                                class="fa fa-book fa-2x" aria-hidden="true"></i>书架</a>
+                    </li>
+                    <li class="navbtn"><a href="#seepage"><i class="fa fa-snowflake-o fa-2x"
+                                aria-hidden="true"></i>看一看</a>
+                    </li>
+                    <li class="navbtn"><a href="#minepage"><i class="fa fa-user-circle-o fa-2x"
+                                aria-hidden="true"></i>我</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="page" id="seepage">
+        <div data-role="header" class="search" data-position="fixed" data-tap-toggle="false">
+            <form class="ui-filterable">
+                <input id="myFilter" data-type="search" placeholder="搜点什么吧...">
+                <div class="cancel" style="display: none;">取消</div>
+            </form>
+        </div>
+        <div data-role="main" class="ui-content" id="main">
+            <div class="other-service">
+                <ul>
+					<li>
+						<img src="images/me-01.png" />
+						<div>看小说</div>
+					</li>
+					<li>
+						<img src="images/me-02.png" />
+						<div>看绘本</div>
+					</li>
+					<li>
+						<img src="images/me-05.png" />
+						<div>找读友</div>
+                    </li>
+                    <li>
+						<img src="images/me-06.png" />
+						<div>写笔记</div>
+					</li>
+				</ul>
+            </div>
+            <div class="swipper">
+
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li class="navbtn"><a href="#findpage"><i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>发现</a>
+                    </li>
+                    <li class="navbtn"><a href="#bookshelfpage"><i class="fa fa-book fa-2x"
+                                aria-hidden="true"></i>书架</a>
+                    </li>
+                    <li class="navbtn"><a href="#seepage" class="ui-btn-active ui-state-persist"><i
+                                class="fa fa-snowflake-o fa-2x" aria-hidden="true"></i>看一看</a>
+                    </li>
+                    <li class="navbtn"><a href="#minepage"><i class="fa fa-user-circle-o fa-2x"
+                                aria-hidden="true"></i>我</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="minepage">
+        <div data-role="header" data-position="fixed" class="header-style">
+            <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-sliders fa-2x" aria-hidden="true"></i>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <ul data-role="listview" data-inset="true">
+                <li data-icon="false"><a href="#">
+                        <div>
+                            <div id="icon">
+                            </div>
+                            <p id="nickname">佚名</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false" class="li-border"><a href="#" data-ajax="false" rel="external">
+                        <img src="images/46.png">
+                        <p class="list-topic">账户</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false"><a href="#" data-ajax="false" rel="external"><img src="images/46.png">
+                        <p class="list-topic">无限卡・免费卡</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false" class="li-border"><a href="#" data-ajax="false" rel="external"><img
+                            src="images/46.png">
+                        <p class="list-topic">读书排行榜</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false"><a href="#" data-ajax="false" rel="external"><img src="images/46.png">
+                        <p class="list-topic">关注</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false" class="li-border"><a href="#" data-ajax="false" rel="external"><img
+                            src="images/46.png">
+                        <p class="list-topic">每日一答</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false" class="li-border"><a href="#" data-ajax="false" rel="external"><img
+                            src="images/46.png">
+                        <p class="list-topic">笔记、读过和赞过</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+                <li data-icon="false"><a href="#" data-ajax="false" rel="external"><img src="images/46.png">
+                        <p class="list-topic">书单</p>
+                        <div class="list-content">
+                            <p class="content-tit">1.00</p>
+                            <p class="content-desc">1.00</p>
+                        </div>
+                    </a></li>
+            </ul>
+
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li class="navbtn"><a href="#findpage"><i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>发现</a>
+                    </li>
+                    <li class="navbtn"><a href="#bookshelfpage"><i class="fa fa-book fa-2x"
+                                aria-hidden="true"></i>书架</a>
+                    </li>
+                    <li class="navbtn"><a href="#seepage"><i class="fa fa-snowflake-o fa-2x"
+                                aria-hidden="true"></i>看一看</a>
+                    </li>
+                    <li class="navbtn"><a href="#minepage" class="ui-btn-active ui-state-persist"><i
+                                class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>我</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+
+
+    })
+</script>
+
+</html>
