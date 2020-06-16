@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/self-info.css">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class="head">
+            <div class="left" onClick="toMinepage()"><img src="images/return.png" alt=""></div>
+            <div class="right"><img src="images/more read.png" alt="">
+            </div>
+        </div>
+        <div class="container">
+            <div class="self-info">
+                <div class="avatar">
+                    <div><img src="images/pikachu.jpg" alt=""></div>
+                </div>
+                <h3>快乐星球08042号居民</h3>
+                <a class="from">女·快乐星球</a>
+                <div class="about-me">
+                    <div class="read-time">
+                        <span>9</span><a>时</a><span>9</span><a>分</a>
+                        <p>读书时长</p>
+                    </div>
+                    <div class="support">
+                        <span>1</span><a>个</a>
+                        <p>收到的赞</p>
+                    </div>
+                    <div class="follower">
+                        <span>11</span><a>人</a>
+                        <p>关注我</p>
+                    </div>
+                </div>
+            </div>
+            <div class="latest-read">
+                <div class="title">最近阅读</div>
+                <div class="book-list">
+                    <ul data-filter="true" data-filter-placeholder="搜索书架">
+                        <li>
+                            <div>
+                                <img src="images/bookshelf1.jpg" alt="">
+                            </div>
+                            <a href="#">放学后</a>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="images/bookshelf2.jpg" alt="">
+                            </div>
+                            <a href="#">房思琪的初恋乐园</a>
+                        </li>
+                        <li>
+                            <div>
+                                <img src="images/bookshelf3.jpg" alt="">
+                            </div>
+                            <a href="#">图解HTTP</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="look-list">查看书架</div>
+            </div>
+        </div>
+       
+    </div>
+</body>
+<script>
+    function toMinepage() {
+        window.location.href = "home.html#minepage"
+    }
+</script>
+</html>

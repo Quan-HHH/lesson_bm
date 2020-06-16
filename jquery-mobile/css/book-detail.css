@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.head {
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.head img {
+  margin: 5px;
+}
+.main {
+  background-color: #f8f8f8;
+  position: absolute;
+  top: 42px;
+}
+.main .book-info {
+  background-color: #fff;
+  display: flex;
+  padding: 12px 16px;
+}
+.main .book-info .book-pic {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.main .book-info .book-pic img {
+  width: 100%;
+}
+.main .book-info .book-name-wrapper {
+  margin: 16px;
+  flex: 2;
+}
+.main .book-info .book-name-wrapper .book-author {
+  color: #6095ff;
+  line-height: 35px;
+}
+.main .book-score {
+  background-color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  font-size: 25px;
+  color: #8a8a8a;
+}
+.main .book-score .score-wrapper {
+  flex: 1;
+}
+.main .book-score .score-wrapper .score-num {
+  display: inline;
+}
+.main .book-score .score-wrapper .score-star {
+  display: inline;
+  font-size: 0;
+}
+.main .book-score .score-person {
+  flex: 1;
+}
+.main .book-score p {
+  color: #bfbfbf;
+  font-size: 15px;
+}
+.main .book-introduce {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background-color: #fff;
+}
+.main .book-introduce a {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #ff0077, red, black);
+  -webkit-background-clip: text;
+  color: transparent;
+  border: 1px solid #bfbfbf;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+.main .book-introduce p {
+  margin-top: 10px;
+  color: #8a8a8a;
+}
+.main .book-introduce span {
+  margin-right: 20px;
+  color: #bfbfbf;
+}
+.footer {
+  width: 100%;
+  background-color: #f8f8f8;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  padding: 7px;
+}
+.footer div {
+  color: #6095ff;
+  text-align: center;
+  line-height: 37px;
+  flex: 1;
+  font-weight: bolder;
+}
+.footer .read {
+  border-radius: 50px;
+  background-color: #6095ff;
+  color: #fff;
+}

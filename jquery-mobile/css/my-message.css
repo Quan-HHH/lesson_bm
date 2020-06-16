@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100vw;
+}
+.head {
+  z-index: 999;
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  line-height: 42px;
+}
+.head img {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.head span {
+  flex: 1;
+  padding: 10px;
+}
+.notice {
+  width: 100%;
+  position: absolute;
+  top: 52px;
+  box-sizing: border-box;
+  padding: 0 16px;
+}
+.notice ul {
+  width: 100%;
+}
+.notice ul li {
+  display: flex;
+}
+.notice ul li .avatar {
+  padding-top: 10px;
+  padding-right: 10px;
+  flex: 1;
+}
+.notice ul li .avatar img {
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(150, 150, 150, 0.5);
+}
+.notice ul li .fri-notice {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.5);
+  flex: 5;
+}
+.notice ul li .fri-notice .name-and-time {
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+}
+.notice ul li .fri-notice .name-and-time .time {
+  font-size: 12px;
+  line-height: 14px;
+}
+.notice ul li .fri-notice .notice-info {
+  margin-top: 5px;
+  display: flex;
+}
+.letter {
+  width: 100%;
+  position: absolute;
+  top: 52px;
+  box-sizing: border-box;
+  padding: 0 16px;
+}
+.letter ul {
+  width: 100%;
+}
+.letter ul li {
+  display: flex;
+}
+.letter ul li .avatar {
+  padding-top: 10px;
+  padding-right: 10px;
+  flex: 1;
+}
+.letter ul li .avatar img {
+  width: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(150, 150, 150, 0.5);
+}
+.letter ul li .fri-notice {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(150, 150, 150, 0.5);
+  flex: 5;
+}
+.letter ul li .fri-notice .name-and-time {
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+}
+.letter ul li .fri-notice .name-and-time .time {
+  font-size: 12px;
+  line-height: 14px;
+}
+.letter ul li .fri-notice .notice-info {
+  margin-top: 5px;
+  display: flex;
+}

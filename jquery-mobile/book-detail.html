@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/book-detail.css">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div class="head">
+        <div class="left"><img src="images/return.png" alt="" onClick="toHome()"></div>
+        <div class="right">
+            <img src="images/people copy 3.png" alt="" onClick="readProgress()">
+            <img src="images/transmit.png" alt="">
+            <img src="images/more read.png" alt="">
+        </div>
+    </div>
+    <div class="main">
+        <div class="book-info">
+            <div class="book-pic">
+                <img src="images/fri.jpg" alt="">
+            </div>
+            <div class="book-name-wrapper">
+                <h3 class="book-name">万有引力之虹（托马斯·品钦作品）</h3>
+                <p class="book-author">托马斯·品钦</p>
+                <p class="book-price">￥0.99 or 无限卡</p>
+            </div>
+        </div>
+        <div class="book-score">
+            <div class="score-wrapper">
+                <div class="score-num">8.3</div>
+                <div class="score-star">
+                    <img src="images/Star large.png" alt="">
+                    <img src="images/Star large.png" alt="">
+                    <img src="images/Star large.png" alt="">
+                    <img src="images/Star large.png" alt="">
+                    <img src="images/Star large (1).png" alt="">
+                </div>
+                <p>106人点评</p>
+            </div>
+            <div class="score-person">
+                <div class="person-num">263人</div>
+                <p>阅读此书</p>
+            </div>
+        </div>
+        <div class="book-introduce">
+            <a>9 / 新书</a>
+            <p>《万有引力之虹》是后现代主义文学中的经典之作，在世界20世纪文学史上有着独特的地位。</p>
+            <span>目录·27章</span><span>&copy版权信息</span>
+        </div>
+    </div>
+    <div class="footer">
+        <div>听书</div>
+        <div class="read">阅读</div>
+        <div>加入书架</div>
+    </div>
 </body>
+<script>
+    function toHome() {
+        window.location.href='home.html'
+    }
+    function readProgress() {
+        window.location.href='progress.html'
+    }
+</script>
 </html>

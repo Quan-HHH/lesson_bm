@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/my-message.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div class="head">
+            <img src="images/return.png" alt="" onClick="toHome()">
+            <div>
+                <span style="color: #6596ff" class="notice-span">通知</span>
+                <span class="letter-span">私信</span>
+            </div>
+        </div>
+        <div class="notice">
+            <ul>
+                <li>
+                    <div class="avatar">
+                        <img src="images/pikachu.jpg" alt="">
+                    </div>
+                    <div class="fri-notice">
+                        <div class="name-and-time">
+                            <div class="name">许世流年</div>
+                            <div class="time">2020/6/15 19:33</div>
+                        </div>
+                        <div class="notice-info">
+                            <img src="images/hand.png" alt="">
+                            <p>邀请你回来一起读书</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="avatar">
+                        <img src="images/pikachu.jpg" alt="">
+                    </div>
+                    <div class="fri-notice">
+                        <div class="name-and-time">
+                            <div class="name">quizas</div>
+                            <div class="time">2020/6/15 19:33</div>
+                        </div>
+                        <div class="notice-info">
+                            <img src="images/heart.png" alt="">
+                            <p>赞了你的在读</p>
+                        </div>
+                        <p style="color: rgb(150, 150, 150)">quizas在读《器灵：百炼》</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="avatar">
+                        <img src="images/pikachu.jpg" alt="">
+                    </div>
+                    <div class="fri-notice">
+                        <div class="name-and-time">
+                            <div class="name">白了少年头</div>
+                            <div class="time">2020/6/15 19:33</div>
+                        </div>
+                        <div class="notice-info">
+                            <img src="images/heart.png" alt="">
+                            <p>赞了你的读书排行榜</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        <div class="letter" style="display: none;">
+            <ul>
+                <li>
+                    <div class="avatar">
+                        <img src="images/pikachu.jpg" alt="">
+                    </div>
+                    <div class="fri-notice">
+                        <div class="name-and-time">
+                            <div class="name">白了少年头</div>
+                            <div class="time">2020/6/15 19:33</div>
+                        </div>
+                        <div class="notice-info">
+                            <p>我来给你送书啦</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="avatar">
+                        <img src="images/pikachu.jpg" alt="">
+                    </div>
+                    <div class="fri-notice">
+                        <div class="name-and-time">
+                            <div class="name">白了少年头</div>
+                            <div class="time">2020/6/15 19:33</div>
+                        </div>
+                        <div class="notice-info">
+                            <p>我来给你送书啦</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function toHome() {
+        window.location.href = 'home.html#minepage'
+    }
+    const noticeSpan = document.querySelector('.notice-span');
+    const letterSpan = document.querySelector('.letter-span');
+    const notice = document.querySelector('.notice');
+    const letter = document.querySelector('.letter');
+    noticeSpan.addEventListener('click', () => {
+        noticeSpan.style.color = '#6596ff';
+        letterSpan.style.color = 'black';
+        notice.style.display = 'block';
+        letter.style.display = 'none';
+    })
+    letterSpan.addEventListener('click', () => {
+        noticeSpan.style.color = 'black';
+        letterSpan.style.color = '#6596ff';
+        notice.style.display = 'none';
+        letter.style.display = 'block';
+    })
+</script>
+
+</html>

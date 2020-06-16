@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.head {
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    img {
+        margin: 5px;
+    }
+}
+.main {
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 42px;
+    .book-info {
+        background-color: #fff;
+        display: flex;
+        padding: 12px 16px;
+        .book-pic {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            img {
+                width: 100%;
+            }
+        }
+        .book-name-wrapper {
+            margin: 16px;
+            flex: 2;
+            .book-author {
+                color: #6095ff;
+                line-height: 35px;
+            }
+
+        }
+    }
+    .book-score {
+        background-color: #fff;
+        padding: 12px 16px;
+        display: flex;
+        font-size: 25px;
+        color: #8a8a8a;
+        .score-wrapper {
+            flex: 1;
+            .score-num { 
+                display: inline;
+            }
+            .score-star {
+                display: inline;
+                font-size: 0;
+            }
+        }
+        .score-person {
+            flex: 1;
+        }
+        p {
+            color: #bfbfbf;
+            font-size: 15px;
+        }
+    }
+    .book-introduce {
+        margin-top: 10px;
+        padding: 12px 16px;
+        background-color: #fff;
+        a {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+            background: linear-gradient(to right,  rgb(255, 0, 119),red, black);
+            -webkit-background-clip: text;
+            color: transparent;
+            border: 1px solid #bfbfbf;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+        p {
+            margin-top: 10px;
+            color: #8a8a8a;
+        }
+        span {
+            margin-right: 20px;
+            color: #bfbfbf;
+        }
+    }
+}
+.footer {
+    width: 100%;
+    background-color: #f8f8f8;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    padding: 7px;
+    div {
+        color: #6095ff;
+        text-align: center;
+        line-height: 37px;
+        flex: 1;
+        font-weight: bolder;
+    }
+    .read {
+        border-radius: 50px;
+        background-color: #6095ff;
+        color: #fff;
+    }
+}

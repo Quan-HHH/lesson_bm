@@ -144,6 +144,7 @@ li {
   height: 0;
 }
 #findpage #main .search-find .like-list ul {
+  border-radius: 0;
   box-shadow: none;
 }
 #findpage #main .search-find .like-list ul a {
@@ -241,12 +242,79 @@ li {
 #seepage .ui-filterable .ui-focus {
   box-shadow: none;
 }
-#seepage .other-service ul {
+#seepage .ui-content {
+  padding: 0;
+}
+#seepage .ui-content #myCarousel {
+  width: 100vw;
+}
+#seepage .ui-content #myCarousel .carousel-indicators {
+  position: absolute;
+  top: 80px;
+}
+#seepage .ui-content .other-service {
+  padding: 10px 0;
+  margin-top: 10px;
+  background-color: #fff;
+}
+#seepage .ui-content .other-service ul {
   display: flex;
 }
-#seepage .other-service ul li {
+#seepage .ui-content .other-service ul li {
   flex: 1;
 }
-#seepage .other-service ul li img {
+#seepage .ui-content .other-service ul li img {
   width: 50%;
+}
+#seepage .ui-content .posts {
+  margin-top: 10px;
+  padding: 16px;
+  background-color: #fff;
+  text-align: left;
+}
+#seepage .ui-content .posts h3 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+#seepage .ui-content .posts ul li {
+  padding-top: 10px;
+  border-top: #ececec solid 1px;
+}
+#seepage .ui-content .posts ul li .reader {
+  display: flex;
+  align-items: center;
+}
+#seepage .ui-content .posts ul li .reader .avatar img {
+  border: solid rgba(234, 236, 240) 1px;
+  border-radius: 50%;
+  width: 50px;
+}
+#seepage .ui-content .posts ul li .reader .reader-name {
+  padding-left: 10px;
+  font-size: 18px;
+}
+#seepage .ui-content .posts ul li .content .topic {
+  color: #6596ff;
+}
+#seepage .ui-content .posts ul li .content .book-link {
+  display: flex;
+  align-items: center;
+  background-color: rgba(241, 241, 241, 0.5);
+  border-radius: 5px;
+}
+#seepage .ui-content .posts ul li .content .book-link .book-pic {
+  margin: 5px;
+  margin-right: 10px;
+  height: 60px;
+  overflow: hidden;
+}
+#seepage .ui-content .posts ul li .content .book-link .book-pic img {
+  width: 60px;
+}
+#seepage .ui-content .posts ul li .content .keyword {
+  line-height: 40px;
+  background-color: #ececec;
+  border-radius: 10px;
+  padding: 5px;
+  color: #6596ff;
 }

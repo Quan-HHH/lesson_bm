@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
     <!-- font-awesome 核心 CSS 文件 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="js/search-focus.js"></script>
@@ -173,7 +176,7 @@
                         </div>
                         <a href="#">遗忘通论</a>
                     </li>
-                    <li class="add-more">
+                    <li class="add-more" onclick="addMore()">
                         <div>
                             <img src="images/add.png" alt="">
                         </div>
@@ -211,31 +214,105 @@
             </form>
         </div>
         <div data-role="main" class="ui-content" id="main">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+                <!-- 轮播（Carousel）指标 -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>   
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="images/swiper1.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="images/swiper2.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="images/swiper3.jpg" alt="Third slide">
+                    </div>
+                </div>
+            </div> 
             <div class="other-service">
                 <ul>
-					<li>
-						<img src="images/me-01.png" />
-						<div>看小说</div>
-					</li>
-					<li>
-						<img src="images/me-02.png" />
-						<div>看绘本</div>
-					</li>
-					<li>
-						<img src="images/me-05.png" />
-						<div>找读友</div>
+                    <li>
+                        <img src="images/me-01.png" />
+                        <div>看小说</div>
                     </li>
                     <li>
-						<img src="images/me-06.png" />
-						<div>写笔记</div>
-					</li>
-				</ul>
+                        <img src="images/me-02.png" />
+                        <div>看绘本</div>
+                    </li>
+                    <li>
+                        <img src="images/me-05.png" />
+                        <div>找读友</div>
+                    </li>
+                    <li>
+                        <img src="images/me-06.png" />
+                        <div>写笔记</div>
+                    </li>
+                </ul>
             </div>
-            <div class="swipper">
+            <div class="posts">
+                <h3>读友帖子</h3>
+                <ul>
+                    <li>
+                        <div class="reader">
+                            <div class="avatar">
+                                <img src="images/pikachu.jpg" alt=""/>
+                            </div>
+                            <div class="reader-name">晨间宇航员</div>  
+                        </div>
+                        <div class="content">
+                            <p>[原创] 你担心自己死后，社交网络账号被家人登录吗？</p>
+                            <p class="topic">#每周推荐#</p>
+                            <p>“集体点蜡”真的有意义吗？</p>
+                            <p>我们今天的“晒娃”，孩子若干年后一定会喜欢吗？</p>
+                            <div class="book-link">
+                                <div class="book-pic"><img src="images/booklink1.jpg" alt=""></div>
+                                <div class="book-name">网上遗产</div>
+                            </div>
+                            <a class="keyword">小说部落</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="reader">
+                            <div class="avatar">
+                                <img src="images/pikachu.jpg" alt=""/>
+                            </div>
+                            <div class="reader-name">南宫沐芸</div>  
+                        </div>
+                        <div class="content">
+                            <p>出来冒个泡</p>
+                            <p>怕你们忘了在悦读儿童乐园还有个南宫家族名叫沐芸的人...</p>
+                            <a class="keyword">儿童乐园</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="reader">
+                            <div class="avatar">
+                                <img src="images/pikachu.jpg" alt=""/>
+                            </div>
+                            <div class="reader-name">余世之尘</div>  
+                        </div>
+                        <div class="content">
+                            <p>愿你游历归来仍是少年</p>
+                            <p class="topic">#熬夜都想读的书#</p>
+                            <p>“集体点蜡”真的有意义吗？</p>
+                            <p>一本一直追的书，唯一一本花钱买了也不后悔，越看越想看的书</p>
+                            <div class="book-link">
+                                <div class="book-pic"><img src="images/booklink2.jpg" alt=""></div>
+                                <div class="book-name">玫瑰的名字</div>
+                            </div>
+                            <a class="keyword">小说部落</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-            </div>
         </div>
-        <div data-role="footer" data-position="fixed">
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar">
                 <ul>
                     <li class="navbtn"><a href="#findpage"><i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>发现</a>
@@ -255,19 +332,20 @@
     </div>
     <div data-role="page" id="minepage">
         <div data-role="header" data-position="fixed" class="header-style">
-            <i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i>
+            <i class="fa fa-envelope-o fa-2x" aria-hidden="true" onClick="toMessage()"></i>
             <i class="fa fa-sliders fa-2x" aria-hidden="true"></i>
         </div>
 
         <div data-role="main" class="ui-content">
             <ul data-role="listview" data-inset="true">
-                <li data-icon="false"><a href="#">
+                <li data-icon="false" onClick="toSelfInfo()"><a href="#">
                         <div>
                             <div id="icon">
                             </div>
                             <p id="nickname">佚名</p>
                         </div>
-                    </a></li>
+                    </a>
+                </li>
                 <li data-icon="false" class="li-border"><a href="#" data-ajax="false" rel="external">
                         <img src="images/46.png">
                         <p class="list-topic">账户</p>
@@ -324,7 +402,7 @@
             </ul>
 
         </div>
-        <div data-role="footer" data-position="fixed">
+        <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar">
                 <ul>
                     <li class="navbtn"><a href="#findpage"><i class="fa fa-bandcamp fa-2x" aria-hidden="true"></i>发现</a>
@@ -349,5 +427,7 @@
 
     })
 </script>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+
 
 </html>

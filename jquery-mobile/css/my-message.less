@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100vw;
+}
+.head {
+    z-index: 999;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    line-height: 42px;
+    img {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+    }
+    span {
+        flex: 1;
+        padding: 10px;
+    }
+}
+.notice {
+    width: 100%;
+    position: absolute;
+    top: 52px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    ul {    
+        width: 100%;
+        li {
+            display: flex;
+            .avatar {
+                padding-top: 10px;
+                padding-right: 10px;
+                img {
+                    width: 50px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(150, 150, 150, 0.5)
+                }
+                flex: 1;
+            }
+            .fri-notice {
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(150, 150, 150, 0.5);
+                flex: 5;
+                .name-and-time {
+                    display: flex;
+                    justify-content: space-between;
+                    color: gray;
+                    .time {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                }
+                .notice-info {
+                    margin-top: 5px;
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+.letter {
+    width: 100%;
+    position: absolute;
+    top: 52px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    ul {    
+        width: 100%;
+        li {
+            display: flex;
+            .avatar {
+                padding-top: 10px;
+                padding-right: 10px;
+                img {
+                    width: 50px;
+                    border-radius: 50%;
+                    border: 1px solid rgba(150, 150, 150, 0.5)
+                }
+                
+                flex: 1;
+            }
+            .fri-notice {
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(150, 150, 150, 0.5);
+                flex: 5;
+                .name-and-time {
+                    display: flex;
+                    justify-content: space-between;
+                    color: gray;
+                    .time {
+                        font-size: 12px;
+                        line-height: 14px;
+                    }
+                }
+                .notice-info {
+                    margin-top: 5px;
+                    display: flex;
+                }
+            }
+        }
+    }
+}

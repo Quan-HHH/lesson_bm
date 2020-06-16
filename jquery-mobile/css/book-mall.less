@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-shadow: none;
+}
+
+.ui-bar-inherit {
+    border: none;
+    display: flex;
+    top: 0;
+    span {
+        flex: 1;
+        line-height: 42px;
+        text-align: center;
+        font-size: 20px;
+    }
+    img {
+        width: 32px;
+        margin: 5px;
+    }
+}
+.book-list {
+    // padding: 10px;
+    .list:nth-child(odd) {
+        background-color: white;
+    }
+    .list:nth-child(even) {
+        background-color: rgb(245, 245, 245);
+    }
+    .list {
+        padding: 20px;
+    }
+    .listTitle {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+        background: linear-gradient(to right,  rgb(255, 0, 119),red, black);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    .swiper-container {
+        .swiper-slide {
+            .ui-btn:after {
+                width: 0;
+                height: 0;
+            }
+            ul {
+                box-shadow: none;
+                border-radius: 0;
+                a {
+                    padding-right: 20px;
+                    padding-left: 65px;
+                    background-color: initial;
+                    border: none;
+                    box-shadow: none;
+                    color: black;
+                    margin: 10px 0;
+                    img {
+                        left: 0;
+                        width: 55px;
+                        height: 80px;
+                        border: rgb(200, 200, 200) solid 1px;
+                    }
+                    p {
+                        margin-left: 15px;
+                    }
+                }   
+            }
+        }
+        .swiper-pagination {
+            display: none;
+        }
+    }
+    .find-all {
+        text-shadow: none;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 8px;
+        margin-top: 5px;
+        background-color: #f7f7f7;
+        // color: white;           
+    }
+    .even {
+        background-color: white;
+    }
+}

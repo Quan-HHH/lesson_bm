@@ -8,7 +8,7 @@ const uiFilterable = document.querySelector('.ui-filterable');
     uiFilterable.style.display = 'flex'
     findWrapper.style.display = 'none';
     searchFind.style.display = 'block';
-    inputSearch.style.width = '260px';
+    inputSearch.style.width = '80%';
     cancel.style.display = 'flex'
     cancel.addEventListener('click', function() {
         findWrapper.style.display = 'block';
@@ -21,4 +21,15 @@ const uiFilterable = document.querySelector('.ui-filterable');
 
 function toDetail() {
     window.location.href='book-detail.html'
+}
+
+
+function addMore() {
+    window.location.href='book-mall.html'
+}
+function toMessage() {
+    window.location.href='my-message.html'
+}
+function toSelfInfo() {
+    window.location.href="self-info.html"
 }
