@@ -7,13 +7,14 @@
     <!-- font-awesome 核心 CSS 文件 -->
     <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	<script src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/index.css">
     <script src="js/search-focus.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
     <title>悦读books to joy</title>
 </head>
 
@@ -134,7 +135,7 @@
         <div data-role="main" class="ui-content">
             <div class="search">
                 <ul data-filter="true" data-filter-placeholder="搜索书架">
-                    <li>
+                    <!-- <li>
                         <div>
                             <img src="images/bookshelf1.jpg" alt="">
                         </div>
@@ -175,17 +176,38 @@
                             <img src="images/bookshelf7.jpg" alt="">
                         </div>
                         <a href="#">遗忘通论</a>
-                    </li>
+                    </li> -->
                     <li class="add-more" onclick="addMore()">
                         <div>
                             <img src="images/add.png" alt="">
                         </div>
                     </li>
                 </ul>
-                <p>书架共7本图书</p>
+                <span>书架共</span><span class="num"></span><span>本图书</span>
             </div>
         </div>
-
+        <script type='text/javascript'>
+            const bookList = document.querySelector('.search ul');
+            const bookListNum = document.querySelector('.num');
+            bookListNum.innerText = `${bookList.children.length - 1}`;
+            var bookShelfList = localStorage.getItem("bookShelf");
+            var bookShelfJson = null;
+            if (bookShelfList != null) {
+                bookShelfJson = JSON.parse(bookShelfList);
+            }
+            else {
+                bookShelfJson = [];
+            }
+            $(bookShelfJson).each(function (i, oo) {
+            const oLi = document.createElement('li');
+            oLi.innerHTML = `<div>
+                <img src="${oo.img}" alt="">
+            </div>
+            <a href="#">${oo.name}</a>`
+            bookList.insertBefore(oLi, document.querySelector('.add-more'));
+            })
+            
+        </script>
         <div data-role="footer" data-position="fixed" data-tap-toggle="false">
             <div data-role="navbar">
                 <ul>
@@ -220,7 +242,7 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>   
+                </ol>
                 <!-- 轮播（Carousel）项目 -->
                 <div class="carousel-inner">
                     <div class="item active">
@@ -233,7 +255,7 @@
                         <img src="images/swiper3.jpg" alt="Third slide">
                     </div>
                 </div>
-            </div> 
+            </div>
             <div class="other-service">
                 <ul>
                     <li>
@@ -260,9 +282,9 @@
                     <li>
                         <div class="reader">
                             <div class="avatar">
-                                <img src="images/pikachu.jpg" alt=""/>
+                                <img src="images/pikachu.jpg" alt="" />
                             </div>
-                            <div class="reader-name">晨间宇航员</div>  
+                            <div class="reader-name">晨间宇航员</div>
                         </div>
                         <div class="content">
                             <p>[原创] 你担心自己死后，社交网络账号被家人登录吗？</p>
@@ -279,9 +301,9 @@
                     <li>
                         <div class="reader">
                             <div class="avatar">
-                                <img src="images/pikachu.jpg" alt=""/>
+                                <img src="images/pikachu.jpg" alt="" />
                             </div>
-                            <div class="reader-name">南宫沐芸</div>  
+                            <div class="reader-name">南宫沐芸</div>
                         </div>
                         <div class="content">
                             <p>出来冒个泡</p>
@@ -292,9 +314,9 @@
                     <li>
                         <div class="reader">
                             <div class="avatar">
-                                <img src="images/pikachu.jpg" alt=""/>
+                                <img src="images/pikachu.jpg" alt="" />
                             </div>
-                            <div class="reader-name">余世之尘</div>  
+                            <div class="reader-name">余世之尘</div>
                         </div>
                         <div class="content">
                             <p>愿你游历归来仍是少年</p>

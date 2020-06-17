@@ -52,17 +52,44 @@
         </div>
     </div>
     <div class="footer">
-        <div>听书</div>
+        <div onClick="toBookShelf()">查看书架</div>
         <div class="read">阅读</div>
-        <div>加入书架</div>
+        <div class="addToShelf">加入书架</div>
     </div>
 </body>
-<script>
+<script type="text/javascript">
     function toHome() {
-        window.location.href='home.html'
+        window.location.href = 'home.html'
     }
     function readProgress() {
-        window.location.href='progress.html'
+        window.location.href = 'progress.html'
     }
+    function toBookShelf() {
+        window.location.href = 'home.html#bookshelfpage'
+    }
+    const add = document.querySelector('.addToShelf');
+    add.addEventListener('click', () => {
+        const bookPic = document.querySelector('.book-pic img');
+        const bookName = document.querySelector('.book-name');
+        //存到localstorage
+        var bookShelf = {};
+        bookShelf.img = bookPic.getAttribute('src');
+        bookShelf.name = bookName.innerHTML;
+        if (window.localStorage) {
+            var bookShelfList = localStorage.getItem("bookShelf");
+            var bookShelfJson = null;
+            if (bookShelfList != null) {
+                bookShelfJson = JSON.parse(bookShelfList);
+            } else {
+                bookShelfJson = [];
+            }
+            if (bookShelfJson == null)
+                bookShelfJson = [];
+            bookShelfJson.push(bookShelf);
+            localStorage.setItem("bookShelf", JSON.stringify(bookShelfJson));
+        }
+        alert("添加成功");
+    })
 </script>
+
 </html>
