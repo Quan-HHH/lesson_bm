@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.head {
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  line-height: 42px;
+  z-index: 999;
+}
+.head img {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.head span {
+  font-size: 18px;
+}
+.main {
+  width: 100%;
+  background-color: #f8f8f8;
+  position: absolute;
+  top: 42px;
+}
+.main .brief-introduction {
+  background-color: #fff;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+}
+.main .brief-introduction h4 {
+  line-height: 28px;
+}
+.main .brief-introduction p {
+  line-height: 24px;
+  color: #797979;
+}
+.main .copyright {
+  background-color: #fff;
+  padding: 10px 16px;
+}
+.main .copyright h4 {
+  line-height: 28px;
+}
+.main .copyright div {
+  float: left;
+  width: 90px;
+  color: #797979;
+}

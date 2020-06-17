@@ -183,13 +183,13 @@
                         </div>
                     </li>
                 </ul>
-                <span>书架共</span><span class="num"></span><span>本图书</span>
+                <!-- <span>书架共</span><span class="num"></span><span>本图书</span> -->
             </div>
         </div>
         <script type='text/javascript'>
             const bookList = document.querySelector('.search ul');
-            const bookListNum = document.querySelector('.num');
-            bookListNum.innerText = `${bookList.children.length - 1}`;
+            // const bookListNum = document.querySelector('.num');
+            // bookListNum.innerText = `${bookList.children.length - 1}`;
             var bookShelfList = localStorage.getItem("bookShelf");
             var bookShelfJson = null;
             if (bookShelfList != null) {
