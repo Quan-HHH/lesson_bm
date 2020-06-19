@@ -1,8 +1,9 @@
 import React, { Fragment, useState, createContext } from 'react';
+import { Provider, connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 const context = createContext();  // 跨层级传数据
-const { Provider, Consumer } = context;
+// const { Provider, Consumer } = context;
 // stateful => class state
 // stateLess => function   react16(一系列的api hook)之后 也是有状态的了
 // 所以叫做函数组件和类组件
@@ -75,31 +76,53 @@ function Login() {
     <div>
       Login
       {/* 可以任意放 包在哪都行 */}
-      <Consumer>
+      {/* <Consumer> */}
         {/* 里面一个大括号 一个函数 返回要渲染的东西 */}
         {
-          (obj) => {
-            console.log(obj);
-            return (
-              <span style={{color: obj.state.theme}}>span</span>
-            )
-          }
+          // (obj) => {
+          //   console.log(obj);
+          //   return (
+          //     <span style={{color: obj.state.theme}}>span</span>
+          //   )
+          // }
         }
 
-      </Consumer>
+      {/* </Consumer> */}
     </div>
   )
 }
 function Header(props) {
   // class this.props
-  const { theme } = props;
+  // const { theme } = props;
+  console.log(111111111111111,props)
   return (
-    <div style={{ color: theme }}>
+    <div>
       Header
       <Login />
+      { props.login ? '1':'0'}
+      <button onClick={() => { props.changeLoginStatus() }}>btn</button>
     </div>
   )
 }
+// 获取全局store 里面的数据 可以用Consumer来取
+// store里面全部的数据都是全局的 Header组件只要header相关的数据
+// 从store里面 过滤一下当前需要的数据
+// 取到数据
+function mapStateToProps(state) {
+  // 把想要的数据return出来
+  return {
+    login: state.login
+  }
+}
+// 修改数据
+function mapDispatchToProps(dispatch) {
+  return {
+    changeLoginStatus() {
+      dispatch(loginAction)
+    }
+  }
+}
+const ConnectedHeader = connect(mapStateToProps, mapDispatchToProps) (Header)
 function Footer() {
   return 'Footer'
 }
@@ -108,13 +131,10 @@ function App() {
   // useState返回的是一个数组 大概 [{ theme: 'red'}, function setTheme]
   const [state, setTheme] = useState({ theme: 'red' }) //括号里穿的什么 state就是什么
   return (
-    // value 是固定的 不能取别的名字
-    <Provider value={{
-      state,
-      setTheme
-    }}>
+    // value 是固定的 不能取别的名字 外面的大括号代表要写js了 里面的大括号代表一个对象
+    <Provider store={store}>
       <Fragment>
-        <Header theme={state.theme} />
+        <ConnectedHeader theme={state.theme} />
         <Footer />
       </Fragment>
     </Provider>
