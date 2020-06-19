@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>-->
+
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<!-- 引入 jQuery 库 -->
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<!-- 引入 jQuery Mobile 库 -->
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+				touch-action: none; 
+			}
+
+			#top {
+				background-color: #6596ff;
+				min-height: 180px;
+				width: 100%;
+				line-height:180px;
+				text-align: center;
+			}
+			
+			#top p
+			{
+				font-size: x-large;
+				font-weight: 900;
+				color: white;
+			}
+			
+			#aui-login-logo {
+				padding-top: 45px;
+				width: 190px;
+				display: block;
+				margin: 0 auto;
+			}
+			
+			#id,
+			#pw,
+			#sub {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			
+			#idform #sub {
+				font-size: 16px;
+				display: block;
+				background: #6596ff;
+				width: 100%;
+				margin: 0 auto;
+				border-radius: 2px;
+				height: 44px;
+				line-height: 44px;
+				text-align: center;
+				color: #fff;
+				opacity: 1;
+			}
+			
+			#bot li,
+			#bot a {
+				background-color: #fff;
+				border: none; 
+			}
+			
+			#bot img {
+				display: inline-block;
+				width: 80%;
+				margin-top: 10px;
+				margin-left: 7%;
+			}
+			
+			#reg {
+				display: block;
+				width: 100%;
+				text-align: center;
+				padding-top: 10px;
+				margin: 0 auto;
+				font-size: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="" data-role="page" style="background-color: #fff;">
+			<div id="top" data-role="header">
+				<p>Books To Joy</p>
+			</div>
+			<div data-role="main" class="ui-content">
+				<form method="post">
+					<div id="idform">
+						<div class="ui-field-contain">
+							<input type="text" name="fullname" id="id" placeholder="手机号/邮箱/用户名">
+							<input type="password" placeholder="密码" name="pw" value="" id="pw">
+							<!--<button onclick="check()" type="submit" style="">登录</button>-->
+							<input type="submit" id="sub" data-role="none" name=""  value="登录" />
+							<span id="reg">	未注册？请<a href="register.html" data-ajax="false"  rel="external">注册</a> </span>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div id="bot" data-role="footer" style="border: none;background-color: #fff;">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="#"><img src="images/1226623.gif" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="images/1230490.gif" /></a>
+						</li>
+						<li>
+							<a href="#"><img src="images/1230529.gif" /></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+//		$(document).on("pagecontainerload", function() {
+			var oSub = document.getElementById("sub");
+			oSub.onclick = function check() {
+				var a = document.getElementById("id").value;
+				var b = document.getElementById("pw").value;
+				var name = window.localStorage.getItem('name');
+				var password = window.localStorage.getItem('password');
+				if(a == name && b == password) {
+					document.location = "home.html";
+					// alert("ok");
+				} else {
+					alert("输入账号或密码错误");
+				}
+			}
+//		});
+	</script>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>-->
+
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<script type="text/javascript" src="js/jquery-2.2.2.js" ></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js" ></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				border: none;
+				touch-action: none; 
+			}
+			
+			#top {
+				background-color: #6596ff;
+				min-height: 180px;
+				width: 100%;
+				line-height:180px;
+				text-align: center;
+			}
+			
+			#top p
+			{
+				font-size: x-large;
+				font-weight: 900;
+				color: white;
+			}
+			
+			#aui-login-logo {
+				padding-top: 45px;
+				width: 190px;
+				display: block;
+				margin: 0 auto;
+			}
+			
+			#id,
+			#pw,
+			#sub {
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+			
+			#idform #sub {
+				font-size: 16px;
+				display: block;
+				background: #6596ff;
+				width: 100%;
+				margin: 0 auto;
+				border-radius: 2px;
+				height: 44px;
+				line-height: 44px;
+				text-align: center;
+				color: #fff;
+				/*opacity: 1;*/
+			}
+			
+		
+			#reg{
+				display: block;
+				width: 100%;
+				text-align: center;
+				padding-top: 10px;
+				margin: 0 auto;
+				font-size: 10px;
+			}
+			input{
+				/*border: none;*/
+				border-bottom: 2px #ccc solid;
+				width: 100%;
+				font-size: 12px;
+				height: 50px;
+				line-height: 50px;
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="" data-role="page" style="background-color: #fff;">
+			<div id="top" data-role="header">
+				<p>Books To Joy</p>
+			</div>
+			<div data-role="main" class="ui-content">
+				<form method="post">
+					<div id="idform">
+						<div class="ui-field-contain">
+							<input type="text" name="fullname" data-role="none" id="id" placeholder="用户名">
+							<input type="password" placeholder="密码" data-role="none" name="pw1" value="" id="pw1">
+							<input type="password" placeholder="确认密码" data-role="none" name="pw2" value="" id="pw2">
+							<!--<button onclick="check()" type="submit" style="">登录</button>-->
+							<input type="submit" id="sub" name="" data-role="none" value="注册" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var sub = document.getElementById('sub');
+			var id = document.getElementById('id');
+			var pw = document.getElementById('pw1');
+			var pw2 = document.getElementById('pw2');
+			console.log(id.value, pw.value, pw2.value);
+			sub.onclick = function() {
+				if (pw.value == pw2.value) {
+					window.localStorage.setItem('name', id.value);
+					window.localStorage.setItem('password', pw.value);
+					window.location.href = 'login.html';
+				} else {
+					alert('前后密码不一致,请重新输入');
+				}
+			}
+//			sub.addEventListener('click', () => {
+//				
+//			})
+//			
+			
+			
+			
+		</script>
+	</body>
+</html>
