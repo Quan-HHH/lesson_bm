@@ -3,6 +3,7 @@ var reverseWords = function(s) {
     let str = '';
     let arr = [];
     for(let i of s) {
+        console.log(i)
         if(i === ' ') {
             if(str != '') {
                 arr.push(str);
@@ -15,4 +16,4 @@ var reverseWords = function(s) {
     let res = arr.reverse().join(' ')
     return res;
 };
-reverseWords('1234bhk ch k')
+console.log(reverseWords('1234bhk ch k'))
