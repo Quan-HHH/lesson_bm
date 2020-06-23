@@ -1,32 +1,27 @@
 import React from 'react';
-import { fromJS } from 'immutable'
-import ImmutableComponent from './components/common'
+import { fromJS } from 'immutable';
+import ImmutableComponent from './components/common';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import store from './store/index'
 import logo from './logo.svg';
-import Header from './components/Header'
-import './App.css';
+import Header from './components/Header/Header';
+import Home from './pages/home'
+import Detail from './pages/detail'
 
 
 class App extends ImmutableComponent {
-  // 最外层数据依然是个原生js对象
-  state = {
-    title: fromJS('123')
-  }
-  
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        title: '123'
-      })
-    }, 3000)
-  }
   render() {
-    console.log('app render')
     return (
-      <div>
-        123456
-        <Header title={this.state.title}/>
-      </div>
-    )
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+          <Route path="/" component={Home} exact />
+          <Route path="/detail" component={Detail} />
+        </BrowserRouter>
+      </Provider>
+
+    );
   }
 }
 
