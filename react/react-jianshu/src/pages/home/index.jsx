@@ -31,4 +31,10 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+// connect
+// redux -> 桥 -> react
+// redux store -> react Provider  全局
+// 每个组件都能获取到
+// 规定获取redux中的数据，必须用mapStateToProps的返回值来获取
+// connect会把返回值返到props上
+export default connect(mapStateToProps, mapDispatchToProps)(8);
