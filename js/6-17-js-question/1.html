@@ -1,13 +1,66 @@
 <script>
-function Page() {
-  return this.hosts;
-}
-Page.hosts = ['h11111'];
-Page.prototype.hosts = ['h22222'];
- 
-var p1 = new Page();
-var p2 = Page();
+    function Page() {
+        return this.hosts;
+    }
+    Page.hosts = ['h11111'];
+    Page.prototype.hosts = ['h22222'];
 
-console.log(p1); 
-console.log(p2); 
+    var p1 = new Page();
+    // new this指向实例
+    // this 指向谁？ 指向p1;
+    // new这个过程 发生了什么
+
+
+    // this === window
+    // window.hosts  undefined
+    var p2 = Page();
+
+    console.log(p1);
+    console.log(p2);
+
+
+    // 模拟new的行为
+    function myNew(Constructor) {
+        // 1. 创建一个继承自构造函数.prototype的对象
+
+        let obj = {};
+        // 继承
+        obj.__proto__ = Constructor.prototype;
+        // console.log(obj.hosts); // ['h2222']
+
+        // 2. 这个对象会作为构造函数运行时的this  完成自身属性的添加
+        let res = Constructor.apply(obj)
+        console.log(res);
+        // 如果返回了一个对象 那new的结果就是这个对象
+        // 如果没有返回对象 那 new 的结果就是刚才创建的这个对象
+        return typeof res === 'object' ? res : obj;
+    }
+    const p3 = myNew(Page)
+
+    function Animal() {
+        // return {
+        //   a: 1, b: 2
+        // }
+
+        // 如果返回的不是一个对象 return 对 new 的结果没有任何作用
+
+        // return 3;
+        this.name = 'cat';
+    }
+    let ani = new Animal();
+    console.log(ani)
+    console.log(myNew(Animal));
+    // 可以看出两个输出是一样的
+
+    // class 语法糖 本质还是function
+    class Shape {
+        constructor() {
+            return {
+                shape: 123
+            }
+        }
+    }
+    console.log(typeof Shape);  // function
+    const s = new Shape();
+    console.log(s);
 </script>
