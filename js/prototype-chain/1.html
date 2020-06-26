@@ -1,0 +1,31 @@
+<script>
+    function Animal() {
+        this.name = 'name';
+    }
+    // 函数 天然自带一个prototype的属性 对象是没有的
+    // prototype这个属性 是一个对象 { constructor: }
+    console.log(Animal.prototype);
+    // 因为new的关系 所有的实例都会继承自这里
+    Animal.prototype.say = function() {
+        console.log('say');
+    }
+    let ani = new Animal();
+    console.log(ani);
+
+    // __proyo__: chrome
+    // [[ prototype ]]: ECMA 表示
+    ani.__proto__ === Animal.prototype;
+    Object.getPrototypeOf(ani) === ani.__proto__
+    Object.getPrototypeOf(ani) === Animal.prototype;
+    ani.__proto__ = XXX;
+    Object.setPrototypeOf()
+
+    // 构造一个对象出来
+    let obj = {};
+    let obj2 = new Object();
+// 不管用什么方式构造的对象 原型都指向构造函数的prototype
+    // obj.__proto__就指向Object.prototype
+    console.log( obj.__proto__ === Object.prototype)
+
+    console.log(Object.getPrototypeOf(Object.prototype)) // null  原型链的尽头
+</script>
