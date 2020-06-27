@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getHomeList } from '../../store/actions/home'
+import axios from 'axios'
+import { homeListActionCreator } from '../../store/actions/home';
+import { fromJS } from 'immutable';
 class Home extends Component {
   componentDidMount() {
     this.props.fetchHomeList();
+    // this.props.dispatch(getHomeList);
   }
   state = {  }
   render() {
     return ( <div>
       home
-      length: { this.props.homeList.length }
+      length: { this.props.homeList.size }
     </div> );
   }
 }
@@ -18,7 +21,7 @@ class Home extends Component {
 // 过滤完结果（return）都会由 connect 传给你组件的 props
 const mapStateToProps = (state) => {
   return {
-    homeList: state.home.homeList
+    homeList: state.getIn(['home', 'homeList'])
   }
 }
 // 用户 操作 UI 引起页面变化
@@ -27,14 +30,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchHomeList() {
-      dispatch(getHomeList)
+      // 请求 封装一下
+      axios.get('/home/home.json')
+      .then(res => {
+        const homeList = res.data;
+        // homeList 传到 action 那一步
+        // getHomeList.homeList = fromJS(homeList);
+        // 请求回来的数据 和 redux action
+        let action = homeListActionCreator(fromJS(homeList))
+        dispatch(action);
+      })
     }
   }
 }
-// connect
-// redux -> 桥 -> react
-// redux store -> react Provider  全局
-// 每个组件都能获取到
-// 规定获取redux中的数据，必须用mapStateToProps的返回值来获取
-// connect会把返回值返到props上
-export default connect(mapStateToProps, mapDispatchToProps)(8);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

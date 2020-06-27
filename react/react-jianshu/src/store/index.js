@@ -1,11 +1,18 @@
-// import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux-immutable';
 import { createStore, 
-  combineReducers,
+  // combineReducers,
    applyMiddleware } from 'redux'
 import thunk from 'redux-thunk';
 import HomeReducer from './reducers/home/index';
 
 // 多个 reducer 合并成一个
+// combineReducers 返回的是一个reducer
+
+// let defaultRootState = {
+//   home: Map { homeList => List}.
+//   detail: Map
+// }
+// function rootReducer(state = defaultRootState, action) {}
 
 const rootReducer = combineReducers({
   home: HomeReducer
