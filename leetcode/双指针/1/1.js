@@ -26,7 +26,7 @@ const twoSum = function(nums, target){//const声明了一定要赋值
         // e是数组值，i是下标
         map[e] = i;
     })
-    // console.log(map)
+    console.log(map)
     // console.log(123)
     for(let i = 0; i < nums.length; i++){
         let j = map[target - nums[i]];
