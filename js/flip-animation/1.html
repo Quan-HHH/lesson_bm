@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            transform-origin: top left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // first 初始状态
+        const box = document.querySelector('#box');
+        const first = box.getBoundingClientRect();
+        // css 信息变化
+        box.style.width = '400px';
+        box.style.height = '400px';
+        // last
+        const last = box.getBoundingClientRect();
+        console.log(first, last)
+
+        //invert 算出前后的偏移量  翻转
+        let diffW = first.width / last.width;
+        let diffH = first.height / last.height;
+        console.log(diffH, diffW)
+
+        // play 设置width 和 height 是瞬间完成的 所以 要设置play
+        // 加点过渡
+        // 1. 翻转回去 缩小 scale(0.5)
+        // 2. 慢慢地恢复为scale(1)
+        box.animate([
+            {
+                transform: `scale(${diffW})`
+            },{
+                transform:`scale(1)`
+            }
+        ], {
+            duration: 3000,
+            easing: 'ease-in-out'
+        })
+    </script>
+</body>
+
+</html>
