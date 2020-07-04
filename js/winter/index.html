@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            background-color: aquamarine;
+        }
+        h1 {
+            font-size: 10px;
+        }
+        p {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>aaa</h1>
+        <p>bbb</p>
+    </div>
+    <script>
+        // 浏览器渲染的入口 node cssStyleSheet
+        // 浏览器的实验属性
+        // -webkit 浏览器内核自带的属性 W3C目前还不支持
+        console.log(Object.keys(document.body.style).length);
+    </script>
+</body>
+</html>
