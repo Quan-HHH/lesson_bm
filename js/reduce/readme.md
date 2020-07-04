@@ -2,3 +2,8 @@
 如果没有给initial_val 那数组的第一项 就是initial_val
 否则 initial_val 开始 + arr[0]
 arguments  类数组  ->  真正的数组  Array.from
+
+手写代码方法:
+    1. 原理
+    2. 从返回值入手 由结果向前推
+    2. 分布式写法
