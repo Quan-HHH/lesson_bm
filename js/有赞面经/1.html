@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 选择器组 *//* 2 3 4 会被选中 */
+        li + li {
+            border-left: solid 1px black;
+        }
+        ul li {
+            color: red;
+        }
+        /* 子选择器 */
+        ul > li {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <div>
+            <li>123456</li>
+        </div>
+    </ul>
+    <script>
+        console.log(document.querySelectorAll('li + li'));
+        let promise1 = Promise.resolve(1);
+        let promise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(4);// 这种写法和上面的是一样的
+            }, 1000)
+        })
+        let promist6 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject(4);// 这种写法和上面的是一样的
+            }, 2000)
+        })
+        let promise3 = Promise.resolve(3);
+        let promise4 = Promise.reject(3);
+        let promist5 = new Promise((resolve, reject) => {
+            // setTimeout(() => {
+                resolve(4);// 这种写法和上面的是一样的
+            // }, 1000)
+        })
+        // 传入一堆异步任务
+        // all要求 所有的异步任务成功 才会成功
+        Promise.all([promise1, promise2, promise3])//返回的是promise promise完成了才进入.then方法
+        .then(res => {
+            console.log(res);
+        }) 
+        .catch()
+
+        Promise.allSettled([promise1, promise2, promise3])
+        .then(res => {
+            console.log(res);
+        })
+        .catch()
+
+        Promise.race([promise2, promise3]) // 哪个promise先发生变化 就是最终的结果
+        .then(res => {
+            console.log(res)
+        })
+        .catch()
+
+        // 怎么实现一个Promise.all  / Promise.all的原理
+       
+    </script>
+</body>
+</html>
