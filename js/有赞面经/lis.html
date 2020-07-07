@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li data-uid="1">1</li>
+        <li data-uid="2">2</li>
+        <li data-uid="3">3</li>
+        <li data-uid="4">4</li>
+        <li data-uid="5">5</li>
+    </ul>
+    <script>
+        // 1.
+        const lis = document.querySelectorAll('ul li');
+        for(let node of lis) {
+            node.addEventListener('click', () => {
+
+            })
+        }
+        // 2.
+        const ul = document.querySelector('ul');
+        ul.addEventListener('click', (e) => {
+            // console.log(e.path)
+            // <li data-uid=""><div></div><span></span></li>
+            // 处理的就是 点击div 或者span 都认为点中了li
+            const target = e.path.find(x => x.tagName === 'LI' && x.getAttribute('data-uid'));
+            let nickname = e.target.innerText;
+            let uid = e.target.getAttribute('data-uid');
+            console.log('clicked!!!!', e.target, e.currentTarget);
+            // 谁触发了这个事件 target就指谁
+            // 谁绑定的事件 就指谁
+            console.log(nickname, uid)
+        })
+
+        const lis1 = document.querySelectorAll('li')  
+        const lis2 = document.getElementsByTagName('li');  // 这是动态的,实时查询的 每访问一次节点 都会去查一下
+        ul.removeChild(lis1[0])
+        ul.innerHTML += `<li></li>
+        <li></li>`
+        console.log(lis1, lis2) // lis1输出了5个节点 而lis2输出了4个节点
+    </script>
+</body>
+</html>

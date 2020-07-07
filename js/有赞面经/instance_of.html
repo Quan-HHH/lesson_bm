@@ -1,0 +1,22 @@
+<script>
+    let r = '11111';
+    let obj = {
+        [r] : 123,
+        'r': 234
+    }
+    console.log(obj, obj[r]);
+    console.log(obj['r'], obj.r)
+    for(let key in obj) {
+        console.log(obj[key]);
+    }
+    // 元编程: 对编程语言的再编程
+    class myArr {
+        static a = 1;
+        static [Symbol.hasInstance](obj) {
+            return false;
+        }
+    }
+    let arr = new myArr();
+    console.log(myArr[Symbol.hasInstance])
+    console.log(arr instanceof myArr);  //本来是true, 由于上面改hasInstance 会输出false
+</script>

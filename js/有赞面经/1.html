@@ -56,11 +56,11 @@
         }) 
         .catch()
 
-        Promise.allSettled([promise1, promise2, promise3])
-        .then(res => {
-            console.log(res);
-        })
-        .catch()
+        // Promise.allSettled([promise1, promise2, promise3])
+        // .then(res => {
+        //     console.log(res);
+        // })
+        // .catch()
 
         Promise.race([promise2, promise3]) // 哪个promise先发生变化 就是最终的结果
         .then(res => {
@@ -70,6 +70,21 @@
 
         // 怎么实现一个Promise.all  / Promise.all的原理
        
+
+
+        function myInstance(obj, Constructor) {
+            // if(Constructor[Symbol.hasInstance]) {
+
+            // }
+            let proto = obj.__proto__;  // 原型链上 非常重要的 私有的属性
+            if(proto === Constructor.prototype) {
+                return true;
+            }
+            if(proto === null) return false;
+            return myInstance(proto, Constructor);
+        }
+        console.log(myInstance([],Array));
+        console.log(myInstance({}, Object));
     </script>
 </body>
 </html>
