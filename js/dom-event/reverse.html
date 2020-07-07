@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <p>1</p>
+        <span>2</span>
+        <li>3</li>
+    </div>
+    <div class="wrap2"></div>
+    <script>
+        const childs = document.querySelector('.wrap');
+        const eles = childs.childNodes;   // childNodes也是动态的
+        console.log(eles)
+        // const copy = [...eles];
+        // 同一个dom节点 只能有一个父节点
+        // childs.innerHTML = '';
+        for(let len = eles.length - 1; len >= 0; len --) {
+            childs.appendChild(eles[len]);
+        }
+        // document.querySelector('.wrap2').appendChild(eles[1]);  li在wrap1中消失了 由于同一个dom节点 只能有一个父节点
+    </script>
+</body>
+</html>
