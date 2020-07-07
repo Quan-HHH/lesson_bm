@@ -9,7 +9,7 @@ export default Mock.mock('/posts/',
         // 属性 list 的值是一个数组，其中含有 5 到 10 个元素
         'list|5-10': [{
             'title': '@title()',  // 会随机生成一个标题
-            'amail': '@email()',
+            'email': '@email()',
             'id': '@id()',
             'key|+1': 1
         }]
