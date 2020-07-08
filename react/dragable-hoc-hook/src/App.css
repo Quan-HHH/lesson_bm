@@ -1,0 +1,8 @@
+.dragable {
+  position: absolute;
+  background-color: gray;
+}
+
+body {
+  position: relative;
+}
