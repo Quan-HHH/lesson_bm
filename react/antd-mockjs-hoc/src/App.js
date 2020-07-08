@@ -1,8 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import './App.styl'
 import { Table } from 'antd';
-import 'antd/dist/antd.css';
+// 不引入css 怎么显示样式 只要它是全局的就行
+// import 'antd/dist/antd.css';
+// antd 全局引入方式 babel
 
 const dataSource = [
   {
