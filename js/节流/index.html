@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            /* view port width */
+            width: 100vw;  
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <script src="1.js"></script>
+    <script>
+        const body = document.body;
+        function getUrlInfo() {
+            console.log('发出请求')
+        }
+        body.onmousemove = throttled2(getUrlInfo, 2000);
+        // 时间戳
+        // 有头事件 但是没有尾巴
+        function throttled(func, wait) {
+            var previous = 0;
+            console.log('外部');
+            // 外部只会输出一次 只触发了第一次
+            return function() {
+                console.log('里面');
+                var now = new Date().getTime();
+                if(now - previous > wait) {
+                    func();
+                    previous = now;
+                }
+            }
+        }
+
+        // 定时器实现
+        // 没有头事件  但是尾巴有
+        function throttled1(func, wait) {
+            var timeout = null;
+            return function() {
+                if(!timeout) {
+                    timeout = setTimeout(() => {
+                        func();
+                        timeout = null;
+                    }, wait);
+                }
+            }
+        }
+    </script>
+</body>
+</html> 
