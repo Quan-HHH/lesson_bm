@@ -42,6 +42,7 @@ const loadAndRefresh = (url) => (WrappedComponent) => {
     }
     componentDidMount() {
       // 数据请求
+      
       this._loadData();
     }
     async _loadData() {
