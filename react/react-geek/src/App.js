@@ -5,7 +5,6 @@ import axios from 'axios'
 import './mock/data.js'
 
 
-
 class App extends Component {
   constructor() {
     super();
@@ -14,7 +13,8 @@ class App extends Component {
       tabs2: [],
       overLesson: [],
       tabLesson: [],
-      allLesson: []
+      allLesson: [],
+      filteredLesson: []
     }
   }
   componentDidMount() {
@@ -68,15 +68,6 @@ class App extends Component {
     }
   }
 
-  handleFilter = () => {
-    const { tabLesson, overLesson } = this.state;
-    console.log(tabLesson, overLesson)
-    // this.setState({
-    //   filteredLesson: tabLesson.filter(() => {
-
-    //   })
-    // })
-  }
 
   render() {
     const columns = [
@@ -105,6 +96,11 @@ class App extends Component {
       }
     ];
     const { TabPane } = Tabs;
+    let { allLesson, tabLesson, overLesson, filteredLesson } = this.state;
+    filteredLesson = allLesson.filter((item) => {
+      return (item.over === 0 || overLesson.includes(item)) && (item.tab === 0 || tabLesson.includes(item))
+    })
+    console.log(this.state.overLesson, this.state.tabLesson)
     return (
       <div className="App">
         <header>我的课程</header>
@@ -134,7 +130,7 @@ class App extends Component {
         </Tabs>
         <Table
           columns={columns}
-          dataSource={this.state.filteredLesson}
+          dataSource={filteredLesson}
           showHeader={false}
         />
       </div>
