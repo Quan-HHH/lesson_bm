@@ -7,7 +7,7 @@ class Header extends Component {
             <div className="wrapper">
                 <div className="header">
                     <div>知识星球</div>
-                    <span className="icon iconfont">&#xe605;</span>
+                    <span className="icon iconfont">&#xe627;</span>
                 </div>
                 <input type="text" placeholder="搜索用户、星球或内容"/>
             </div>

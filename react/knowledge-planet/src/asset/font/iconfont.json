@@ -6,11 +6,32 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "1021910",
+      "icon_id": "1338348",
       "name": "add",
-      "font_class": "add",
-      "unicode": "e605",
-      "unicode_decimal": 58885
+      "font_class": "add1",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "6120382",
+      "name": "planet",
+      "font_class": "planet",
+      "unicode": "e845",
+      "unicode_decimal": 59461
+    },
+    {
+      "icon_id": "9186216",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "14186846",
+      "name": "add",
+      "font_class": "add2",
+      "unicode": "e627",
+      "unicode_decimal": 58919
     },
     {
       "icon_id": "2949340",
@@ -18,13 +39,6 @@
       "font_class": "dongtai",
       "unicode": "e725",
       "unicode_decimal": 59173
-    },
-    {
-      "icon_id": "3474933",
-      "name": "global",
-      "font_class": "global",
-      "unicode": "e6e5",
-      "unicode_decimal": 59109
     },
     {
       "icon_id": "10708594",

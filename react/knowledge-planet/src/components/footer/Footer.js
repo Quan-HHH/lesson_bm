@@ -8,7 +8,7 @@ class Footer extends Component {
             <div className="footer-wrapper">
                 <div className="tabbar-icon-wrapper">
                     <div>
-                        <span class="icon iconfont">&#xe6e5;</span>
+                        <span class="icon iconfont">&#xe845;</span>
                         <p>星球</p>
                     </div>
                 </div>

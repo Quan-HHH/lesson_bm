@@ -1,0 +1,33 @@
+.main-wrapper {
+  padding: 15px;
+  display: flex;
+}
+.main-wrapper .planet-wrapper {
+  box-sizing: border-box;
+  width: 2rem;
+  height: 3.066667rem;
+  background-color: lightpink;
+  margin: 0 0.15rem;
+  border-radius: 5px;
+}
+.main-wrapper .add-planet-wrapper {
+  box-sizing: border-box;
+  width: 2rem;
+  height: 3.066667rem;
+  margin: 0 0.15rem;
+  border: dotted #828282;
+  border-radius: 5px;
+  color: #828282;
+  font-weight: 100;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-wrapper .add-planet-wrapper .add-planet .add1 {
+  margin-top: 50%;
+  font-size: 0.5rem;
+}
+.main-wrapper .add-planet-wrapper .add-planet .create-planet {
+  font-size: 0.24rem;
+}
