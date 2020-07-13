@@ -1,0 +1,44 @@
+{
+  "id": "1941447",
+  "name": "knowledgePlanet",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1021910",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    },
+    {
+      "icon_id": "2949340",
+      "name": "动态",
+      "font_class": "dongtai",
+      "unicode": "e725",
+      "unicode_decimal": 59173
+    },
+    {
+      "icon_id": "3474933",
+      "name": "global",
+      "font_class": "global",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "10708594",
+      "name": "我 的",
+      "font_class": "Icon_wode",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "13846054",
+      "name": "消 息",
+      "font_class": "xiaoxi",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    }
+  ]
+}
