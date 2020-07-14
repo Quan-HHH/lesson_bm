@@ -6,12 +6,15 @@
 function arraysSimilar(arr1, arr2){
     if(!(arr1 instanceof Array) || !(arr2 instanceof Array)) return false;
     if(arr1.length !== arr2.length) return false;
-    
+    if(getType(arr1).sort().join('') === getType(arr2).sort().join('')) return true;
+    else return false;
     function getType(arr) {
         let result = [];
         for(let i of arr) {
-            result.push(i.)
+            result.push(Object.prototype.toString.call(i));
         }
+        return result;
     }
-
 }
+const arr1=[1,true,null],arr2=[null,false,100];
+console.log(arraysSimilar(arr1, arr2))
