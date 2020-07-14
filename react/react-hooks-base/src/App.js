@@ -1,12 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Demo from './useEffect'
+import P from './useContext'
+import Counter from './useReducer'
 
 function App() {
   return (
     <div className="App">
       <Demo />
+      <P />
+      <Counter />
     </div>
   );
 }

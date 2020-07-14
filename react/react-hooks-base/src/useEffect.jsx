@@ -3,6 +3,9 @@ import React, { useEffect, useState, useMemo, useCallback } from 'react'
 // hook只能在函数组件用
 // 函数组件没有render方法
 let arr = [1, 2];
+let set = new Set();  // 无重复的数据集 功能与数组类似 但是如果放了重复的内容进来 会忽略 [1,1,1] 会存成[1]
+set.add(1);
+set.add(1); // [1]
 function Demo() {
     // inputVal, setVal是一一对应的 setVal只能修改inputVal useStat里的东西可任意传，相当于默认值
     const [ list, setList ] = useState([]);
@@ -11,15 +14,17 @@ function Demo() {
     const [inputVal, setVal] = useState('海阔天空');
 
     // const val = arr; //因为每次要重新render 可以优化成存进缓存里面
-    const val = useMemo(() => arr)
-    console.log(val === arr); // 可以判断出每次的val都是同一个arr
-    console.log(inputVal, setVal)
+    // 缓存的时候会检查依赖 只有依赖没有变化 才会使用上次的值
+    const val = useMemo(() => arr, [])
+    set.add(val);
+    console.log(set, set.size)
+    console.log(inputVal, setVal) // 判断每次的val是不是同一个val
     // const handleChange = (event) => {
     //     setVal(event.target.value)
     // }
     const handleChange = useCallback((event) => {
         setVal(event.target.value)
-    })
+    }, [])
     // 页面渲染完了 才会进入useEffect
     useEffect(() => {
         fetch('http://neteasecloudmusicapi.zhaoboy.com/search?keywords=' + inputVal)
