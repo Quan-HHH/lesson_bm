@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
-
+import * as serviceWorker from './serviceWorker'; 
+import {BrowserRouter, Route} from 'react-router-dom';
+// import Planet from './components/main/planet/Planet';
+import Create from './components/create/Create';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <Route path="/" exact component={App} />
+    <Route path='/Create' component={Create}/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
