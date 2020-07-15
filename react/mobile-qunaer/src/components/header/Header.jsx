@@ -4,10 +4,10 @@ import './Header.css'
 
 export default function Header(props) {
     // 函数式组件 外面传的东西都在参数props里面
-    const { title } = props;
+    const { title, onBack } = props;
     return (
         <div className="header">
-            <div className="header-back">
+            <div className="header-back" onClick={onBack}>
                 <svg width="42" height="42">
                     <polyline 
                     points="25,13 16,21 25,29"
@@ -23,5 +23,6 @@ export default function Header(props) {
 }
 
 Header.propTypes = {
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    onBack: PropTypes.func.isRequired
 }
