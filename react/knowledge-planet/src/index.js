@@ -7,12 +7,12 @@ import {BrowserRouter, Route} from 'react-router-dom';
 // import Planet from './components/main/planet/Planet';
 import Create from './components/create/Create';
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
     <Route path="/" exact component={App} />
     <Route path='/Create' component={Create}/>
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

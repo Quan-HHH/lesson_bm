@@ -12,6 +12,9 @@ body {
         justify-content: center;
         align-items: center;
         background-color: white;
+        .cancel {
+            color: black;
+        }
         .center {
             flex: 1;
         }
@@ -26,10 +29,17 @@ body {
         }
     }
     .choose-image {
-        height: 1.333333rem;
-        width: 1.333333rem;
+        margin-top: 50px;
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+        height: 2rem;
+        width: 2rem;
         background-color: rgb(red, green, blue);
-        
+        overflow: hidden;
+        img {
+            height: 100%;
+        }
     }
     .planet-name-input {
         margin: 0.2rem;

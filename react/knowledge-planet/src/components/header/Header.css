@@ -3,11 +3,13 @@
   margin: 0.2rem;
 }
 .wrapper .header {
-  margin: 0;
+  background-color: #fff;
+  padding: 0.2rem;
   height: 44px;
   position: fixed;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   box-sizing: border-box;
   display: flex;
   justify-content: center;
