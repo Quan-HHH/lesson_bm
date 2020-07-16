@@ -47,4 +47,27 @@
             })(Component)
         2. 创建组件
         3. 状态组件 无状态组件重用方法
+
     - reducer
+        1. action的标准做法
+        返回 {type:, payload:} 更新reducer的状态
+        - 组件里的事件 生命周期等功能 主要是和数据 状态 打交道， 归为Action来做
+        - action中 所有的action 使用export来返回
+        - 在组件中引入需要的actions
+        - 引入之后 交给bindActionCreator  变成本地调用的函数 dispatch
+        - useMemo 缓存
+        - connect 中第二个参数返回要的action
+
+
+    1. action 
+        from 北京
+        to 南昌
+        两个reducer函数 就有两个action
+        修改的本质 redux
+
+    - from to的复盘
+        1. redux 编程思想
+        - reducer是纯函数 负责返回状态 及 接受状态的修改 那一刻只有一个状态与之相对应 switch case
+        - actions actionTypes 是修改reducer的使者 dispatch一个action
+        from to 都有独立的reducer函数 和action
+        - exchangeFromTo 拿到dispatch 和 getState
