@@ -23,7 +23,6 @@
             insert(str)
         }
         let prefix = '';
-        console.log(Object.keys(root))
         while(Object.keys(root).length === 1 && Object.keys(root)[0] !== '$') {
             prefix += Object.keys(root);
             root = root[Object.keys(root)];
