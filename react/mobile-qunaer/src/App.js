@@ -23,7 +23,7 @@ function App(props) {
       exchangeFromTo
       // 返回的是exchangeFromTo这个action函数
     }, dispatch);
-  }, [])
+  }, [dispatch])
 
   return (
     <div>
