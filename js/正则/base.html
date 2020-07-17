@@ -8,37 +8,51 @@
 
     // YYYY-MM-DD
     let reg1 = /^[0-9]{4}-(1[0-2]|0[1-9])-(0[1-9]|[1-2][0-9]|3[0-1])$/
-    console.log(reg1.test('2020-12-12'))
-    console.log(reg1.exec('2020-12-12'))
-    console.log('2020-12-12'.match(reg1))
+    // console.log(reg1.test('2020-12-12'))
+    // console.log(reg1.exec('2020-12-12'))
+    // console.log('2020-12-12'.match(reg1))
     // ['输入的源文本', 分组1, 分组2, ..., 分组n]  一个小括号就是一个小组
 
     let reg2 = /[a-z]/g;
     let str = 'abc';
-    console.log(reg2.test(str),reg2.lastIndex) // a满足 true
-    console.log(reg2.test(str),reg2.lastIndex) // b满足 true
-    console.log(reg2.test(str),reg2.lastIndex) // 1不满足 false
-    console.log(reg2.test(str),reg2.lastIndex) // 
-    console.log(reg2.test(str),reg2.lastIndex) // 
-    console.log(reg2.exec(str))
-    console.log(reg2.exec(str))
-    console.log(reg2.exec(str))
-    console.log(reg2.exec(str))
-    console.log(reg2.exec(str))
+    // console.log(reg2.test(str),reg2.lastIndex) // a满足 true
+    // console.log(reg2.test(str),reg2.lastIndex) // b满足 true
+    // console.log(reg2.test(str),reg2.lastIndex) // 1不满足 false
+    // console.log(reg2.test(str),reg2.lastIndex) // 
+    // console.log(reg2.test(str),reg2.lastIndex) // 
+    // console.log(reg2.exec(str))
+    // console.log(reg2.exec(str))
+    // console.log(reg2.exec(str))
+    // console.log(reg2.exec(str))
+    // console.log(reg2.exec(str))
 
     let state = {
         name: 'lilei',
         age: 18
     }
     let str2 = 'my name is {name}, age is {age}';
-    function compile(obj, tpl) {
-        let reg = /{/g;
-        console.log(reg.exec(tpl));
-        console.log(reg.exec(tpl));
-        nameIndex = reg.exec(tpl);
-        ageIndex = reg.exec(tpl)
-        console.log(nameIndex, ageIndex)
-
+    function compile(obj, tpl){
+        for(let item in obj) {
+            let reg = new RegExp("{"+item+"}")
+            tpl = tpl.replace(`{${item}}`, obj[item])
+        }
+        return tpl;
     }
-    compile(state, str2)
+    function compile(obj, str) {
+        let reg = /\{([0-9A-Za-z_]+)\}/g;
+        // console.log(str.match(reg))
+        let info = reg.exec(str);
+        console.log(info.lastIndex)
+        let i = 0;
+        let res = '';
+        while(info) {
+            res += str.substring(i, info.index);
+            let key = info[1];
+            res += obj[key];
+            console.log(reg, reg.lastIndex);
+            i = reg.lastIndex;
+            info = reg.exec(str);
+        }
+    }
+    console.log(compile(state, str2))
 </script>

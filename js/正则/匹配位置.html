@@ -1,0 +1,14 @@
+<script>
+    let str = 'hello';
+    console.log(str.replace(/^/, '#')) // '#hello'
+
+    // (?=l): l前面这个位置
+    // 子模式 子正则 等号后面支持任何语法
+    console.log(str.replace(/(?=l)/g, '#')) // 'he#l#lo'
+
+    // (?!)
+    console.log(str.replace(/(?!l)/g, '#')) // #h#ell#o#
+
+    // (?<=l): l后面这个位置
+    console.log(str.replace(/(?<=l)/g, '#')) // hel#l#o
+</script>

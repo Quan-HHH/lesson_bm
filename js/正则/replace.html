@@ -1,0 +1,37 @@
+<script>
+    let str = 'my name is {name}, age is {age}';
+    let obj = {
+        name: 'lilei',
+        age: 18
+    }
+    let reg = /\{([0-9A-Za-z_]+)\}/g;
+    let newStr = str.replace(reg, (...arg) => {
+        console.log(arg)
+        let key = arg[1];
+        return obj[key]
+    })
+    console.log(newStr)
+
+    function format(date) {
+        let newDate = date.substring(date.indexOf('-') + 1) + '.' + date.substring(0, date.indexOf('-'));
+        console.log(newDate);
+    }
+    function format(date) {
+        let reg = /(\d{4})-(\d{2})-(\d{2})/;
+        return date.replace(reg, (...arg) => {
+            console.log(arg)
+            return `${arg[2]}-${arg[3]}.${arg[1]}`
+        })
+    }
+    format('2017-11-11')
+
+    // 驼峰式命名
+    function rename(name) {
+        let reg = /\-(\w{1})/g;
+        return name.replace(reg, (...arg) => {
+            console.log(arg)
+            return arg[1].toUpperCase();
+        })
+    }
+    console.log(rename('background-color'))
+</script>
