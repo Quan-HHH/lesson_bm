@@ -1,13 +1,9 @@
-import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './actionTypes'
+import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST } from './actionTypes'
 
 
 const defaultState = {
     inputValue: 'Write Something',
-    list: [
-        '早八点 睡觉',
-        '早九点 睡觉',
-        '早十点 吃'
-    ]
+    list: []
 }
 
 export default (state = defaultState, action) => {
@@ -22,6 +18,9 @@ export default (state = defaultState, action) => {
             return newState;
         case DELETE_ITEM:
             newState.list.splice(action.index, 1);
+            return newState;
+        case GET_LIST:
+            newState.list = action.data.data.list;
             return newState;
         default:
     }

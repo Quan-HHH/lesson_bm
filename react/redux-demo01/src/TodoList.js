@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.min.css';
 import store from './store/index' // 引入的如果是index.js 连index都可以不写
 // import { CHANGE_INPUT, ADD_ITEM, DELETE_ITEM } from './store/actionTypes'
-import { changeInputAction, addItemAction, deleteItemAction} from './store/actionCreators'
+import { changeInputAction, addItemAction, deleteItemAction, getTodoList } from './store/actionCreators'
 import TodoListUI from './TodoListUI'
-import axios from 'axios';
 
 
 class TodoList extends Component {
@@ -14,9 +13,8 @@ class TodoList extends Component {
         store.subscribe(this.storeChange)
     }
     componentDidMount() {
-        axios.get('').then((res) => {
-            console.log(res)
-        })
+        const action = getTodoList();
+        store.dispatch(action)
     }
     storeChange = () => {
         this.setState(store.getState())

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Input, Button, List } from 'antd';
-import axios from 'axios';
 
 const TodoListUI = (props) => {
     return ( 
