@@ -56,11 +56,11 @@
         }) 
         .catch()
 
-        // Promise.allSettled([promise1, promise2, promise3])
-        // .then(res => {
-        //     console.log(res);
-        // })
-        // .catch()
+        Promise.allSettled([promise1, promise2, promise3])
+        .then(res => {
+            console.log(res);
+        })
+        .catch()
 
         Promise.race([promise2, promise3]) // 哪个promise先发生变化 就是最终的结果
         .then(res => {
