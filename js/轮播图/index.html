@@ -42,6 +42,7 @@
             current.style.transform = `translateX(${-100 * position}%)`
             next.style.transform = `translateX(${100 - 100 * nextPosition}%)`;
             setTimeout(() => {
+                // 不设定时器下面的会覆盖上面的
                 current.style.transition = ''; next.style.transition = '';
                 current.style.transform = `translateX(${-100 * position - 100}%)`
                 next.style.transform = `translateX(${100 - 100 * nextPosition - 100}%)`;
