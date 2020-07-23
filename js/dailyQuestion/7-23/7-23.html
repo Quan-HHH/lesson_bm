@@ -1,0 +1,31 @@
+<!-- https://juejin.im/post/5f17f2c06fb9a07e644f09de?tdsourcetag=s_pctim_aiomsg -->
+<style>
+.child2{
+    /* 不会影响 */
+    /* transform: translateY(200px); */
+
+    /* 会影响 */
+    /* position: absolute; */
+
+    /* 不会影响 */
+    position: relative; top: 200px;
+}
+</style>
+
+<div class="parent">
+    <div class="child1">child1 content</div>
+    <div class="child2">child2 content</div>
+    <div class="child3">child3 content</div>
+</div>
+
+<script>
+    let el = document.getElementById('app');
+    el.style.width = (el.offsetWidth+1) + 'px';
+    el.style.width = 1 + 'px'
+    // 重排两次
+// relayout 重排/回流: 元素大小、位置发生变化 
+// 当通过offsetWidth offsetHeight offsetTop getBoundingRect...api 获取元素大小位置信息的时候 浏览器为了给出实施的信息 也会重排一次
+
+// repaint 重绘: 元素的颜色 背景发生变化
+
+</script>
