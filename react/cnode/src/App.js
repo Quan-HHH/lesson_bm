@@ -8,10 +8,10 @@ import Collect from './Collect'
 function App() {
   return (
     <BrowserRouter>
-    header
-    <Route path="/login" component={Login} />
-    <PrivateRoute path="/collect" component={Collect} />
-    </BrowserRouter>    
+      header
+      <Route path="/login" component={Login} />
+      <PrivateRoute path="/collect" component={Collect} />
+    </BrowserRouter>
   );
 }
 

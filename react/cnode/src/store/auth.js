@@ -2,7 +2,7 @@ import { observable, action } from 'mobx'
 
 class Auth {
     @observable
-    isLogin = false;
+    isLogin = true;
 
     @action
     Login() {
