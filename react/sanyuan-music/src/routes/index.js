@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { lazy, Suspense, Component } from 'react';
 import { Redirect } from 'react-router-dom'
-import Recommend from '../application/Recommend'
+import Singer from '../application/Singers'
 import BlankLayout from '../layouts/BlankLayout'
 import HomeLayout from '../layouts/HomeLayout'
+const RecommendComponent = lazy(() => import('../application/Recommend'))
+const SingersComponent = lazy(() => import('../application/Singers'))
+
+const SuspenseComponent = Component => props => {
+    return (
+        <Suspense fallback={null}>
+            <Component {...props}></Component>
+        </Suspense>
+    )
+}
 
 export default [
     {
@@ -19,12 +29,13 @@ export default [
                     }, 
                     {
                         path: '/recommend',
-                        component: Recommend
+                        component: SuspenseComponent(RecommendComponent)
                     }, 
-                //     {
-                //         path: '/singers',
-                //         component: SingersComponent
-                //     }, 
+                    {
+                        path: '/singers',
+                        component: SuspenseComponent(SingersComponent),
+                        key: "singers"
+                    }, 
                 //     {
                 //         path: '/rank',
                 //         component: RankComponent
