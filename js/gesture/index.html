@@ -1,0 +1,18 @@
+<style>
+    #my {
+        width: 400px;
+        height: 400px;
+        background-color: royalblue;
+    }
+</style>
+
+<div id="my"></div>
+<script src="./event.js"></script>
+<script>
+    // 移动端的click事件 有300ms的延迟
+    // fastClick就是用来解决这个延迟的
+    const my = document.getElementById('my');
+    my.addEventListener('tap', function() {
+        console.log('tap');
+    })
+</script>

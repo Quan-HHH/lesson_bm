@@ -10,6 +10,7 @@
 <body>
     <script>
         function Foo() { }
+        console.log(Foo.prototype)
         let oldName = Foo.name;
         Foo.name = "bar";
         console.log([oldName, Foo.name]);
