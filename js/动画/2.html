@@ -1,0 +1,42 @@
+<style>
+    #el {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+    }
+</style>
+<div id="el"></div>
+<button id="pause" onclick="pause()">pause</button>
+<button id="resume" onclick="resume()">resume</button>
+<script>
+    const el = document.querySelector('#el');
+    let end = 400, duration = 2000, start = 0;
+    let startTime = Date.now();
+    // 效果上和setInterval类似
+    // setInterval(() => {console.log(1)}, 16.666666) 不能确保在每种设备都适用
+    function tick() {
+        // console.log(1);
+        let hasPassed = Date.now() - startTime; // 已经走了多久
+        let progress = hasPassed / duration; // 进度
+        if(progress >= 1) {
+            el.style.transform = `translate3d(${end}px, 0, 0)`;
+            return;
+        }
+        let x = progress * (end - start);
+        el.style.transform = `translate3d(${x}px, 0, 0)`
+        rafId = requestAnimationFrame(tick);
+    }
+    var rafId = null;
+    rafId = requestAnimationFrame(tick);
+    // requestAnimationFrame 确保回调在每一帧调用
+    // 当屏幕刷新率60Hz 1000 / 60 = 16.6666666ms
+    var pauseTime = null;
+    function pause() {
+        pauseTime = Date.now();
+        cancelAnimationFrame(rafId);
+    }
+    function resume() {
+        startTime += Date.now() - pauseTime;
+        rafId = requestAnimationFrame(tick)
+    }
+</script>

@@ -1,0 +1,43 @@
+<style>
+    /* 16 : 9 */
+    .ration {
+        width: 100%;
+        height: 0;
+        outline: 1px solid black;
+        /* border: 1px solid black; */
+        /* 用padding把高度撑开 */
+        /* padding 的百分比 是相对于宽来计算的 */
+        padding-top: calc(100% * 9 / 16);
+        position: relative;
+    }
+    .ration > div {
+        position: absolute;
+        left: 0;top: 0;
+    }
+</style>
+<div class="ration">
+    <div>content</div>
+</div>
+<script>
+    let obj = {
+        a: 1,
+        toString() {
+            return 1
+        },
+        valueOf() {
+            return 2 // 进行类型转换的时候转换为2
+        }, 
+        // 复杂数据类型进行类型转换的时候
+        // es6之前 toString/valueOf
+        [Symbol.toPrimitive]: () => {
+            return 3;
+        } //es6 toPrimitive
+    }
+    console.log(obj + 1)
+
+    Object.prototype.toString();  // 对象的toString
+    let arr = [1, 2];
+    arr.toString() // arr重写的
+    let num = 123;
+    num.toString(); // number重写的toString
+</script>
