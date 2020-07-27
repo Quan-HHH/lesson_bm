@@ -1,18 +1,18 @@
-import { axiosInstance } from './config'
+import { axiosInstance } from './config';
 
 export const getRecommendListRequest = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve({
-                data:[{
+                data: [{
                     id: 1,
-                    title: 'ncjfvfjss'
+                    title: 'aaaaaa'
                 }]
             })
-        }, 1000)
+        }, 1000);
     })
 }
 
-export const getBannersRequest = () => {
-    return axiosInstance.get('/banner')
+export const getBannerRequest = () => {
+    return axiosInstance.get("/banner");
 }

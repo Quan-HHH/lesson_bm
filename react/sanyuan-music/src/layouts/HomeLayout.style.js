@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-// 写静态页面的时候可以用
- 
-export const Top = styled.div`
+import styled from "styled-components";
+// 专门解决切页面， 不用过于组件化的语法 
+export const Top = styled.div `
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,20 +9,18 @@ export const Top = styled.div`
   & > span {
     line-height: 40px;
     color: #f1f1f1;
-    font-size: 20px;
+    font-size: 20px; 
     &.iconfont {
-      font-size: 25px;
+      font-size: 25px; 
     }
   }
 `;
-
-
-export const Tab = styled.div`
+export const Tab = styled.div `
   height: 44px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  background: #d44439;
+  background-color: #d44439;
   a {
     flex: 1;
     padding: 2px 0;
@@ -38,12 +35,11 @@ export const Tab = styled.div`
       }
     }
   }
-`
-
-export const TabItem = styled.div`
+`;
+export const TabItem = styled.div `
   height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-`
+`;

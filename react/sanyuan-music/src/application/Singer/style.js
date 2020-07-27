@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"; 
 
 export const NavContainer = styled.div`
     box-sizing: border-box;
@@ -9,8 +9,4 @@ export const NavContainer = styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
-`
-
-export const Horizen = styled.div`
-
 `
