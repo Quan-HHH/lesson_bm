@@ -1,0 +1,41 @@
+<script>
+    //设计一个简单的任务队列, 要求分别在 1,3,4 秒后打印出 "1", "2", "3"
+    // class Queue {
+    //     time = 0;
+    //     task(time, func) {
+    //         this.time += time;
+    //         setTimeout(func, this.time);
+    //         return this;
+    //     }
+    //     start = () => {
+    //         return this;
+    //     }
+    // }
+    class Queue {
+        constructor() {
+            this.tasks = [];
+        }
+        task(wait, callback) {
+            this.tasks.push({wait, callback})
+            return this;
+        }
+        start() {
+            let startTime = 0;
+            for(let task of this.tasks) {
+                startTime += task.wait;
+                setTimeout(() => {
+                    task.callback();
+                }, startTime);
+            }
+        }
+    }
+    new Queue()
+        .task(1000, () => {
+            console.log(1)
+        }).task(2000, () => {
+            console.log(2)
+        }).task(1000, () => {
+            console.log(3)
+        }).start()
+
+</script>
