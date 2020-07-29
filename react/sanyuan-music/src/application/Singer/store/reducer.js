@@ -1,19 +1,13 @@
+import * as actionTypes from './constants';
 const defaultState = {
-    category: "",
-    alpha: "",
-    singerList: [],
-    enterLoading: true,
-    // 分页
-    listOffset: 0
-}
+  artist: {}
+};
 
 export default (state = defaultState, action) => {
-    switch (action.type) {
-        case "":
-            
-            break;
-    
-        default:
-            return state;
-    }
+  switch(action.type) {
+    case actionTypes.CHANGE_ARTIST:
+      return {...state, artist: action.data}
+    default:
+      return state;
+  }
 }

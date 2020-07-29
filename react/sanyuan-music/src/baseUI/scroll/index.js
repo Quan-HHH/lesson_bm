@@ -29,22 +29,70 @@ export const PullDownLoading = styled.div`
   height: 30px;
   margin: auto;
   z-index: 100;
-` 
+`
+
+// 下为问题代码，以此为鉴
+// useEffect(() => {
+//   if(bScroll) return;
+//   const scroll = new BScroll(scrollContaninerRef.current, {
+//     scrollX: direction === "horizental",
+//     scrollY: direction === "vertical",
+//     probeType: 3,
+//     click: click,
+//     bounce:{
+//       top: bounceTop,
+//       bottom: bounceBottom
+//     }
+//   });
+//   setBScroll(scroll);
+//   if(pullUp) {
+//     scroll.on('scrollEnd', () => {
+//       //判断是否滑动到了底部
+//       if(scroll.y <= scroll.maxScrollY + 100){
+//         pullUp();
+//       }
+//     });
+//   }
+//   if(pullDown) {
+//     scroll.on('touchEnd', (pos) => {
+//       //判断用户的下拉动作
+//       if(pos.y > 50) {
+//         debounce(pullDown, 0)();
+//       }
+//     });
+//   }
+
+//   if(onScroll) {
+//     scroll.on('scroll', (scroll) => {
+//       onScroll(scroll);
+//     })
+//   }
+
+//   if(refresh) {
+//     scroll.refresh();
+//   }
+//   return () => {
+//     scroll.off('scroll');
+//     setBScroll(null);
+//   }
+//   // eslint-disable-next-line
+// }, []);
 const Scroll = forwardRef((props, ref) => {
   const [bScroll, setBScroll] = useState();
 
   const scrollContaninerRef = useRef();
 
   const { direction, click, refresh, pullUpLoading, pullDownLoading, bounceTop, bounceBottom } = props;
-
+  console.log(props, '++++++++++++');
   const { pullUp, pullDown, onScroll } = props;
-
+  console.log(onScroll, '++++++++++++');
   let pullUpDebounce = useMemo(() => {
-    return debounce(pullUp, 500)
+    // console.log(pullUp, '--------')
+    // return debounce(pullUp, 500)
   }, [pullUp]);
 
   let pullDownDebounce = useMemo(() => {
-    return debounce(pullDown, 500)
+    // return debounce(pullDown, 500)
   }, [pullDown]);
 
   useEffect(() => {

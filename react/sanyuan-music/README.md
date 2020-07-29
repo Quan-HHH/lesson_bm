@@ -9,3 +9,17 @@
 企业级的router配置方案react-router-config 清晰 易管理 可维护的routes/index.js配置
 layout app中总有几套皮肤 匹配那个级别的所有路由
 routes react-router-config renderRoutes(route.routes)
+
+
+- search
+    接口文档
+    - 热门搜索
+    url /search/hot
+    参数 null
+    返回值 result.hot
+    - 搜索建议
+    /suggest?keyword=
+    参数 keyword
+    返回值 albums
+    - 搜索结果
+    

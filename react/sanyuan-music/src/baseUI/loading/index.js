@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import style from '../../asserts/global-style';
+import style from '../../assets/global-style';
 
 const loading = keyframes`
   0%, 100% {
