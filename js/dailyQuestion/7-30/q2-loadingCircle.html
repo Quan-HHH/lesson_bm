@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid red;
+            /* border-top:pink solid 5px; */
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+        .progress {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+        .right, .left {
+            overflow: hidden;
+            width: 100px;
+            height: 200px;
+            position: absolute;
+        }
+        .right {
+            /* background-color: wheat; */
+            right: 0;
+        }
+        .left {
+            /* background-color: thistle; */
+            left: 0;
+        }
+        .circle-50 {
+            width: 160px;
+            height: 160px;
+            border: 20px solid transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+        }
+        .right-circle {
+            transform: rotate(-135deg);
+            border-top-color: tomato;
+            border-right-color: tomato;
+            right: 0;
+            animation: rotate 5s linear infinite;
+        }
+        .left-circle {
+            transform: rotate(135deg);
+            border-top-color: tomato;
+            border-left-color: tomato;
+            left: 0;
+            animation: rotate1 5s linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(-135deg);
+            }
+            50% {
+                transform: rotate(45deg);
+            }
+            100% {
+                transform: rotate(45deg);
+            }
+        }
+
+        @keyframes rotate1 {
+            0% {
+                transform: rotate(135deg);
+            }
+            50% {
+                transform: rotate(135deg);
+            }
+            100% {
+                transform: rotate(315deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle"></div>
+    <div class="progress">
+        <div class="right">
+            <div class="circle-50 right-circle"></div>
+        </div>
+        <div class="left">
+            <div class="circle-50 left-circle"></div>
+        </div>
+    </div>
+</body>
+</html>
