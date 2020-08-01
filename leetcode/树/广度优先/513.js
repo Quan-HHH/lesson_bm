@@ -1,11 +1,12 @@
 var findBottomLeftValue = function(root) {
     let queue = [root];
+    let rowNodes;
     while(queue.length) {
-        let rowNodes = queue.splice(0);
+        rowNodes = queue.splice(0);
         for(node of rowNodes) {
             if(node.left) queue.push(node.left);
             if(node.right) queue.push(node.right);
         }
     }
-    return rowNodes.shift();
+    return rowNodes[0].val;
 };
