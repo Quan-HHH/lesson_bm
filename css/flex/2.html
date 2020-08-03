@@ -1,0 +1,26 @@
+<style>
+    .flex1 {
+        display: flex;
+        /* sum 260 */
+        width: 600px;
+        outline: 1px solid blue;
+    }
+
+    .item11 {
+        flex-grow: 1; /* 有剩余空间自动放大 */
+        flex-shrink: 1; /* 没有剩余空间自动缩小 */
+        flex-basis: 200px;
+    }
+
+</style>
+<div class="flex1">
+    <div class="item1 item11">
+        English1
+    </div>
+    <div class="item2 item22">
+        English2
+        <br />
+        English2
+        <br />
+    </div>
+</div>
