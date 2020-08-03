@@ -29,3 +29,4 @@ export const PullDownLoading = styled.div`
   height: 30px;
   margin: auto;
   z-index: 100;
+`
