@@ -1,0 +1,15 @@
+<style>
+    .box {
+        width: 40px;
+        height: 40px;
+        outline: red 1px solid;
+    }
+</style>
+<div class="box one">one</div>
+<div class="box two">two</div>
+<script>
+    const box1 = document.querySelector('.one');
+    setTimeout(() => {
+        box1.style.display = 'none';
+    }, 3000)
+</script>
