@@ -1,0 +1,26 @@
+<!-- 手写柯里化 -->
+<script>
+    function sum1(a, b, c) {
+        return a + b + c;
+    }
+    // 函数上面的length属性(实参个数)
+    function curry(fun) {
+        const len = fun.length;
+        // return出去的就是具有柯里化(函数分批次)
+        // 无论分几次传参 都放在args里面
+        let args = [];
+        function help(...arg) {
+            args = args.concat(arg);
+            if (args.length >= len) {
+                return fun(...args.splice(0))
+            } else {
+                return help;
+            }
+        }
+        return help;
+    }
+    let curriedSum = curry(sum1)
+    console.log(curriedSum(1)(2, 3))
+    console.log(curriedSum(1, 2)(3))
+    console.log(curriedSum(1)(2)(3))
+</script>
