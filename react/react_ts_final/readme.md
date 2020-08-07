@@ -10,7 +10,8 @@
 
 - 运行一个ts + react 项目需要哪些前端技术
     1. webpack
-        去匹配.tsx 把它交给tsconfig.json ts的配置文件 jsx -> react  ts -> js
+        webpack去匹配.tsx 把它交给tsconfig.json(ts的配置文件)
+         jsx 由 react进行编译  把ts 编译成为 js
     2. tsconfig.json
     3. babel
 

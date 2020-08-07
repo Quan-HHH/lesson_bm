@@ -1,3 +1,4 @@
+//   .babelrc文件需要的配置项主要有预设(presets)和插件(plugins)
 {
     "presets": [
         [

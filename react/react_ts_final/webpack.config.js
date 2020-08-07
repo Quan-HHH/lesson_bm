@@ -13,7 +13,9 @@ module.exports = {
         path: path.join(basePath, "dist"),
         filename: "bundle.js"
     },
+    // 源码映射 开发阶段的工具 当代码报错会跳到源码中 定位哪里有问题
     devtool: "source-map",
+    // 把编译后的代码 启动一个服务器
     devServer: {
         contentBase: "./dist",
         inline: true,  // enable watch and live reload
