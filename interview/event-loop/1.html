@@ -1,0 +1,18 @@
+<script>
+    setTimeout(() => {
+        console.log(1)   
+        Promise.resolve(6).then(console.log)
+    });
+    new Promise((resolve, reject) => {
+        console.log(2); // 生成promise是同步的 then才是异步的
+        resolve(3)
+    }).then(r => {
+        console.log(r)
+        // return 999;/return new Promise;
+    }).then(r => {
+        // r是上一个then的return
+        console.log(r)
+    })
+    console.log(4)
+    // 2 4 3 1
+</script> 

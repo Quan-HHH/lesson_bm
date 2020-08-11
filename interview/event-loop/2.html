@@ -1,0 +1,16 @@
+<body></body>
+<script>
+    // document.body.style.backgroundColor = 'red';
+    // setTimeout(() => {
+    //     document.body.style.backgroundColor = 'blue';
+    // });
+    document.body.addEventListener('click',() => {
+        console.log(1);
+        Promise.resolve(2).then(console.log)
+    })
+    document.body.addEventListener('click',() => {
+        console.log(3);
+        Promise.resolve(4).then(console.log)
+    })
+    // 1 2 3 4
+</script>
