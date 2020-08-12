@@ -1,0 +1,24 @@
+<script>
+    // 数组拍平
+    let a = [1, 2, [3, [4, [5]]]];
+    a.push(a)
+    console.log(a)
+    // [1,2,3,4,5]
+    let map = new Map();
+    function flat(arr) {
+        // todo
+        let res = [];
+        if(map.has(arr)) return map.get(arr);
+        map.set(arr, res);
+        for(let item of arr) {
+            if(Array.isArray(item)) {
+                // res = res.concat(flat(item));
+                res.push(...flat(item))
+            } else {
+                res.push(item)
+            }
+        }
+        return res;
+    }
+    console.log(flat(a))
+</script>
