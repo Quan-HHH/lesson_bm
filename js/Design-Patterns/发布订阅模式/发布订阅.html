@@ -1,0 +1,58 @@
+<script>
+    // document.addEventListener('click', () => {})
+
+    let listeners = {
+
+    }
+    // 四个
+    let price1 = () => {
+        console.log('price1')
+    }
+    let price2 = () => {
+        console.log('price2')
+    }
+    let blog1 = () => {
+        console.log('blog1')
+    }
+    let blog2 = () => {
+        console.log('blog2')
+    }
+    function on(name, fn) {
+        if(!listeners[name]) {
+            listeners[name] = []
+        }
+        listeners[name].push(fn)
+    }
+    function emit(name) {
+        // 找到name下面的所有订阅者并执行（通知他们）
+        let listen = listeners[name] || [];
+        for (let fn of listen) {
+            fn();
+        }
+        listeners[name] = listen.filter(listen => !listen.once)  // 没经过过once的过滤出来
+        // console.log(name, listeners[name])
+        // listeners[name].map((fn) => {
+        //     fn()
+        // })
+    }
+    function off(name ,fn) {
+        let listen = listeners[name] || [];
+        listeners[name] = listen.filter(listen => listen !== fn)
+    }
+    function once(name, fn) {
+        fn.once = true;
+        on(name, fn);
+    }
+    on('price', price1);
+    on('price', price2);
+    on('blog', () => {
+        console.log('blog update');
+    })
+    emit('price')
+    off('price', price1)
+    emit('price')
+
+    setTimeout(() => {
+        emit('blog')
+    }, 3000);
+</script>
