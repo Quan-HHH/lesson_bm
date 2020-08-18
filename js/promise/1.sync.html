@@ -1,0 +1,23 @@
+<script>
+    function MyPromise(fn) {
+        this.value = undefined;
+        let self = this;
+        function resolve(value) {
+            self.value = value;
+            console.log(value)
+        }
+        function reject() {
+
+        }
+        fn(resolve, reject);
+    }
+    MyPromise.prototype.then = function(onFulfilled, onRejected) {
+        onFulfilled(this.value);
+    }
+    new MyPromise((resolve, reject) => {
+        resolve(1) // 这里是同步的 then里面才是异步的
+    })
+    .then((res) => {
+        console.log(res);
+    }, () => {}) //第二个参数是失败时候的回调 可写可不写 后面还有一个catch
+</script>

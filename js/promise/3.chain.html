@@ -1,0 +1,58 @@
+<script>
+    const PENDING = Symbol('PENDING');
+    const FULFILLED = Symbol('FULFILLED');
+    const REJECTED = Symbol('REJECTED');
+    function MyPromise(fn) {
+        this.value = undefined;
+        this.onFulfilled = []  // 有几个成功时候的回调 都要存下来
+        this.status = PENDING;
+        let self = this;
+        function resolve(value) {
+            self.value = value;
+            self.status = FULFILLED;
+            console.log(value)
+            self.onFulfilled.forEach(fn => {
+                fn(value);
+            });;
+        }
+        function reject() {
+
+        }
+        fn(resolve, reject);
+    }
+    MyPromise.prototype.then = function(onFulfilled, onRejected) {
+        if(this.status === FULFILLED) onFulfilled(this.value);
+        else if(this.status === PENDING) {
+            return new MyPromise((resolve, reject) => {
+                // ...
+                this.onFulfilled.push((value) => {
+                    // then的回调 需要知道返回值
+                    let x = onFulfilled(value);
+                    if(x instanceof MyPromise) {
+                        x.then(resolve, reject)
+                    }
+                    // resolve();
+                });
+            })
+            // this.onFulfilled.push(onFulfilled);
+        }
+        else {}
+        return this;
+    }
+    new MyPromise((resolve, reject) => {
+        setTimeout(() => {       
+            resolve(1) // 这里是同步的 then里面才是异步的
+        }, 2000);
+    })
+    .then((res) => {
+        console.log(res);
+        return new MyPromise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(1)
+            }, 2000)
+        })
+    }, () => {}) //第二个参数是失败时候的回调 可写可不写 后面还有一个catch
+    .then((res) => {
+        console.log(res)
+    })
+</script>
