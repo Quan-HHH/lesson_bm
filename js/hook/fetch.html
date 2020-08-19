@@ -1,0 +1,23 @@
+<script>
+
+    const _fetch = window.fetch; // 先保存一份原来的fetch
+    window.fetch = function(url, options) { // 再将原来的fetch改写
+        // return new Promise((resolve,reject) => {
+        //     _fetch(url, options).then(res => {
+        //         console.log();
+        //         resolve(res);
+        //     })
+        //     .catch(reject);
+        // })
+
+        // 更简单一点 可以写成
+        return _fetch(url, options).then((res) => {
+            console.log(res.url, '成功了')
+            return res;
+        })
+    }
+
+    fetch('http://neteasecloudmusicapi.zhaoboy.com/search?keywords=%E6%B5%B7%E9%98%94%E5%A4%A9%E7%A9%BA')
+    .then(res => res.json())
+    .then(res => console.log(res));
+</script>

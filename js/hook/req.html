@@ -1,0 +1,19 @@
+<script>
+    
+    const _XMLHttpRequest = window.XMLHttpRequest;
+    window.XMLHttpRequest = function XMLHttpRequest() {
+        const _xhr = new _XMLHttpRequest();
+        _xhr.addEventListener('onreadystatechange', function() {
+            // 不用 _xhr.onreadystatechange = function() {}是怕被覆盖了
+            if(_xhr.readyState === 4) {
+                console.log(_xhr.responseURL, '请求成功')
+            }
+        })
+        return _xhr;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open();
+    xhr.onreadystatechange = () => {};
+    xhr.send();
+</script>
