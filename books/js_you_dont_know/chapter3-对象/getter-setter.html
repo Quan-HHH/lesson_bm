@@ -1,0 +1,46 @@
+<script>
+    var myObject = {
+        // 给a定义一个getter 这个get函数的名字是规定好的
+        get a() {
+            return 2;
+        }
+    }
+    Object.defineProperty(
+        myObject,
+        "b",
+        {
+            get: function() {
+                return this.a * 2
+            },
+            enumerable:true
+        }
+    )
+    Object.defineProperty(
+        myObject,
+        "c",
+        {
+            get: function() {
+                return this.a * 2
+            },
+            enumerable:false
+        }
+    )
+    console.log(myObject, myObject.a, myObject.b);
+    myObject.a = 3; //忽略赋值操作
+    console.log(myObject.a) //仍然输出2 
+    console.log(obj.hasOwnProperty("c")) // 找不到c, 报TypeError
+    console.log("c" in obj) // 找不到c, 报TypeError
+
+
+    var obj = {
+        get a() {
+            return this._a_;
+        },
+        set a(val) {
+            this._a_ = val * 2;
+        }
+    }
+    obj.a = 2;
+    console.log(obj.a) // 4
+
+</script>

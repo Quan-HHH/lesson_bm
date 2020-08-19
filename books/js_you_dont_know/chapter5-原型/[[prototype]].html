@@ -1,0 +1,11 @@
+<script>
+    // writable:true的时候
+    var anotherObject = {
+        a: 2,
+        foo: "bar"
+    }
+    // anotherObject.foo = "bar" // 没有foo属性 会直接添加
+    var myObject = Object.create(anotherObject);
+    myObject.foo = "oops" // 虽然[[prototype]]上有foo属性， 但还是会添加在foo上
+    console.log(myObject)
+</script>
