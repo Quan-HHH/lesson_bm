@@ -1,0 +1,25 @@
+<script>
+    const str = 'asd';
+    const obj = {
+        name: 'xiaohua',
+        age: 20
+    };
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    let myObj = Object.create(obj);
+    let person = new Person('xiaohua', 20);
+    console.log(str.constructor === String, myObj.constructor === Object, person.constructor === Person)
+    // f String() [native code]
+    // f Object() [native code]
+    // f Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    // }
+    // true true true
+    console.log(Person.prototype)
+
+    function f(){}
+    console.log(f.prototype)
+</script>
