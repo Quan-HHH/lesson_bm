@@ -11,7 +11,7 @@ var isBalanced = function (root) {
         if (Math.abs(left - right) > 1) {
             isBal = false;
         }
-        return      
+        return Math.max(left, right) + 1;
     }
     helper(root);
     return isBal;
