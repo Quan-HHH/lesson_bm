@@ -1,0 +1,22 @@
+<script>
+    let obj = {
+        toString() { // 重写prototype上的toString
+            return 'str';
+        },
+        valueOf() {
+            return 0;
+        },
+        // Symbol.toPrimitive 是一个内置的 Symbol 值，它是作为对象的函数值属性存在的，
+        // 当一个对象转换为对应的原始值时，会调用此函数。
+        [Symbol.toPrimitive]: (hint) => {
+            console.log('转换为', hint);
+            if(hint === 'string')
+                return 'hahaha'
+            else
+                return 0
+        }
+    }
+    console.log(obj == 0)
+    console.log(String(obj));
+    console.log(Number(obj))
+</script>
