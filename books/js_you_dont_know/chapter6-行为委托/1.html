@@ -1,0 +1,8 @@
+<script>
+    obj = {
+        a: 1
+    }
+    let myObj = Object.create(obj);
+    obj = Object.create(myObj);
+    console.log(obj, myObj);
+</script>
