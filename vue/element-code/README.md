@@ -14,3 +14,6 @@
         对齐代码
         在公司中 一般js结尾不加;
     - unit Testing  E2E  测试
+
+
+v-if 指令
