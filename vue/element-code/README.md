@@ -17,3 +17,6 @@
 
 
 v-if 指令
+
+// vue比react多了一个计算属性的api, 基于数据进行计算之后的值的返回
+// react jsx模板 更加纯粹的编程风格 computed属性没必要
