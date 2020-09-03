@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="a"></div>
+    <div id="b"></div>
+    <div id="c"></div>
+    <script>
+        const DomA = document.querySelector('#a'),
+        DomB = document.querySelector('#b'),
+        DomC = document.querySelector('#c');
+        
+        function timer() {
+            // DomA.style.width = '200px' 有这行就是四次 没有就是三次
+            DomA.style.width = DomA.offsetWidth + 1 + 'px'
+            DomB.style.width = DomB.offsetWidth + 1 + 'px'
+            DomC.style.width = DomC.offsetWidth + 1 + 'px'
+        }
+
+        setTimeout(() => {
+            timer();
+        }, 2000);
+    </script>
+</body>
+</html>
