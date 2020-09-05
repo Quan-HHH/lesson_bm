@@ -1,12 +1,20 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin') // 简化HTML的创建 基于自己提供的html模板创建
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // 使用交互式可缩放树状图可视化webpack输出文件的大小
+const CopyPlugin = require('copy-webpack-plugin');  // 拷贝图片到dist
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');  
+var ImageminPlugin = require('imagemin-webpack-plugin').default;  // 压缩图片
+const HappyPack = require('happypack'); // 提高打包速度
+const webpack = require('webpack');
+
+// 分离基础库(react/react-dom) 可以缓存时间比较久的
+// 业务代码: 经常变动的
 
 const config = {
   entry: './src/index.js',
   resolve: {
     extensions: ['.js', '.jsx']
   },
+
   // externals: {
   //   react: 'React'
   // },
@@ -14,10 +22,13 @@ const config = {
     splitChunks: {
       chunks: 'all',
       // 'all' 所有的import   async 异步的import
-      cacheGroup: {
+      cacheGroups: {
         vendors: {
+          // 可以有很多个vendors, 只要是node_modules里面的东西, 就把满足这个规则的所有东西打包在一起
+          // 分离出来的文件名字 就是这个key的名字
           test: /[\\/]node_modules[\\/]/,
-        }
+        },
+        // vendors1: {}
       }
     }
   },
@@ -29,12 +40,13 @@ const config = {
     rules: [
       {
         test: /(.js|.jsx)$/,
-        use: ['babel-loader'],
+        // use: ['babel-loader'],
+        use: 'happypack/loader',
         exclude: /node_modules/
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 
+        use: [MiniCssExtractPlugin.loader, 
         {
           loader: 'css-loader',
           options: {
@@ -62,6 +74,19 @@ const config = {
         { from: './public/ip6x2.png', to: './' },
       ],
     }),
+    new MiniCssExtractPlugin(),
+    new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }), // 图片压缩
+    new HappyPack({
+      // 3) re-add the loaders you replaced above in #1:
+      loaders: [ 'babel-loader']
+    }),
+    // 当我们需要使用动态链接库时 首先会找到manifest文件 得到name值记录的全局变量名称 然后找到动态链接库文件 进行加载
+    new webpack.DllReferencePlugin({
+      /**
+       * 在这里引入 manifest 文件
+       */
+      manifest: require('./dist/dll/vendor-manifest.json'),
+    })
   ]
 }
 module.exports = config
