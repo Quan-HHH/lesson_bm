@@ -20,3 +20,11 @@ webpack-merge
 
 用了babel 要装一堆依赖
 cnpm i @babel/core @babel/cli @babel/preset-env @babel/preset-react babel-loader -D
+
+### 同构Header.jsx这个组件
+打包出来两份代码
+1. 服务端 bundle.js 是一个 node 项目
+2. 客户端 index.js 就是一个静态资源
+3. node 服务 让组件通过 renderToString 渲染成html字符串
+4. node 返回的东西就是带有内容的字符串 (缩短首屏白屏时间)
+5. node 返回html结构的时候 也罢客户端的index.js返回给浏览器了, 让react组件在客户端也会渲染一次，绑定事件
