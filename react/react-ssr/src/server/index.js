@@ -1,7 +1,10 @@
 import express from 'express';
 import React from 'react';
+import { StaticRouter } from 'react-router-dom'
 import path from 'path';
 import { renderToString } from 'react-dom/server';
+import { renderRoutes } from 'react-router-config';
+import route from '../route'
 // 如果是client客户端 ReactDom.render(, root)
 // server renderToString 就是把他渲染成字符串
 import Header from '../common/Header/Header.jsx';
@@ -12,7 +15,12 @@ const app = express();
 app.use(express.static('public'))
 
 app.get('*', (req, res) => {// get: 定义一个get形式的路由
-    const root = <Header />;
+    // const root = <Header />;
+    const root = (
+      <StaticRouter location={req.url}>
+        { renderRoutes(route) }
+      </StaticRouter>
+    )
     // 把 vnode虚拟节点 -> html形式的string
     // 节点有事件 addEventListener(浏览器专用的api), 只有在浏览器端调用 才会生效
     const htmlStr = renderToString(root);

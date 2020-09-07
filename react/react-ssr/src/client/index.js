@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
 import Header from '../common/Header/Header.jsx';
+import { renderRoutes } from 'react-router-config';
+import route from '../route';
 
 function App() {
     return (
-        <Header />
+        <BrowserRouter>
+            { renderRoutes(route) }
+        </BrowserRouter>
     )
 }
 // hydrate 调和

@@ -28,3 +28,10 @@ cnpm i @babel/core @babel/cli @babel/preset-env @babel/preset-react babel-loader
 3. node 服务 让组件通过 renderToString 渲染成html字符串
 4. node 返回的东西就是带有内容的字符串 (缩短首屏白屏时间)
 5. node 返回html结构的时候 也罢客户端的index.js返回给浏览器了, 让react组件在客户端也会渲染一次，绑定事件
+
+### 同构路由
+1. 目的 需要根据当前的url渲染页面
+2. 客户端BrowserRouter
+3. 服务端 手动传 req.url 告诉 StaticRouter 
+4. 让页面两端都知道 用户正在访问的url 两端渲染的页面都能保持一致
+？？ 鼠标点击link标签 刷新浏览器地址栏 页面由谁构造出来 哪个是客户端 哪个是服务端
