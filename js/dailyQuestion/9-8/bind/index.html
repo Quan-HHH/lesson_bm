@@ -1,0 +1,27 @@
+<script>
+    function Animal(name, color) {
+        this.name = name;
+        this.color = color;
+    }
+    Animal.prototype.say = function () {
+        return `I'm a ${this.color} ${this.name}`;
+    };
+    Function.prototype.mybind = function(THIS, ...arg1) {
+        let fn = this;
+        function test(...arg2) {
+            let args = arg1.concat(arg2);
+            // 谁 bind 调用谁
+            return fn.apply(THIS, args);
+        }
+        test.prototype = Object.create(this.prototype);
+        return test;
+    }
+
+    const Cat = Animal.mybind(null, 'cat');
+    const cat = new Cat('white');
+    // new > bind/call/apply > obj.xxx
+    if (cat.say() === 'I\'m a white cat' && cat instanceof Cat && cat instanceof Animal) {
+        console.log('success');
+    }
+
+</script>
