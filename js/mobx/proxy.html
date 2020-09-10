@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let originPush = Array.prototype.push;
+        // Array.prototype.push = function () {
+        //     return originPush
+        // }
+        let obj = { a: 1, b: 2 }
+        let handlers = []
+        let pObj = new Proxy(obj, {
+            set(obj, prop, val) {  
+                console.log('set')
+                return Reflect.set(obj, prop, val)
+            },
+            get(obj, prop) {
+                console.log(prop)
+                handlers.push(obj, prop)
+                return Reflect.get(obj, prop) 
+            }
+        }) 
+        pObj.a = 123 
+        console.log(pObj.b)
+        let obj1 = new Map()
+        // Reflect.get()方法与从 对象 (target[propertyKey]) 中读取属性类似，但它是通过一个函数执行来操作的
+        console.log(Reflect.get(obj, 'b'))
+        function autoRun(handler) {  
+            console.log(handlers)
+            for(let [obj, prop] of [handlers]) {
+                let arr = []
+                arr.push(prop)
+                let map = new Map()
+                map.set(prop, arr)
+                obj1.set(obj, map)
+            }
+        }
+        autoRun()
+    </script>
+</body>
+<ml>
