@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "moduleResolution": "node", //模块的解析
+        "module": "es6",
+        "target": "es5",
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true, //让我们可以在tsx中像在js中一样引入模块
+        "jsx": "react",//让 tsx文件可以写jsx语法
+    }
+}
