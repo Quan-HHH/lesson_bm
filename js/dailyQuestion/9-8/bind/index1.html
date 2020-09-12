@@ -4,11 +4,13 @@
     }
 
     Function.prototype.mybind = function(THIS, ...arg1) {
+        // console.log(this)  sum
         let fn = this;
         return function(...arg2) {
             let args = arg1.concat(arg2);
+            // console.log(this)  window
             // 谁 bind 调用谁
-            fn.apply(THIS, args);
+            return fn.apply(THIS, args);
         }
     }
 

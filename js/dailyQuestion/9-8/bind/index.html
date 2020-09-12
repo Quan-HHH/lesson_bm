@@ -10,15 +10,18 @@
         let fn = this;
         function test(...arg2) {
             let args = arg1.concat(arg2);
+            console.log(args)
             // 谁 bind 调用谁
             return fn.apply(THIS, args);
         }
-        test.prototype = Object.create(this.prototype);
+        test.prototype = Object.create(this.prototype); // 继承 也可以写成test.prototype = this.prototype
         return test;
     }
-
+    // call/apply 绑定this 而且调用, bind是不会调用的
+    // Cat指向null
     const Cat = Animal.mybind(null, 'cat');
     const cat = new Cat('white');
+    // Cat指向cat
     // new > bind/call/apply > obj.xxx
     if (cat.say() === 'I\'m a white cat' && cat instanceof Cat && cat instanceof Animal) {
         console.log('success');
