@@ -1,0 +1,21 @@
+<script>
+
+    function Foo() {
+        this.color = 'red';
+    }
+    Foo.prototype.say = function() {
+        console.log('say');
+    }
+
+    let f = new Foo();
+    f.say() // f为什么可以拿到say f.__proto__ === Foo.prototype
+
+    // extends = Foo.apply(this) + 方法的继承
+    // Bar.prototype.__proto__ = Foo.prototype;相当于
+    // 1.
+    // Object.setPrototypeOf(Bar.prototype, Foo.prototype);
+    // 2.
+    // {}.__proto__ = Foo.prototype return {}
+    // Bar.prototype = Object.create(Foo.prototype);
+</script>
+
