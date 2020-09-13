@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="inp">
+    <script>
+        function debounce(fn) {
+            let timer = null;
+            return function() {
+                if(timer) clearTimeout(timer);
+                timer = setTimeout(() => {
+                    fn()
+                }, 2000)
+            }
+        }
+        sayHi = () => {
+            console.log('防抖成功')
+        }
+        const input = document.querySelector('.inp')
+        input.addEventListener('input', debounce(sayHi))
+    </script>
+</body>
+</html>
