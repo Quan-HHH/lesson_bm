@@ -1,0 +1,8 @@
+<script>
+    const originPush = Array.prototype.push;
+
+    Array.prototype.push = function() {
+        console.log(1);
+        return originPush.apply(this);
+    }
+</script>
