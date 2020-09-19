@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {a: 1, b: 2}
+        let handler = {
+            set(obj, prop, val) {  
+                console.log('set')
+                return Reflect.set(obj, prop, val)
+            },
+            get(obj, prop) {
+                console.log(prop)
+                return Reflect.get(obj, prop) 
+            }
+        }
+        var object = { proxy: new Proxy(obj, handler)};
+        console.log(object.proxy.a);
+    </script>
+</body>
+</html>
