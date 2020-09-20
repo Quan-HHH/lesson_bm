@@ -1,0 +1,5 @@
+plugin  
+订阅了webpack打包的某个阶段 在这个阶段就会插进去做些啥
+
+整个webpack只会生成一个compiler
+因为webpack热更新 webpack每打包一次 都会生成一个compilation对象
