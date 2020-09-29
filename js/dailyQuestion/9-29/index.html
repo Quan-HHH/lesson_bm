@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .in {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="out">
+        <div class="in"></div>
+    </div>
+    <script>
+        const out = document.querySelector('.out');
+        const inDom = document.querySelector('.in');
+        inDom.addEventListener('click', (event) => {
+            // event.currentTarget 永远指向inDom 
+            // 不管是点击out还是in触发的回调 始终指向inDom
+            console.log(event.target)
+            console.log(event.currentTarget)
+        })
+        out.addEventListener('click', (event) => {
+            // event.target 鼠标点中哪个元素 就指向谁
+            console.log(event.target)
+            console.log(event.currentTarget)
+        })
+    </script>
+</body>
+</html>
