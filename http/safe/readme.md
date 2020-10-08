@@ -35,4 +35,18 @@ xss类型:
 
  通常有两种方式开启CSP:
   1. 设置HTTP Header中的 Content-Security-Policy
-  2. 设置 meta 标签 <metahttp-equiv="Content-Security-Policy">
+            Content-Security-Policy: default-src 'self' 
+            <!-- 只允许加载本站资源 如果注入远程的资源 浏览器就不会去加载他 -->
+            Content-Security-Policy: img-src https://*
+            <!-- 只允许加载https协议的图片 -->
+  2. 设置 meta 标签 <meta http-equiv="Content-Security-Policy">
+
+
+ # 什么是CSRF攻击? 跨站请求伪造 如何防范CSRF
+ 原理：攻击者构造一个后端请求地址 诱导用户在登录状态下自动发起请求
+
+ 防范：
+ 1. Get请求不对数据进行修改
+ 2. 不让第三方网站访问Cookie
+ 3. 组织第三方网站的请求接口
+ 4. 请求时必须携带验证码或者Token
