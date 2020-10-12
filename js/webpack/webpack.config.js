@@ -1,5 +1,4 @@
 const path = require('path');
-const { dirname } = require('path');
 
 module.exports = {
     module: {
