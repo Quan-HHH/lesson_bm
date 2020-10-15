@@ -1,0 +1,10 @@
+function Person() {}
+var p1 = new Person()
+
+console.log(p1.constructor)  // [Function: Person]
+Person.prototype = {
+    // name: '小花'
+}
+
+var p2 = new Person()
+console.log(p2.constructor)  // [Function: Object]
