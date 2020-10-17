@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 构造函数实例化出来的对象能通过__proto__找到构造函数的原型
+        function Person() {
+
+        }
+        var person = new Person();
+
+        Grand.prototype.lastName = 'Wu'
+        function Grand() {
+
+        }
+        var grand = new Grand();
+
+        Father.prototype = grand;
+        function Father() {
+            this.name = 'jilong'
+            this.fortune = {
+                card1: 'visa'
+            }
+            this.num = 100
+        }
+        var father = new Father()
+
+        Son.prototype = father;
+        function Son() {
+
+        }
+        var son = new Son();
+        // Object.prototype是所有对象的最终原型
+
+        son.fortune.card2 = 'master'
+        // son里面没有fortune属性，而是在father的fortune属性里添加了一个card2，因为fortune是引用类型
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {};
+        var obj1 = new Object();
+        // 这两种方法创建的对象没有区别
+        // 所以 能使用对象字面量创建的对象就不使用构造函数
+
+        // Object.create(`原型`)
+        var obj2 = Object.create(obj1);
+        // obj2会继承obj的属性和方法，obj2的隐式原型指向obj obj.__proto__ == obj
+
+        // 所有对象都会继承自Object.prototype ??? 不是
+        var obj3 = Object.create(null)
+        obj3.__proto__ = { name: 'wn' } 
+        // 这样只是给obj3增加了一个__proto__属性，这样obj3.name 还是undefine，不能给它安排爹
+
+
+        // 只要具有原型的 都具有toString方法 ??? 不是(大多数)
+        var obj4 = Object.create(obj3)
+
+        // 没有原型的属性都没有toString方法 undefined和null都没有原型
+        
+    </script>
+</body>
+</html>
