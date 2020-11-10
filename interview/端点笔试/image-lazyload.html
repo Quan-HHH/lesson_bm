@@ -58,14 +58,16 @@
     lazyload="true"
     data-original="https://yanxuan-item.nosdn.127.net/7c82e656b0448784aa79e6029cbcbabc.jpg?type=webp&quality=95&thumbnail=265x265&imageView" />
   <script>
+      let viewHeight = window.innerHeight;
+      console.log(viewHeight)
     function lazyload() {
       const allImage = document.querySelectorAll("img[lazyload]")//可以把后面的="true"省略
-      let viewHeight = window.innerHeight;
       //   console.log(allImage.length)
       for (let img of allImage) {  //循环api for of
         //有没有出现在视窗范围内
 
         let size = img.getBoundingClientRect();
+        // console.log(size)
         // 限制视窗之下 && 视窗之上
         if (size.top < viewHeight && size.bottom > 0) {
 
@@ -76,7 +78,7 @@
           // new Image()
           // document.createElement('img')
           const imgObj = new Image();
-          imgObj.src = originalSrc;//浏览器就回去加载啦
+          imgObj.src = originalSrc;//浏览器就会去加载啦
 
           // 什么时候加载完呢
           imgObj.onload = function () {

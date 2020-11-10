@@ -49,5 +49,5 @@ var o2 = {
     b: 3
 }
 foo2(o2)
-console.log(o2.a) //undefined  o2压根就没有a这个属性
+console.log(o2.a, o2.c) //undefined  o2压根就没有a这个属性
 console.log(a) // 2 --> a出现在了全局
