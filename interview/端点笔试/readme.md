@@ -1,5 +1,5 @@
-- 手写call apply bind
-- 手写数组上的各种方法
+- 手写call apply bind √
+- 手写数组上的各种方法 √
 - 图片懒加载
     1. 加载loading图片
     <img src="./loading.jpg" lazyload="true" src-data="./1.jpg">
