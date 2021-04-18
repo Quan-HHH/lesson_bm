@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>FETCH</button>
+  <script>
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', () => {
+      fetch('http://localhost:9090/fetch-server', {
+        method: 'POST',
+        headers: {
+          name: 'qjx',
+          age: 21,
+        },
+        body: 'username=123123&password=321321'
+      }).then(res => {
+        return res.json()
+      }).then(res => {
+        console.log(res)
+      })
+    })
+  </script>
+</body>
+</html>

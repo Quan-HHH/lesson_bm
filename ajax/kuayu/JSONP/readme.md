@@ -1,0 +1,3 @@
+script img link iframe天生不受跨域的限制
+JSONP就是利用script的跨域能力来发请求
+返回一个函数调用 函数的参数是给客户端返回的结果数据

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  用户名：<input type="text" name="" id="username">
+  <p></p>
+  <script>
+    const input = document.querySelector('input')
+    const p = document.querySelector('p')
+    function handle(data) {
+      input.style.border = 'solid 1px red'
+      p.innerHTML = data.msg
+    }
+    input.onblur = (e) => {
+      const value = e.target.value
+      const script = document.createElement('script')
+      script.src = 'http://localhost:9090/check-username'
+      document.body.appendChild(script)
+    }
+  </script>
+</body>
+</html>

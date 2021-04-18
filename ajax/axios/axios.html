@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <button>GET</button>
+  <button>POST</button>
+  <button>AJAX</button>
+  <script>
+    const btns = document.querySelectorAll('button')
+    axios.defaults.baseURL = 'http://localhost:9090'
+    btns[0].addEventListener('click', () => {
+      axios.get('/axios-server', {
+        // url参数
+        params: {
+          id: 100,
+          vip: 7
+        },
+        headers: {
+          name: 'quanjiaxin',
+          age: 20
+        }
+      }).then(res => {
+        console.log(res)
+      })
+    })
+    btns[1].addEventListener('click', () => {
+      axios.post('/axios-server', {
+          username: 100,
+          password: 100
+        },
+        {
+        // url参数
+        params: {
+          id: 100,
+          vip: 7
+        },
+        headers: {
+          name: 'quanjiaxin',
+          age: 20
+        },
+
+      }).then(res => {
+        console.log(res)
+      })
+    })
+    btns[2].addEventListener('click', () => {
+      axios({
+        method: 'POST',
+        url: '/axios-server',
+        params: {
+          id: 100,
+          vip: 7,
+        },
+        headers: {
+          a: 100,
+          b: 200
+        },
+        data: {
+          username: 123123,
+          password: 1231231
+        }
+      })
+    })
+  </script>
+</body>
+</html>

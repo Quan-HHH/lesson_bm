@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>点击发送请求</button>
+  <div id="result"></div>
+  <script>
+    const btn = document.getElementsByTagName('button')[0]
+    btn.onclick = function() {
+      // 创建对象
+      const xhr = new XMLHttpRequest()
+      // 初始化 设置请求方法 和 url
+      xhr.open('GET', 'http://localhost:9090/server?a=100&b=200')
+      // 发送
+      xhr.send()
+      // 时间绑定 处理服务端返回的结果
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.status) // 状态码
+          console.log(xhr.statusText) // 状态字符串
+          console.log(xhr.getAllResponseHeaders()) // 响应头
+          console.log(xhr.response) // 响应
+          document.querySelector('#result').innerHTML = xhr.response
+        }
+      }
+    }
+  </script>
+</body>
+</html>

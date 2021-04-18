@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #result {
+      width: 200px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+  <button>点击发送请求</button>
+  <div id="result"></div>
+  <script>
+    const btn = document.querySelector('button')
+    const result = document.querySelector('#result')
+    btn.addEventListener('click', () => {
+      // 创建对象
+      const xhr = new XMLHttpRequest()
+      xhr.timeout = 2000
+      xhr.ontimeout = () => {
+        alert('请求超时，请稍后重试！')
+      }
+      // 初始化 设置请求方法 和 url
+      xhr.open('GET', 'http://localhost:9090/delay')
+      // 发送
+      xhr.send() // 请求体 形式可以随便写 主要是看服务器端怎么解析
+      // 时间绑定 处理服务端返回的结果
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+          result.innerHTML = xhr.response
+        }
+      }
+    })
+  </script>
+</body>
+</html>
